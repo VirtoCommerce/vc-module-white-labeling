@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "WhiteLabeling:create": "Create WhiteLabeling related data",
+    "WhiteLabeling:read": "View WhiteLabeling related data",
+    "WhiteLabeling:update": "Update WhiteLabeling related data",
+    "WhiteLabeling:delete": "Delete WhiteLabeling related data"
+  }
+}
