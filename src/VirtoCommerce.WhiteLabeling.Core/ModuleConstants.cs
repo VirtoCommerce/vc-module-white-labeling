@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using VirtoCommerce.Platform.Core.Settings;
+
 namespace VirtoCommerce.WhiteLabeling.Core;
 
 public static class ModuleConstants
@@ -18,6 +21,45 @@ public static class ModuleConstants
                 Update,
                 Delete,
             };
+        }
+    }
+
+    public static class Settings
+    {
+        public static class General
+        {
+            public static SettingDescriptor WhiteLabelingEnabled { get; } = new()
+            {
+                Name = "WhiteLabeling.WhiteLabelingEnabled",
+                GroupName = "WhiteLabeling|General",
+                ValueType = SettingValueType.Boolean,
+                IsPublic = true,
+                DefaultValue = true,
+            };
+
+            public static IEnumerable<SettingDescriptor> AllGeneralSettings
+            {
+                get
+                {
+                    yield return WhiteLabelingEnabled;
+                }
+            }
+        }
+
+        public static IEnumerable<SettingDescriptor> AllSettings
+        {
+            get
+            {
+                return General.AllGeneralSettings;
+            }
+        }
+
+        public static IEnumerable<SettingDescriptor> StoreLevelSettings
+        {
+            get
+            {
+                yield return General.WhiteLabelingEnabled;
+            }
         }
     }
 }

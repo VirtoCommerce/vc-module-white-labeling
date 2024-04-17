@@ -21,8 +21,8 @@ namespace VirtoCommerce.WhiteLabeling.Data.Queries
                 {
                     UserId = "cfcec63a-faa5-4511-9aef-ee7672af6710",
                     OrganizationId = "f081c52234754c9c8229aa42d6a19220",
-                    LogoUrl = "/static/images/common/logo-1.svg",
-                    SecondaryLogoUrl = "/static/images/common/logo-white-1.svg",
+                    LogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-white-labeling-test.svg",
+                    SecondaryLogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-inverted-white-labeling-test.svg",
                     FaviconUrl = "/static/icons/favicon-1.svg",
                     FooterLinks = new List<FooterLink>()
                     {
@@ -63,14 +63,6 @@ namespace VirtoCommerce.WhiteLabeling.Data.Queries
                             }
                         }
                     }
-                },
-                new WhiteLabelingSettings()
-                {
-                    UserId = "07e6a601-b90e-4dbd-a7d0-0f1f89db4f2e",
-                    OrganizationId = "",
-                    LogoUrl = "/static/images/common/logo.svg",
-                    SecondaryLogoUrl = "/static/images/common/logo-white.svg",
-                    FaviconUrl = "/static/icons/favicon.svg",
                 }
             };
 
