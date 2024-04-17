@@ -8,7 +8,6 @@
     <SonarQubeTestProject>false</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\VirtoCommerce.WhiteLabeling.ExperienceApi\VirtoCommerce.WhiteLabeling.ExperienceApi.csproj" />
     <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj" />
     <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj" />
   </ItemGroup>
