@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using VirtoCommerce.ExperienceApiModule.Core.Infrastructure;
 using VirtoCommerce.WhiteLabeling.Core.Models;
 
-namespace VirtoCommerce.WhiteLabeling.Data.Queries
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
     public class GetWhiteLabelingSettingsQueryHandler : IQueryHandler<GetWhiteLabelingSettingsQuery, WhiteLabelingSettings>
     {

@@ -1,4 +1,11 @@
 {
+  "white-labeling": {
+    "widgets": {
+      "white-labeling": {
+        "title": "Labeling"
+      }
+    }
+  },
   "permissions": {
     "WhiteLabeling:create": "Create WhiteLabeling related data",
     "WhiteLabeling:read": "View WhiteLabeling related data",

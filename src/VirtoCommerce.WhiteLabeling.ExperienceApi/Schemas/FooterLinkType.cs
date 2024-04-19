@@ -1,7 +1,7 @@
 using GraphQL.Types;
 using VirtoCommerce.WhiteLabeling.Core.Models;
 
-namespace VirtoCommerce.WhiteLabeling.Data.Schemas
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 {
     public class FooterLinkType : ObjectGraphType<FooterLink>
     {

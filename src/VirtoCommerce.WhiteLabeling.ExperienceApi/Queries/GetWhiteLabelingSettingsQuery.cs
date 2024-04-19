@@ -4,7 +4,7 @@ using GraphQL.Types;
 using VirtoCommerce.ExperienceApiModule.Core.BaseQueries;
 using VirtoCommerce.WhiteLabeling.Core.Models;
 
-namespace VirtoCommerce.WhiteLabeling.Data.Queries
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
     public class GetWhiteLabelingSettingsQuery : Query<WhiteLabelingSettings>
     {

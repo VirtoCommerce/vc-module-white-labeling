@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6399224F-BE1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Web", "src\VirtoCommerce.WhiteLabeling.Web\VirtoCommerce.WhiteLabeling.Web.csproj", "{989F26A9-266A-4C1E-B41C-A116CF9B438A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data", "src\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj", "{35AF38D0-23DA-47AA-ABDC-A66BFAC2ABF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.ExperienceApi", "src\VirtoCommerce.WhiteLabeling.ExperienceApi\VirtoCommerce.WhiteLabeling.ExperienceApi.csproj", "{35AF38D0-23DA-47AA-ABDC-A66BFAC2ABF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Core", "src\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj", "{844A79C8-61E6-4ABA-A4CB-71258BB92C63}"
 EndProject

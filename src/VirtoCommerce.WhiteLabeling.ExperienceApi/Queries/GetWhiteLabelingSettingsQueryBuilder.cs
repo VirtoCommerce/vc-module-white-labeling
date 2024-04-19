@@ -2,9 +2,9 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using VirtoCommerce.ExperienceApiModule.Core.BaseQueries;
 using VirtoCommerce.WhiteLabeling.Core.Models;
-using VirtoCommerce.WhiteLabeling.Data.Schemas;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas;
 
-namespace VirtoCommerce.WhiteLabeling.Data.Queries
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
     public class GetWhiteLabelingSettingsQueryBuilder : QueryBuilder<GetWhiteLabelingSettingsQuery, WhiteLabelingSettings, WhiteLabelingSettingsType>
     {

@@ -10,7 +10,7 @@ using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
 using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.WhiteLabeling.Core;
-using VirtoCommerce.WhiteLabeling.Data;
+using VirtoCommerce.WhiteLabeling.ExperienceApi;
 
 namespace VirtoCommerce.WhiteLabeling.Web;
 
