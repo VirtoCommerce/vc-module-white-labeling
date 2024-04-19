@@ -13,6 +13,7 @@ namespace VirtoCommerce.WhiteLabeling.Data.Schemas
             Field(x => x.SecondaryLogoUrl, nullable: true).Description("Logo URL for footer");
             Field(x => x.FaviconUrl, nullable: true).Description("FavIcon");
             Field<ListGraphType<FooterLinkType>>("footerLinks", resolve: context => context.Source.FooterLinks);
+            Field<ListGraphType<FaviconType>>("favicons", resolve: context => context.Source.Favicons);
         }
     }
 }

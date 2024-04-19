@@ -23,7 +23,28 @@ namespace VirtoCommerce.WhiteLabeling.Data.Queries
                     OrganizationId = "f081c52234754c9c8229aa42d6a19220",
                     LogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-white-labeling-test.svg",
                     SecondaryLogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-inverted-white-labeling-test.svg",
-                    FaviconUrl = "/static/icons/favicon-1.svg",
+                    Favicons = new List<Favicon>()
+                    {
+                        new Favicon()
+                        {
+                            Rel = "shortcut icon",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
+                        },
+                        new Favicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "16x16",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
+                        },
+                        new Favicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "32x32",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
+                        }
+                    },
                     FooterLinks = new List<FooterLink>()
                     {
                         new FooterLink()
@@ -63,7 +84,76 @@ namespace VirtoCommerce.WhiteLabeling.Data.Queries
                             }
                         }
                     }
-                }
+                },
+                // QA test entry
+                new WhiteLabelingSettings()
+                {
+                    UserId = "de8ec5fa-4633-4d81-bb53-8e7ac23a057b",
+                    OrganizationId = "05763259-a5d3-4650-ad75-51f416a6368e",
+                    LogoUrl = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/logo-white-labeling-test.svg",
+                    SecondaryLogoUrl = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/logo-inverted-white-labeling-test.svg",
+                    Favicons = new List<Favicon>()
+                    {
+                        new Favicon()
+                        {
+                            Rel = "shortcut icon",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
+                        },
+                        new Favicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "16x16",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
+                        },
+                        new Favicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "32x32",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
+                        }
+                    },
+                    FooterLinks = new List<FooterLink>()
+                    {
+                        new FooterLink()
+                        {
+                            Title = "Company Details",
+                            Url = "/company-details",
+                            ChildItems = new List<FooterLink>()
+                            {
+                                new FooterLink()
+                                {
+                                    Title = "About Us",
+                                    Url = "/about-us"
+                                },
+                                new FooterLink()
+                                {
+                                    Title = "Investor Relations",
+                                    Url = "/investor-relations"
+                                }
+                            }
+                        },
+                        new FooterLink()
+                        {
+                            Title = "Customer Support",
+                            Url = "/customer-support",
+                            ChildItems = new List<FooterLink>()
+                            {
+                                new FooterLink()
+                                {
+                                    Title = "Catalog Request",
+                                    Url = "/catalog-request"
+                                },
+                                new FooterLink()
+                                {
+                                    Title = "Contact Us",
+                                    Url = "/contact-us"
+                                }
+                            }
+                        }
+                    }
+                },
             };
 
             var result = settings.FirstOrDefault(x => x.OrganizationId == request.OrganizationId || x.UserId == request.UserId);

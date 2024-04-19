@@ -10,5 +10,6 @@ namespace VirtoCommerce.WhiteLabeling.Core.Models
         public string SecondaryLogoUrl { get; set; }
         public string FaviconUrl { get; set; }
         public IList<FooterLink> FooterLinks { get; set; } = [];
+        public IList<Favicon> Favicons { get; set; } = [];
     }
 }
