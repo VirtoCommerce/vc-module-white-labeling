@@ -1,0 +1,7 @@
+<div class="gridster-cnt" ng-click="openBlade()">
+  <div class="cnt-inner">
+    <i class="fas fa-user fa-2x fa-gray" ng-show="!blade.currentEntity.logoUrl"></i>
+    <img style="height:47px;width:47px;" ng-show="blade.currentEntity.logoUrl" fallback-src="{{ blade.currentEntity.logoUrl}}" ng-src="{{ blade.currentEntity.logoUrl | thumbnail: '_64x64' }}">
+    <div class="list-t">{{'white-labeling.widgets.white-labeling-logo.title' | translate}}</div>
+  </div>
+</div>

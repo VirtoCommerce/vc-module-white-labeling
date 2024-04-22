@@ -1,3 +1,4 @@
+using System;
 using GraphQL.Server;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -11,9 +12,11 @@ using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
 using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.WhiteLabeling.Core;
+using VirtoCommerce.WhiteLabeling.Core.Services;
 using VirtoCommerce.WhiteLabeling.Data.MySql;
 using VirtoCommerce.WhiteLabeling.Data.PostgreSql;
 using VirtoCommerce.WhiteLabeling.Data.Repositories;
+using VirtoCommerce.WhiteLabeling.Data.Services;
 using VirtoCommerce.WhiteLabeling.Data.SqlServer;
 using VirtoCommerce.WhiteLabeling.ExperienceApi;
 
@@ -52,8 +55,11 @@ public class Module : IModule, IHasConfiguration
             }
         });
 
-        // Register services
+        serviceCollection.AddTransient<IWhiteLabelingRepository, WhiteLabelingRepository>();
+        serviceCollection.AddTransient<Func<IWhiteLabelingRepository>>(provider => () => provider.CreateScope().ServiceProvider.GetRequiredService<IWhiteLabelingRepository>());
 
+        serviceCollection.AddTransient<IWhiteLabelingSettingService, WhiteLabelingSettingService>();
+        serviceCollection.AddTransient<IWhiteLabelingSettingSearchService, WhiteLabelingSettingSearchService>();
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)

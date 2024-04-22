@@ -13,7 +13,24 @@ angular.module(moduleName, [])
                 template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingWidget.html',
                 isVisible: function (blade) { return !blade.isNew; }
             };
-
             widgetService.registerWidget(whiteLabelingWidget, 'organizationDetail2');
+
+            var whiteLabelingLogoWidget = {
+                controller: 'WhiteLabeling.whiteLabelingLogoWidgetController',
+                template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingLogoWidget.html'
+            };
+            widgetService.registerWidget(whiteLabelingLogoWidget, 'whiteLabelingLogos');
+
+            var whiteLabelingFaviconWidget = {
+                controller: 'WhiteLabeling.whiteLabelingFaviconWidgetController',
+                template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingFaviconWidget.html'
+            };
+            widgetService.registerWidget(whiteLabelingFaviconWidget, 'whiteLabelingLogos');
+
+            //var whiteLabelingSecondaryLogoWidget = {
+            //    controller: 'WhiteLabeling.whiteLabelingLogoWidgetController',
+            //    template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingSecondaryLogoWidget.html'
+            //};
+            //widgetService.registerWidget(whiteLabelingSecondaryLogoWidget, 'whiteLabelingLogos');
         }
     ]);

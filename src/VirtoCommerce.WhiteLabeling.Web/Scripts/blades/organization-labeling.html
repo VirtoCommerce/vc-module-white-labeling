@@ -1,7 +1,44 @@
 <div class="blade-content">
   <div class="blade-inner">
     <div class="inner-block">
-      <div class="sub-t">{{blade.data}}</div>
+      <form class="form" name="formScope">
+
+        <fieldset ng-init="setForm(formScope)">
+
+          <div class="form-group">
+            <label class="form-label">{{ 'white-labeling.blades.white-labeling-detail.labels.enabled' | translate }}</label>
+            <div class="form-input">
+              <label class="form-label __switch">
+                <input type="checkbox" ng-model="blade.currentEntity.isEnabled">
+                <span class="switch"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <va-widget-container group="whiteLabelingLogos" blade="blade" gridster-opts="{columns: 3}"></va-widget-container>
+          </div>
+
+          <div class="form-group">
+            <va-setting-value-select blade="blade"
+                                     label="'white-labeling.blades.white-labeling-detail.labels.preset-name' | translate"
+                                     placeholder="'white-labeling.blades.white-labeling-detail.placeholders.preset-name' | translate"
+                                     setting="'WhiteLabeling.ThemePresetNames'"
+                                     ng-model="blade.currentEntity.themePresetName"></va-setting-value-select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="margin:0">{{'white-labeling.blades.white-labeling-detail.labels.link-list' | translate}}</label>
+            <ui-scroll-drop-down page-size="100"
+                                 ng-model="blade.currentEntity.linkListName"
+                                 data="searchLinkLists(criteria)"
+                                 placeholder="'white-labeling.blades.white-labeling-detail.placeholders.link-list'">
+            </ui-scroll-drop-down>
+          </div>
+
+        </fieldset>
+
+      </form>
     </div>
   </div>
 </div>

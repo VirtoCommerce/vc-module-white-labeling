@@ -1,0 +1,7 @@
+<div class="gridster-cnt" ng-click="openBlade()">
+  <div class="cnt-inner">
+    <i class="fas fa-user fa-2x fa-gray" ng-show="!blade.currentEntity.faviconUrl"></i>
+    <img style="height:47px;width:47px;" ng-show="blade.currentEntity.faviconUrl" fallback-src="{{ blade.currentEntity.faviconUrl}}" ng-src="{{ blade.currentEntity.faviconUrl | thumbnail: '_64x64' }}">
+    <div class="list-t">{{'white-labeling.widgets.white-labeling-favicon.title' | translate}}</div>
+  </div>
+</div>

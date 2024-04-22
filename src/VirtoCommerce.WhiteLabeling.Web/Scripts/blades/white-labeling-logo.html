@@ -1,0 +1,92 @@
+<div class="themeSettingsBlade themeSettingsBlade__blade-content">
+
+  <legend class="themeSettingsBlade themeSettingsBlade__title">White labeling logo</legend>
+
+    <div class="themeSettingsBlade themeSettingsBlade__blade-inner">
+        <div class="themeSettingsBlade themeSettingsBlade__inner-block">
+            <form name="formScope" class="uploader uploader__form">
+                <fieldset ng-init="setForm(formScope)">
+
+                    <div class="uploader uploader__form-group">
+                        <label class="uploader uploader__form-label">Choose logo</label>
+                            <div over-class="bd-blue" uploader="logoUploader" nv-file-over nv-file-drop class="uploader uploader__drag-area">
+                                <input id="logoUploaderInput" ng-show="false" type="file" nv-file-select uploader="logoUploader" />
+                                <div class="uploader uploader__drag-content">
+                                    <div class="uploader uploader__icon-container"><i class="fas fa-cloud-upload-alt fa-2x"></i></div>
+                                    <div class="uploader uploader__comment">
+                                        {{ 'platform.blades.settings-uploader.drag-drop-comment' | translate }} <br>
+                                        {{ 'platform.blades.settings-uploader.or' | translate }}
+                                        <a href="#" ng-click="browseFiles('logoUploaderInput')">{{ 'platform.blades.settings-uploader.browse-your-files' | translate }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="uploader uploader__hint">Select a PNG, GIF or SVG image</div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <div class="uploader uploader__pb-container" ng-if="logoUploader.isUploading">
+                <div class="sub-t">Progress</div>
+                <div class="progress-bar __aqua" ng-style="{'width': logoUploader.progress + '%'}"></div>
+            </div>
+
+            <!-- preview -->
+            <div class="uploader-preview uploader-preview__container" ng-if="!logoUploader.isUploading">
+                <div class="uploader-preview uploader-preview__sub-title">Preview</div>
+                <div class="uploader-preview uploader-preview__tile">
+                    <img ng-show="blade.currentEntity.logoUrl" class="uploader-preview uploader-preview__img"
+                         ng-src="{{ blade.currentEntity.logoUrl }}"
+                         alt="Logo image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="themeSettingsBlade themeSettingsBlade__blade-inner">
+        <div class="themeSettingsBlade themeSettingsBlade__inner-block">
+            <form name="formScope" class="uploader uploader__form">
+                <fieldset ng-init="setForm(formScope)">
+
+                    <div class="uploader uploader__form-group">
+                        <label class="uploader uploader__form-label">Choose secondary logo</label>
+                            <div over-class="bd-blue" uploader="secondaryLogoUploader" nv-file-over nv-file-drop class="uploader uploader__drag-area">
+                                <input id="secondaryLogoUploaderInput" ng-show="false" type="file" nv-file-select uploader="secondaryLogoUploader" />
+                                <div class="uploader uploader__drag-content">
+                                    <div class="uploader uploader__icon-container"><i class="fas fa-cloud-upload-alt fa-2x"></i></div>
+                                    <div class="uploader uploader__comment">
+                                        {{ 'platform.blades.settings-uploader.drag-drop-comment' | translate }} <br>
+                                        {{ 'platform.blades.settings-uploader.or' | translate }}
+                                        <a href="#" ng-click="browseFiles('secondaryLogoUploaderInput')">{{ 'platform.blades.settings-uploader.browse-your-files' | translate }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="uploader uploader__hint">Select a PNG, GIF or SVG image</div>
+                    </div>
+
+                </fieldset>
+            </form>
+
+            <div class="uploader uploader__pb-container" ng-if="secondaryLogoUploader.isUploading">
+                <div class="sub-t">Progress</div>
+                <div class="progress-bar __aqua" ng-style="{'width': secondaryLogoUploader.progress + '%'}"></div>
+            </div>
+
+            <!-- preview -->
+            <div class="uploader-preview uploader-preview__container" ng-if="!secondaryLogoUploader.isUploading">
+                <div class="uploader-preview uploader-preview__sub-title">Preview</div>
+                <div class="uploader-preview uploader-preview__tile">
+                    <img ng-show="blade.currentEntity.secondaryLogoUrl" class="uploader-preview uploader-preview__img"
+                         ng-src="{{ blade.currentEntity.secondaryLogoUrl }}"
+                         alt="Secondary logo image">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+

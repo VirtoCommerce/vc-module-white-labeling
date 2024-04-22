@@ -1,8 +1,46 @@
 {
   "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "White Labeling",
+        "labels": {
+          "enabled": "Enabled",
+          "name": "Name",
+          "description": "Description",
+          "logo": "Logo",
+          "secondary-logo": "Secondary Logo",
+          "favicon": "Favicon",
+          "preset-name": "Theme Preset Name",
+          "link-list": "Link List"
+        },
+        "placeholders": {
+          "preset-name": "Select preset name...",
+          "link-list": "Select link list..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "logo": "Logo",
+          "secondary-logo": "Secondary Logo"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "favicon": "Favicon"
+        }
+      }
+    },
     "widgets": {
       "white-labeling": {
-        "title": "Labeling"
+        "title": "White labeling"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
       }
     }
   },

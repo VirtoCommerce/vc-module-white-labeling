@@ -37,11 +37,22 @@ public static class ModuleConstants
                 DefaultValue = true,
             };
 
+            public static SettingDescriptor ThemePresetNames { get; } = new()
+            {
+                Name = "WhiteLabeling.ThemePresetNames",
+                ValueType = SettingValueType.ShortText,
+                GroupName = "WhiteLabeling|General",
+                IsDictionary = true,
+                DefaultValue = "Default",
+                AllowedValues = ["Default"]
+            };
+
             public static IEnumerable<SettingDescriptor> AllGeneralSettings
             {
                 get
                 {
                     yield return WhiteLabelingEnabled;
+                    yield return ThemePresetNames;
                 }
             }
         }
