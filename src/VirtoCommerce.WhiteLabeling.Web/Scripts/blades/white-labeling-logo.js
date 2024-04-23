@@ -1,7 +1,7 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.whiteLabelingLogoController', ['$scope', '$rootScope', '$q', '$http', 'FileUploader', 'platformWebApp.settings.helper', 'platformWebApp.bladeNavigationService', 'platformWebApp.settings', 'platformWebApp.dialogService',
-        function ($scope, $rootScope, $q, $http, FileUploader, settingsHelper, bladeNavigationService, settingsApi, dialogService) {
-            let blade = $scope.blade;
+    .controller('WhiteLabeling.whiteLabelingLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
+        function ($scope, FileUploader, bladeNavigationService, dialogService) {
+            const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-logo.title';
             blade.updatePermission = 'WhiteLabeling:update';
 
@@ -31,7 +31,7 @@ angular.module('WhiteLabeling')
 
                 logoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = "logo_" + blade.currentEntity.organizationId + '_' + Date.now().toString() + fileExtension;
+                    item.file.name = `logo_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 logoUploader.onSuccessItem = function (_, uploadedImages) {
@@ -39,7 +39,7 @@ angular.module('WhiteLabeling')
                 };
 
                 logoUploader.onErrorItem = function (element, response, status, _) {
-                    bladeNavigationService.setError(element._file.name + ' failed: ' + (response.message ? response.message : status), blade);
+                    bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
             }
 
@@ -73,11 +73,11 @@ angular.module('WhiteLabeling')
 
                 secondaryLogoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = "secondary_logo_" + blade.currentEntity.organizationId + '_' + Date.now().toString() + fileExtension;
+                    item.file.name = `secondary_logo_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 secondaryLogoUploader.onErrorItem = function (element, response, status, headers) {
-                    bladeNavigationService.setError(element._file.name + ' failed: ' + (response.message ? response.message : status), blade);
+                    bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
             }
 
@@ -89,7 +89,9 @@ angular.module('WhiteLabeling')
             }
 
             let formScope;
-            $scope.setForm = function (form) { formScope = form; }
+            $scope.setForm = function (form) {
+                formScope = form;
+            }
 
             $scope.browseFiles = function (id) {
                 window.document.querySelector(`#${id}`).click()

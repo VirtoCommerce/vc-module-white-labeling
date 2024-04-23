@@ -26,11 +26,5 @@ angular.module(moduleName, [])
                 template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingFaviconWidget.html'
             };
             widgetService.registerWidget(whiteLabelingFaviconWidget, 'whiteLabelingLogos');
-
-            //var whiteLabelingSecondaryLogoWidget = {
-            //    controller: 'WhiteLabeling.whiteLabelingLogoWidgetController',
-            //    template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/widgets/whiteLabelingSecondaryLogoWidget.html'
-            //};
-            //widgetService.registerWidget(whiteLabelingSecondaryLogoWidget, 'whiteLabelingLogos');
         }
     ]);

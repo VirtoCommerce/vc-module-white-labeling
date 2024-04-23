@@ -7,6 +7,8 @@ namespace VirtoCommerce.WhiteLabeling.Data.Repositories;
 
 public class WhiteLabelingDbContext : DbContextBase
 {
+    private const int MaxLength128 = 128;
+
     public WhiteLabelingDbContext(DbContextOptions<WhiteLabelingDbContext> options)
         : base(options)
     {
@@ -22,7 +24,7 @@ public class WhiteLabelingDbContext : DbContextBase
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<WhiteLabelingSettingEntity>().ToTable("WhiteLabelingSettings").HasKey(x => x.Id);
-        modelBuilder.Entity<WhiteLabelingSettingEntity>().Property(x => x.Id).HasMaxLength(128).ValueGeneratedOnAdd();
+        modelBuilder.Entity<WhiteLabelingSettingEntity>().Property(x => x.Id).HasMaxLength(MaxLength128).ValueGeneratedOnAdd();
 
         switch (Database.ProviderName)
         {

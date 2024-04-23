@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VirtoCommerce.ContentModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.WhiteLabeling.Core;
 using VirtoCommerce.WhiteLabeling.Core.Models;
@@ -16,15 +15,12 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
     {
         private readonly IWhiteLabelingSettingService _whiteLabelingSettingService;
         private readonly IWhiteLabelingSettingSearchService _whiteLabelingSettingSearchService;
-        private readonly IMenuLinkListSearchService _linkListSearchService;
 
         public WhiteLabelingController(IWhiteLabelingSettingService whiteLabelingSettingService,
-            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService,
-            IMenuLinkListSearchService linkListSearchService)
+            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService)
         {
             _whiteLabelingSettingService = whiteLabelingSettingService;
             _whiteLabelingSettingSearchService = whiteLabelingSettingSearchService;
-            _linkListSearchService = linkListSearchService;
         }
 
         [HttpGet("{id}")]
