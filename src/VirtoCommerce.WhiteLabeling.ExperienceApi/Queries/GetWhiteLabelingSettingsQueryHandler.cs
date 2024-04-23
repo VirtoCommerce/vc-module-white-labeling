@@ -4,6 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
 using VirtoCommerce.ContentModule.Core.Model;
+using VirtoCommerce.CustomerModule.Core.Model;
+using VirtoCommerce.CustomerModule.Core.Services;
 using VirtoCommerce.ExperienceApiModule.Core.Infrastructure;
 using VirtoCommerce.ExperienceApiModule.XCMS;
 using VirtoCommerce.ExperienceApiModule.XCMS.Queries;
@@ -17,11 +19,13 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
     public class GetWhiteLabelingSettingsQueryHandler : IQueryHandler<GetWhiteLabelingSettingsQuery, ExpWhiteLabelingSetting>
     {
         private readonly IWhiteLabelingSettingSearchService _whiteLabelingSettingSearchService;
+        private readonly IMemberService _memberService;
         private readonly IMediator _mediator;
 
-        public GetWhiteLabelingSettingsQueryHandler(IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService, IMediator mediator)
+        public GetWhiteLabelingSettingsQueryHandler(IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService, IMemberService memberService, IMediator mediator)
         {
             _whiteLabelingSettingSearchService = whiteLabelingSettingSearchService;
+            _memberService = memberService;
             _mediator = mediator;
         }
 
@@ -46,21 +50,28 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return null;
             }
 
+            var result = new ExpWhiteLabelingSetting()
+            {
+                LabelingSetting = whiteLabelingSetting,
+            };
+
+            // search organization
+            var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
+            if (organization == null)
+            {
+                return result;
+            }
+
             // attach link list
             var linkListQuery = new GetMenuQuery()
             {
                 StoreId = request.StoreId,
                 CultureName = request.CultureName,
-                Name = whiteLabelingSetting.LinkListName,
+                Name = $"footer-{organization.Name}",
             };
 
             var linkList = await _mediator.Send(linkListQuery, cancellationToken);
-
-            var result = new ExpWhiteLabelingSetting()
-            {
-                LabelingSetting = whiteLabelingSetting,
-                FooterLinks = linkList?.MenuList?.Items,
-            };
+            result.FooterLinks = linkList?.MenuList?.Items;
 
             return result;
         }
@@ -77,27 +88,32 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                         OrganizationId = "f081c52234754c9c8229aa42d6a19220",
                         LogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-white-labeling-test.svg",
                         SecondaryLogoUrl = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/logo-inverted-white-labeling-test.svg",
-                        Favicons = new List<Favicon>()
+                    },
+                    Favicons = new List<ExpFavicon>()
+                    {
+                        new ExpFavicon()
                         {
-                            new Favicon()
-                            {
-                                Rel = "shortcut icon",
-                                Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
-                            },
-                            new Favicon()
-                            {
-                                Rel = "icon",
-                                Type = "icon/png",
-                                Sizes = "16x16",
-                                Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
-                            },
-                            new Favicon()
-                            {
-                                Rel = "icon",
-                                Type = "icon/png",
-                                Sizes = "32x32",
-                                Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
-                            }
+                            Rel = "shortcut icon",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
+                        },
+                        new ExpFavicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "16x16",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
+                        },
+                        new ExpFavicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "32x32",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
+                        },
+                        new ExpFavicon()
+                        {
+                            Type = "manifest",
+                            Href = "https://vcst-dev.govirto.com/cms-content/assets/b2b-store-assets/manifest.json"
                         },
                     },
                     FooterLinks = new List<MenuItem>()
@@ -168,27 +184,32 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                         OrganizationId = "05763259-a5d3-4650-ad75-51f416a6368e",
                         LogoUrl = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/logo-white-labeling-test.svg",
                         SecondaryLogoUrl = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/logo-inverted-white-labeling-test.svg",
-                        Favicons = new List<Favicon>()
+                    },
+                    Favicons = new List<ExpFavicon>()
+                    {
+                        new ExpFavicon()
                         {
-                            new Favicon()
-                            {
-                                Rel = "shortcut icon",
-                                Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
-                            },
-                            new Favicon()
-                            {
-                                Rel = "icon",
-                                Type = "icon/png",
-                                Sizes = "16x16",
-                                Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
-                            },
-                            new Favicon()
-                            {
-                                Rel = "icon",
-                                Type = "icon/png",
-                                Sizes = "32x32",
-                                Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
-                            }
+                            Rel = "shortcut icon",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon.ico"
+                        },
+                        new ExpFavicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "16x16",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-16x16.png"
+                        },
+                        new ExpFavicon()
+                        {
+                            Rel = "icon",
+                            Type = "icon/png",
+                            Sizes = "32x32",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/favicon-32x32.png"
+                        },
+                        new ExpFavicon()
+                        {
+                            Type = "manifest",
+                            Href = "https://vcst-qa.govirto.com/cms-content/assets/b2b-store-assets/manifest.json"
                         },
                     },
                     FooterLinks = new List<MenuItem>()

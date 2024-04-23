@@ -3,8 +3,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using VirtoCommerce.ContentModule.Core.Extensions;
-using VirtoCommerce.ContentModule.Core.Model;
 using VirtoCommerce.ContentModule.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.WhiteLabeling.Core;
@@ -70,37 +68,5 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return NoContent();
         }
-
-        [HttpPost]
-        [Route("search-link-lists")]
-        [Authorize(ModuleConstants.Security.Permissions.Read)]
-        public async Task<ActionResult<WhiteLabelingLinkListSearchResult>> SearchContracts([FromBody] MenuLinkListSearchCriteria searchCriteria)
-        {
-            var menuLinkLists = await _linkListSearchService.SearchAllNoClone(storeId: searchCriteria.StoreId, name: searchCriteria.Name, batchSize: searchCriteria.Take);
-
-            // group menuLinkLists by storeId and Name and create new MenuLinkList for each group
-            var menuLinkGroup = menuLinkLists.GroupBy(x => new { x.StoreId, x.Name })
-                .Select(x => new MenuLinkList
-                {
-                    Id = x.Key.Name,
-                    StoreId = x.Key.StoreId,
-                    Name = $"{x.Key.Name}|{x.Key.StoreId}",
-                })
-                .OrderBy(x => x.Name)
-                .ToList();
-
-
-            var searchResult = new WhiteLabelingLinkListSearchResult
-            {
-                Results = menuLinkGroup,
-                TotalCount = menuLinkGroup.Count
-            };
-
-            return Ok(searchResult);
-        }
-    }
-
-    public class WhiteLabelingLinkListSearchResult : GenericSearchResult<MenuLinkList>
-    {
     }
 }

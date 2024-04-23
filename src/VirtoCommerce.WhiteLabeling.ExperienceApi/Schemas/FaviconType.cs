@@ -1,9 +1,9 @@
 using GraphQL.Types;
-using VirtoCommerce.WhiteLabeling.Core.Models;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 {
-    public class FaviconType : ObjectGraphType<Favicon>
+    public class FaviconType : ObjectGraphType<ExpFavicon>
     {
         public FaviconType()
         {

@@ -1,5 +1,5 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.organizationLabelingController', ['$scope', 'WhiteLabeling.webApi', function ($scope, api) {
+    .controller('WhiteLabeling.organizationLabelingController', ['$scope', 'WhiteLabeling.webApi', 'platformWebApp.bladeNavigationService', function ($scope, api, bladeNavigationService) {
         let blade = $scope.blade;
         blade.title = 'white-labeling.blades.white-labeling-detail.title';
         blade.updatePermission = 'WhiteLabeling:update';
@@ -42,10 +42,6 @@ angular.module('WhiteLabeling')
             }
         };
 
-        $scope.searchLinkLists = function (criteria) {
-            return api.searchLinkLists(criteria);
-        }
-
         $scope.setForm = function (form) {
             $scope.formScope = form;
         }
@@ -56,6 +52,18 @@ angular.module('WhiteLabeling')
 
         function isDirty() {
             return !angular.equals(blade.currentEntity, blade.originalEntity) && blade.hasUpdatePermission();
+        }
+
+        blade.openContent = function () {
+            var newBlade = {
+                id: 'content',
+                title: 'content.blades.content-main.title',
+                subtitle: 'content.blades.content-main.subtitle',
+                controller: 'virtoCommerce.contentModule.contentMainController',
+                template: 'Modules/$(VirtoCommerce.Content)/Scripts/blades/content-main.tpl.html',
+                isClosingDisabled: false
+            };
+            bladeNavigationService.showBlade(newBlade, blade);
         }
 
         blade.toolbarCommands = [

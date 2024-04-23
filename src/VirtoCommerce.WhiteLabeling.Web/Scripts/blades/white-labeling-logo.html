@@ -1,6 +1,6 @@
 <div class="themeSettingsBlade themeSettingsBlade__blade-content">
 
-  <legend class="themeSettingsBlade themeSettingsBlade__title">White labeling logo</legend>
+  <legend class="themeSettingsBlade themeSettingsBlade__title">{{ 'white-labeling.blades.white-labeling-logo.labels.legend' | translate }}</legend>
 
     <div class="themeSettingsBlade themeSettingsBlade__blade-inner">
         <div class="themeSettingsBlade themeSettingsBlade__inner-block">
@@ -8,7 +8,7 @@
                 <fieldset ng-init="setForm(formScope)">
 
                     <div class="uploader uploader__form-group">
-                        <label class="uploader uploader__form-label">Choose logo</label>
+                      <label class="uploader uploader__form-label">{{ 'white-labeling.blades.white-labeling-logo.labels.logo' | translate }}</label>
                             <div over-class="bd-blue" uploader="logoUploader" nv-file-over nv-file-drop class="uploader uploader__drag-area">
                                 <input id="logoUploaderInput" ng-show="false" type="file" nv-file-select uploader="logoUploader" />
                                 <div class="uploader uploader__drag-content">
@@ -20,7 +20,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="uploader uploader__hint">Select a PNG, GIF or SVG image</div>
+                            <div class="uploader uploader__hint">{{ 'white-labeling.blades.white-labeling-logo.labels.hint' | translate }}</div>
                     </div>
 
                 </fieldset>
@@ -33,7 +33,7 @@
 
             <!-- preview -->
             <div class="uploader-preview uploader-preview__container" ng-if="!logoUploader.isUploading">
-                <div class="uploader-preview uploader-preview__sub-title">Preview</div>
+              <div class="uploader-preview uploader-preview__sub-title">{{ 'white-labeling.blades.white-labeling-logo.labels.preview' | translate }}</div>
                 <div class="uploader-preview uploader-preview__tile">
                     <img ng-show="blade.currentEntity.logoUrl" class="uploader-preview uploader-preview__img"
                          ng-src="{{ blade.currentEntity.logoUrl }}"
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="uploader uploader__hint">Select a PNG, GIF or SVG image</div>
+                            <div class="uploader uploader__hint">{{ 'white-labeling.blades.white-labeling-logo.labels.hint' | translate }}</div>
                     </div>
 
                 </fieldset>
@@ -76,7 +76,7 @@
 
             <!-- preview -->
             <div class="uploader-preview uploader-preview__container" ng-if="!secondaryLogoUploader.isUploading">
-                <div class="uploader-preview uploader-preview__sub-title">Preview</div>
+              <div class="uploader-preview uploader-preview__sub-title">{{ 'white-labeling.blades.white-labeling-logo.labels.preview' | translate }}</div>
                 <div class="uploader-preview uploader-preview__tile">
                     <img ng-show="blade.currentEntity.secondaryLogoUrl" class="uploader-preview uploader-preview__img"
                          ng-src="{{ blade.currentEntity.secondaryLogoUrl }}"

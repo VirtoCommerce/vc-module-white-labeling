@@ -4,7 +4,7 @@ angular.module('WhiteLabeling')
     $scope.openBlade = function () {
         var newBlade = {
             id: "whiteLabelingFavicon",
-            organization: $scope.blade.currentEntity,
+            currentEntity: $scope.blade.currentEntity,
             controller: 'WhiteLabeling.whiteLabelingFaviconController',
             template: 'Modules/$(VirtoCommerce.WhiteLabeling)/Scripts/blades/white-labeling-favicon.html'
         };

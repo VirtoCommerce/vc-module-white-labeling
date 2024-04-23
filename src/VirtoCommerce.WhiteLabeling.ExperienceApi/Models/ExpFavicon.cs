@@ -1,6 +1,6 @@
-namespace VirtoCommerce.WhiteLabeling.Core.Models
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Models
 {
-    public class Favicon
+    public class ExpFavicon
     {
         public string Rel { get; set; }
         public string Type { get; set; }

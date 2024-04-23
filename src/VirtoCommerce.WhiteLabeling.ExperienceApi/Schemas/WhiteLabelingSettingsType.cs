@@ -18,7 +18,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 
             Field<ListGraphType<MenuLinkType>>("footerLinks", resolve: context => context.Source.FooterLinks);
 
-            Field<ListGraphType<FaviconType>>("favicons", resolve: context => context.Source.LabelingSetting.Favicons);
+            Field<ListGraphType<FaviconType>>("favicons", resolve: context => context.Source.Favicons);
         }
     }
 }

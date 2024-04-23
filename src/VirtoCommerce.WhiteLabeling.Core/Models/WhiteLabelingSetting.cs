@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using VirtoCommerce.Platform.Core.Common;
 
 namespace VirtoCommerce.WhiteLabeling.Core.Models
@@ -12,10 +11,9 @@ namespace VirtoCommerce.WhiteLabeling.Core.Models
         public string LogoUrl { get; set; }
         public string SecondaryLogoUrl { get; set; }
         public string FaviconUrl { get; set; }
-        public string LinkListName { get; set; }
+        public string FooterLinkListName { get; set; }
         public string ThemePresetName { get; set; }
-
-        public IList<Favicon> Favicons { get; set; } = [];
+        public string StoreId { get; set; }
 
         public object Clone()
         {

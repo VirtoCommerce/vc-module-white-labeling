@@ -11,7 +11,8 @@
           "secondary-logo": "Secondary Logo",
           "favicon": "Favicon",
           "preset-name": "Theme Preset Name",
-          "link-list": "Link List"
+          "link-list": "Link List",
+          "footer-personalization": "Footer Personalization"
         },
         "placeholders": {
           "preset-name": "Select preset name...",
@@ -21,14 +22,20 @@
       "white-labeling-logo": {
         "title": "Logo",
         "labels": {
-          "logo": "Logo",
-          "secondary-logo": "Secondary Logo"
+          "legend": "White labeling logo",
+          "logo": "Choose logo",
+          "secondary-logo": "Choose secondary Logo",
+          "preview": "Preview",
+          "hint": "Select a PNG, GIF or SVG image"
         }
       },
       "white-labeling-favicon": {
         "title": "Favicon",
         "labels": {
-          "favicon": "Favicon"
+          "legend": "White labeling favicon",
+          "favicon": "Choose favicon",
+          "preview": "Preview",
+          "hint": "Select a PNG, GIF or SVG image"
         }
       }
     },
@@ -49,5 +56,15 @@
     "WhiteLabeling:read": "View WhiteLabeling related data",
     "WhiteLabeling:update": "Update WhiteLabeling related data",
     "WhiteLabeling:delete": "Delete WhiteLabeling related data"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "White Labeling Enabled",
+      "description": "Is white labeling enabled for this store"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Theme Preset Name",
+      "description": "White labeling theme preset name"
+    }
   }
 }

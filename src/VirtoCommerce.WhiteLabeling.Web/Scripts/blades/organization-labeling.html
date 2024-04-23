@@ -1,4 +1,4 @@
-<div class="blade-content">
+<div class="blade-content __medium-wide">
   <div class="blade-inner">
     <div class="inner-block">
       <form class="form" name="formScope">
@@ -28,12 +28,18 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label" style="margin:0">{{'white-labeling.blades.white-labeling-detail.labels.link-list' | translate}}</label>
-            <ui-scroll-drop-down page-size="100"
-                                 ng-model="blade.currentEntity.linkListName"
-                                 data="searchLinkLists(criteria)"
-                                 placeholder="'white-labeling.blades.white-labeling-detail.placeholders.link-list'">
-            </ui-scroll-drop-down>
+            <legend> {{ 'white-labeling.blades.white-labeling-detail.labels.footer-personalization' | translate }} </legend>
+            <div class="note">
+              To enable personalized footer content for your organization through white labeling in Virto Commerce, follow these steps:
+              <div style="margin-top:20px;margin-bottom:20px">
+              <p>1. Navigate to the <a href style="font-size:14px" ng-click="blade.openContent()">Content</a> section.</p>
+              <p>2. Choose the specific Store you want to customize the footer for.</p>
+              <p>3. Select <b>'Linked lists'</b> from the widgets.</p>
+              <p>4. Create a new linked list by clicking <b>'Add'</b></p>
+              <p>5. Name this new list <b>'footer-{{ blade.organization.name }}'</b> to identify it easily.</p>
+              </div>
+              After completing these steps, your organization will start displaying the personalized footer content as intended.
+            </div>
           </div>
 
         </fieldset>

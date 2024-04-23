@@ -12,7 +12,7 @@ using VirtoCommerce.WhiteLabeling.Data.Repositories;
 namespace VirtoCommerce.WhiteLabeling.Data.SqlServer.Migrations
 {
     [DbContext(typeof(WhiteLabelingDbContext))]
-    [Migration("20240422163957_InitialMigration")]
+    [Migration("20240423092227_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -43,12 +43,12 @@ namespace VirtoCommerce.WhiteLabeling.Data.SqlServer.Migrations
                         .HasMaxLength(1024)
                         .HasColumnType("nvarchar(1024)");
 
-                    b.Property<bool>("IsEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LinkListName")
+                    b.Property<string>("FooterLinkListName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LogoUrl")
                         .HasMaxLength(1024)
@@ -68,6 +68,10 @@ namespace VirtoCommerce.WhiteLabeling.Data.SqlServer.Migrations
                     b.Property<string>("SecondaryLogoUrl")
                         .HasMaxLength(1024)
                         .HasColumnType("nvarchar(1024)");
+
+                    b.Property<string>("StoreId")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ThemePresetName")
                         .HasMaxLength(256)
