@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
     .controller('WhiteLabeling.whiteLabelingLogoWidgetController', ['$scope', 'platformWebApp.bladeNavigationService', function ($scope, bladeNavigationService) {
-    
+
     $scope.openBlade = function () {
         var newBlade = {
             id: "whiteLabelingLogo",

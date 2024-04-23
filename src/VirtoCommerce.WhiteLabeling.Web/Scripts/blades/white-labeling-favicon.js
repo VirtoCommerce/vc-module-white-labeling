@@ -43,13 +43,6 @@ angular.module('WhiteLabeling')
                 };
             }
 
-            blade.refresh = function () {
-                blade.origEntity = blade.currentEntity;
-                blade.currentEntity = angular.copy(blade.currentEntity);
-
-                blade.isLoading = false;
-            }
-
             let formScope;
             $scope.setForm = function (form) {
                 formScope = form;
@@ -61,10 +54,6 @@ angular.module('WhiteLabeling')
 
             function isDirty() {
                 return !angular.equals(blade.currentEntity, blade.origEntity) && blade.hasUpdatePermission();
-            }
-
-            function canResetToDefault() {
-                return isDirty();
             }
 
             function canSave() {
@@ -79,6 +68,13 @@ angular.module('WhiteLabeling')
                 $scope.bladeClose();
             };
 
+            blade.refresh = function () {
+                blade.origEntity = blade.currentEntity;
+                blade.currentEntity = angular.copy(blade.currentEntity);
+
+                blade.isLoading = false;
+            }
+
             blade.toolbarCommands = [
                 {
                     name: "platform.commands.save",
@@ -92,7 +88,7 @@ angular.module('WhiteLabeling')
                     executeMethod: function () {
                         blade.currentEntity = angular.copy(blade.origEntity);
                     },
-                    canExecuteMethod: canResetToDefault
+                    canExecuteMethod: isDirty
                 }
             ];
 
