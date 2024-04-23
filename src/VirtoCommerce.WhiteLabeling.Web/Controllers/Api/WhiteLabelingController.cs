@@ -59,7 +59,7 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         [Route("")]
         [Authorize(ModuleConstants.Security.Permissions.Update)]
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
-        public async Task<ActionResult> UpdateContract([FromBody] WhiteLabelingSetting model)
+        public async Task<ActionResult> Update([FromBody] WhiteLabelingSetting model)
         {
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return NoContent();
