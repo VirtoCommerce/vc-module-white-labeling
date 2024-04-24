@@ -14,11 +14,11 @@ angular.module('WhiteLabeling')
                     filters: [{
                         name: 'imageFilter',
                         fn: function (item) {
-                            const approval = /^.*\.(png|gif|svg)$/.test(item.name);
+                            const approval = /^.*\.(png|jpg|jpeg|webp)$/.test(item.name);
                             if (!approval) {
                                 const dialog = {
-                                    title: "Filetype error",
-                                    message: "Only PNG, GIF or SVG files are allowed.",
+                                    title: 'white-labeling.dialogs.white-labeling-favicon-upload-filter.title',
+                                    message: 'white-labeling.dialogs.white-labeling-favicon-upload-filter.message',
                                 }
                                 dialogService.showErrorDialog(dialog);
                             }
@@ -27,7 +27,7 @@ angular.module('WhiteLabeling')
                     }]
                 });
 
-                faviconUploader.url = 'api/assets?folderUrl=customization';
+                faviconUploader.url = 'api/assets?folderUrl=customization/favicons';
 
                 faviconUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
@@ -83,12 +83,22 @@ angular.module('WhiteLabeling')
                     canExecuteMethod: canSave
                 },
                 {
-                    name: "platform.commands.set-to-default",
+                    name: "platform.commands.reset",
                     icon: 'fa fa-undo',
                     executeMethod: function () {
                         blade.currentEntity = angular.copy(blade.origEntity);
                     },
                     canExecuteMethod: isDirty
+                },
+                {
+                    name: "platform.commands.clear",
+                    icon: 'fa fa-eraser',
+                    executeMethod: function () {
+                        blade.currentEntity.faviconUrl = null;
+                    },
+                    canExecuteMethod: function () {
+                        return blade.currentEntity.faviconUrl;
+                    }
                 }
             ];
 

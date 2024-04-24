@@ -35,7 +35,7 @@
           "legend": "White labeling favicon",
           "favicon": "Choose favicon",
           "preview": "Preview",
-          "hint": "Select a PNG, GIF or SVG image"
+          "hint": "Select a PNG, JPG or WEBP image"
         }
       }
     },
@@ -49,6 +49,16 @@
       "white-labeling-favicon": {
         "title": "Favicon"
       }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Filetype error",
+      "message": "Only PNG, JPG or WEBP files are allowed."
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Filetype error",
+      "message": "Only PNG, GIF or SVG files are allowed."
     }
   },
   "permissions": {

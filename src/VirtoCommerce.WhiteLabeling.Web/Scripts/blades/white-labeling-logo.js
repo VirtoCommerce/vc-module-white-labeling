@@ -17,8 +17,8 @@ angular.module('WhiteLabeling')
                             const approval = /^.*\.(png|gif|svg)$/.test(item.name);
                             if (!approval) {
                                 const dialog = {
-                                    title: "Filetype error",
-                                    message: "Only PNG, GIF or SVG files are allowed.",
+                                    title: 'white-labeling.dialogs.white-labeling-icon-upload-filter.title',
+                                    message: 'white-labeling.dialogs.white-labeling-icon-upload-filter.message',
                                 }
                                 dialogService.showErrorDialog(dialog);
                             }
@@ -122,12 +122,23 @@ angular.module('WhiteLabeling')
                     canExecuteMethod: canSave
                 },
                 {
-                    name: "platform.commands.set-to-default",
+                    name: "platform.commands.reset",
                     icon: 'fa fa-undo',
                     executeMethod: function () {
                         blade.currentEntity = angular.copy(blade.origEntity);
                     },
                     canExecuteMethod: isDirty
+                },
+                {
+                    name: "platform.commands.clear",
+                    icon: 'fa fa-eraser',
+                    executeMethod: function () {
+                        blade.currentEntity.logoUrl = null;
+                        blade.currentEntity.secondaryLogoUrl = null;
+                    },
+                    canExecuteMethod: function () {
+                        return blade.currentEntity.logoUrl || blade.currentEntity.secondaryLogoUrl;
+                    }
                 }
             ];
 

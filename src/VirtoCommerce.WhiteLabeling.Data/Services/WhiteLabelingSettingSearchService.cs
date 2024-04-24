@@ -24,6 +24,11 @@ namespace VirtoCommerce.WhiteLabeling.Data.Services
         {
             var query = ((IWhiteLabelingRepository)repository).WhiteLabelingSettings;
 
+            if (criteria.IsEnabled.HasValue)
+            {
+                query = query.Where(x => x.IsEnabled == criteria.IsEnabled.Value);
+            }
+
             if (!string.IsNullOrEmpty(criteria.OrganizationId))
             {
                 query = query.Where(x => x.OrganizationId == criteria.OrganizationId);
