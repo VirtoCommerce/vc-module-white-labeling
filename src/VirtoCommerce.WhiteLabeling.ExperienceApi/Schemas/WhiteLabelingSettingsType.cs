@@ -12,6 +12,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
             Field(x => x.LabelingSetting.OrganizationId, nullable: true).Description("Organization ID");
             Field(x => x.LabelingSetting.LogoUrl, nullable: true).Description("Logo URL");
             Field(x => x.LabelingSetting.SecondaryLogoUrl, nullable: true).Description("Logo URL for footer");
+            Field(x => x.LabelingSetting.FaviconUrl, nullable: true).Description("Favicon URL");
             Field(x => x.LabelingSetting.ThemePresetName, nullable: true).Description("Theme preset name");
             Field<ListGraphType<MenuLinkType>>("footerLinks", resolve: context => context.Source.FooterLinks);
             Field<ListGraphType<FaviconType>>("favicons", resolve: context => context.Source.Favicons);
