@@ -68,7 +68,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                     var newFavicon = new ExpFavicon()
                     {
                         Rel = "icon",
-                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)?[1..]}", // get real mime type
+                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)?[1..]}",
                         Sizes = faviconSize,
                         Href = GenerateFaviconName(whiteLabelingSetting.FaviconUrl, faviconSize),
                     };
