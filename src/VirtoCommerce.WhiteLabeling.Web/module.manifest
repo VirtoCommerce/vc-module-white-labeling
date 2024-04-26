@@ -10,8 +10,8 @@
     <dependency id="VirtoCommerce.Customer" version="3.800.0" />
   </dependencies>
 
-  <title>VirtoCommerce WhiteLabeling module</title>
-  <description>VirtoCommerce WhiteLabeling module</description>
+  <title>White Labeling</title>
+  <description>Provides White labeling factionality for organizations</description>
 
   <authors>
     <author>Konstantin Savosteev</author>
