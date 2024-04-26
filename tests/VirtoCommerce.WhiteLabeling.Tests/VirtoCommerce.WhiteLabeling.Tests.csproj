@@ -18,7 +18,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj" />
-    <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.Web\VirtoCommerce.WhiteLabeling.Web.csproj" />
   </ItemGroup>
 </Project>

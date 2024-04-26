@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6399224F-BE1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Web", "src\VirtoCommerce.WhiteLabeling.Web\VirtoCommerce.WhiteLabeling.Web.csproj", "{989F26A9-266A-4C1E-B41C-A116CF9B438A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data", "src\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj", "{35AF38D0-23DA-47AA-ABDC-A66BFAC2ABF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.ExperienceApi", "src\VirtoCommerce.WhiteLabeling.ExperienceApi\VirtoCommerce.WhiteLabeling.ExperienceApi.csproj", "{35AF38D0-23DA-47AA-ABDC-A66BFAC2ABF5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Core", "src\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj", "{844A79C8-61E6-4ABA-A4CB-71258BB92C63}"
 EndProject
@@ -24,6 +24,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		VirtoCommerce.WhiteLabeling.sln.DotSettings = VirtoCommerce.WhiteLabeling.sln.DotSettings
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data", "src\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj", "{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data.MySql", "src\VirtoCommerce.WhiteLabeling.Data.MySql\VirtoCommerce.WhiteLabeling.Data.MySql.csproj", "{E0F642FB-40D4-4575-84FA-E57CF985D324}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data.PostgreSql", "src\VirtoCommerce.WhiteLabeling.Data.PostgreSql\VirtoCommerce.WhiteLabeling.Data.PostgreSql.csproj", "{CD7AED7A-4444-4653-984E-CDC6836E43EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtoCommerce.WhiteLabeling.Data.SqlServer", "src\VirtoCommerce.WhiteLabeling.Data.SqlServer\VirtoCommerce.WhiteLabeling.Data.SqlServer.csproj", "{ACABA2F3-3028-4822-9ADE-23934921C1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +55,22 @@ Global
 		{AC14EC1E-2A27-4659-9320-4A7D71E242AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC14EC1E-2A27-4659-9320-4A7D71E242AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC14EC1E-2A27-4659-9320-4A7D71E242AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0F642FB-40D4-4575-84FA-E57CF985D324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0F642FB-40D4-4575-84FA-E57CF985D324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0F642FB-40D4-4575-84FA-E57CF985D324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0F642FB-40D4-4575-84FA-E57CF985D324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7AED7A-4444-4653-984E-CDC6836E43EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7AED7A-4444-4653-984E-CDC6836E43EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7AED7A-4444-4653-984E-CDC6836E43EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7AED7A-4444-4653-984E-CDC6836E43EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACABA2F3-3028-4822-9ADE-23934921C1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACABA2F3-3028-4822-9ADE-23934921C1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACABA2F3-3028-4822-9ADE-23934921C1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACABA2F3-3028-4822-9ADE-23934921C1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +80,10 @@ Global
 		{35AF38D0-23DA-47AA-ABDC-A66BFAC2ABF5} = {6399224F-BE1C-4869-8F13-2B00FC893103}
 		{844A79C8-61E6-4ABA-A4CB-71258BB92C63} = {6399224F-BE1C-4869-8F13-2B00FC893103}
 		{AC14EC1E-2A27-4659-9320-4A7D71E242AE} = {94D7B0EC-8ECA-4C67-A477-EAE25A2265AF}
+		{39B00B0A-4B09-414B-8F4B-B8CA723ED6F1} = {6399224F-BE1C-4869-8F13-2B00FC893103}
+		{E0F642FB-40D4-4575-84FA-E57CF985D324} = {6399224F-BE1C-4869-8F13-2B00FC893103}
+		{CD7AED7A-4444-4653-984E-CDC6836E43EA} = {6399224F-BE1C-4869-8F13-2B00FC893103}
+		{ACABA2F3-3028-4822-9ADE-23934921C1CC} = {6399224F-BE1C-4869-8F13-2B00FC893103}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EB02DD77-51C0-4EFF-83E3-E61761FEE96F}

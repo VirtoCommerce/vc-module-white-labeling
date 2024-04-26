@@ -9,6 +9,10 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Data.MySql\VirtoCommerce.WhiteLabeling.Data.MySql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Data.PostgreSql\VirtoCommerce.WhiteLabeling.Data.PostgreSql.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Data.SqlServer\VirtoCommerce.WhiteLabeling.Data.SqlServer.csproj" />
     <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.Data\VirtoCommerce.WhiteLabeling.Data.csproj" />
+    <ProjectReference Include="..\VirtoCommerce.WhiteLabeling.ExperienceApi\VirtoCommerce.WhiteLabeling.ExperienceApi.csproj" />
   </ItemGroup>
 </Project>
