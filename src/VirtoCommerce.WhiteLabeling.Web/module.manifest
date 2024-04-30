@@ -12,7 +12,7 @@
   </dependencies>
 
   <title>White Labeling</title>
-  <description>Provides White labeling factionality for organizations</description>
+  <description>Provides White labeling functionality for organizations</description>
 
   <authors>
     <author>Konstantin Savosteev</author>
