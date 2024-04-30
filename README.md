@@ -17,8 +17,8 @@ The White Labeling module enables organizations to enhance the enterprise user e
 ![Organization White labeling](https://github.com/VirtoCommerce/vc-module-white-labeling/assets/7639413/2af4e983-30f3-4e3c-8597-914b9d48a537)
 
 ## Integration with Virto Storefront
-Virto Storefront and Vue B2B Theme has native integration with White Labeling module. 
-Once you install module, click Activate in Store Settings, the White Labeling tracking will be activated.
+Virto Storefront has native integration with White Labeling module. 
+Once you install the module, and click Activate in Store Settings, the White Labeling feature will be activated.
 
 ## References
 * Documentation: https://docs.virtocommerce.org
