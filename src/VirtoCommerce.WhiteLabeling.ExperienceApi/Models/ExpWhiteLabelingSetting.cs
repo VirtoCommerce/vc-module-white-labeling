@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using VirtoCommerce.ExperienceApiModule.XCMS;
 using VirtoCommerce.WhiteLabeling.Core.Models;
+using VirtoCommerce.XCMS.Core.Models;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Models
 {
