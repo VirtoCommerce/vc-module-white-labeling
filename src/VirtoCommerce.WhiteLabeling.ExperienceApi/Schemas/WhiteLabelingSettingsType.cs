@@ -1,6 +1,6 @@
 using GraphQL.Types;
-using VirtoCommerce.ExperienceApiModule.XCMS.Schemas;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.XCMS.Core.Schemas;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 {

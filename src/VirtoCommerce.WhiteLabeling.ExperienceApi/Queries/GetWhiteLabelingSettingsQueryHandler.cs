@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using MediatR;
 using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.CustomerModule.Core.Services;
-using VirtoCommerce.ExperienceApiModule.Core.Infrastructure;
-using VirtoCommerce.ExperienceApiModule.XCMS.Queries;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.WhiteLabeling.Core.Models;
 using VirtoCommerce.WhiteLabeling.Core.Services;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.Xapi.Core.Infrastructure;
+using VirtoCommerce.XCMS.Core.Queries;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
