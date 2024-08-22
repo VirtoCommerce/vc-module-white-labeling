@@ -1,5 +1,5 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.organizationLabelingController', ['$scope', 'WhiteLabeling.webApi', 'platformWebApp.bladeNavigationService',
+    .controller('WhiteLabeling.whiteLabelingDetailsController', ['$scope', 'WhiteLabeling.webApi', 'platformWebApp.bladeNavigationService',
         function ($scope, api, bladeNavigationService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-detail.title';
@@ -8,7 +8,16 @@ angular.module('WhiteLabeling')
             blade.refresh = function () {
                 blade.isLoading = true;
 
-                api.getByOrganization({ organizationId: blade.organization.id }, function (data) {
+                if (blade.organization) {
+                    getByOrganization(blade.organization.id);
+                }
+                else if (blade.store) {
+                    getByStore(blade.store.id);
+                }
+            };
+
+            function getByOrganization(id) {
+                api.getByOrganization({ organizationId: id }, function (data) {
 
                     if (data && data.id) {
                         blade.currentEntity = angular.copy(data);
@@ -18,14 +27,34 @@ angular.module('WhiteLabeling')
                         blade.isNew = true;
                         blade.originalEntity = {
                             isEnabled: false,
-                            organizationId: blade.organization.id
+                            organizationId: id
                         };
                         blade.currentEntity = angular.copy(blade.originalEntity);
                     }
 
                     blade.isLoading = false;
                 });
-            };
+            }
+
+            function getByStore(id) {
+                api.getByStore({ storeId: id }, function (data) {
+
+                    if (data && data.id) {
+                        blade.currentEntity = angular.copy(data);
+                        blade.originalEntity = data;
+                    }
+                    else {
+                        blade.isNew = true;
+                        blade.originalEntity = {
+                            isEnabled: false,
+                            storeId: id
+                        };
+                        blade.currentEntity = angular.copy(blade.originalEntity);
+                    }
+
+                    blade.isLoading = false;
+                });
+            }
 
             blade.saveChanges = function () {
                 blade.isLoading = true;
@@ -78,3 +107,5 @@ angular.module('WhiteLabeling')
 
             blade.refresh();
         }]);
+
+

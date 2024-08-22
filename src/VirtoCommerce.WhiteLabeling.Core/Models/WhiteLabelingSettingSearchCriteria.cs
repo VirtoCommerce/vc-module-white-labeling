@@ -6,5 +6,6 @@ namespace VirtoCommerce.WhiteLabeling.Core.Models
     {
         public bool? IsEnabled { get; set; }
         public string OrganizationId { get; set; }
+        public string StoreId { get; set; }
     }
 }

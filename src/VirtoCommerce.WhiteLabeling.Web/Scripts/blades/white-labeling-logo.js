@@ -31,7 +31,8 @@ angular.module('WhiteLabeling')
 
                 logoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = `logo_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
+                    const entityId = getEntityId(blade.currentEntity);
+                    item.file.name = `logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 logoUploader.onSuccessItem = function (_, uploadedImages) {
@@ -73,12 +74,25 @@ angular.module('WhiteLabeling')
 
                 secondaryLogoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = `secondary_logo_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
+                    const entityId = getEntityId(blade.currentEntity);
+                    item.file.name = `secondary_logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 secondaryLogoUploader.onErrorItem = function (element, response, status, headers) {
                     bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
+            }
+
+            function getEntityId(entity) {
+                var entityId = entity.id;
+
+                if (entity.organizationId) {
+                    entityId = entity.organizationId;
+                } else if (entity.storeId) {
+                    entityId = entity.storeId;
+                }
+
+                return entityId;
             }
 
             let formScope;

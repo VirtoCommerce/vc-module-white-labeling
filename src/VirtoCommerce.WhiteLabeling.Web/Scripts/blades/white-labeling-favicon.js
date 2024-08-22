@@ -31,7 +31,8 @@ angular.module('WhiteLabeling')
 
                 faviconUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = `favicon_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
+                    const entityId = getEntityId(blade.currentEntity);
+                    item.file.name = `favicon_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 faviconUploader.onSuccessItem = function (_, uploadedImages) {
@@ -41,6 +42,18 @@ angular.module('WhiteLabeling')
                 faviconUploader.onErrorItem = function (element, response, status, _) {
                     bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
+            }
+
+            function getEntityId(entity) {
+                var entityId = entity.id;
+
+                if (entity.organizationId) {
+                    entityId = entity.organizationId;
+                } else if (entity.storeId) {
+                    entityId = entity.storeId;
+                }
+
+                return entityId;
             }
 
             let formScope;
