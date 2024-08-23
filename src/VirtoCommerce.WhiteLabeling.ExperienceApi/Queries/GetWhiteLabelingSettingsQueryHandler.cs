@@ -34,8 +34,20 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
         {
             var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
             searchCriteria.IsEnabled = true;
-            searchCriteria.OrganizationId = request.OrganizationId;
             searchCriteria.Take = 1;
+
+            if (!string.IsNullOrEmpty(request.OrganizationId))
+            {
+                searchCriteria.OrganizationId = request.OrganizationId;
+            }
+            else if (!string.IsNullOrEmpty(request.StoreId))
+            {
+                searchCriteria.StoreId = request.StoreId;
+            }
+            else
+            {
+                return null;
+            }
 
             var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
             var whiteLabelingSetting = searchResult.Results?.FirstOrDefault();
