@@ -32,25 +32,25 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
+            var whiteLabelingSetting = default(WhiteLabelingSetting);
+
             var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
             searchCriteria.IsEnabled = true;
             searchCriteria.Take = 1;
 
             if (!string.IsNullOrEmpty(request.OrganizationId))
             {
-                searchCriteria.OrganizationId = request.OrganizationId;
-            }
-            else if (!string.IsNullOrEmpty(request.StoreId))
-            {
-                searchCriteria.StoreId = request.StoreId;
-            }
-            else
-            {
-                return null;
+                var organizationSearchCriteria = searchCriteria.CloneTyped();
+                organizationSearchCriteria.OrganizationId = request.OrganizationId;
+                whiteLabelingSetting = await LoadWhiteLabelingSetting(organizationSearchCriteria);
             }
 
-            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
-            var whiteLabelingSetting = searchResult.Results?.FirstOrDefault();
+            if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
+            {
+                var settingSearchCriteria = searchCriteria.CloneTyped();
+                settingSearchCriteria.StoreId = request.StoreId;
+                whiteLabelingSetting = await LoadWhiteLabelingSetting(settingSearchCriteria);
+            }
 
             if (whiteLabelingSetting == null)
             {
@@ -97,6 +97,12 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             result.FooterLinks = linkList?.MenuList?.Items;
 
             return result;
+        }
+
+        private async Task<WhiteLabelingSetting> LoadWhiteLabelingSetting(WhiteLabelingSettingSearchCriteria organizationSearchCriteria)
+        {
+            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(organizationSearchCriteria);
+            return searchResult.Results?.FirstOrDefault();
         }
 
         // copypasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
