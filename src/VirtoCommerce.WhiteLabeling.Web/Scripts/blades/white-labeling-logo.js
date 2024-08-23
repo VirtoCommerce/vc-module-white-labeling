@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.whiteLabelingLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
-        function ($scope, FileUploader, bladeNavigationService, dialogService) {
+    .controller('WhiteLabeling.whiteLabelingLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'WhiteLabeling.service',
+        function ($scope, FileUploader, bladeNavigationService, dialogService, whitelabelingService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-logo.title';
             blade.updatePermission = 'WhiteLabeling:update';
@@ -31,7 +31,7 @@ angular.module('WhiteLabeling')
 
                 logoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    const entityId = getEntityId(blade.currentEntity);
+                    const entityId = whitelabelingService.getEntityId(blade.currentEntity);
                     item.file.name = `logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
@@ -74,25 +74,13 @@ angular.module('WhiteLabeling')
 
                 secondaryLogoUploader.onAfterAddingFile = function(item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    const entityId = getEntityId(blade.currentEntity);
+                    const entityId = whitelabelingService.getEntityId(blade.currentEntity);
                     item.file.name = `secondary_logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 secondaryLogoUploader.onErrorItem = function (element, response, status, headers) {
                     bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
-            }
-
-            function getEntityId(entity) {
-                var entityId = entity.id;
-
-                if (entity.organizationId) {
-                    entityId = entity.organizationId;
-                } else if (entity.storeId) {
-                    entityId = entity.storeId;
-                }
-
-                return entityId;
             }
 
             let formScope;

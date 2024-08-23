@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.whiteLabelingFaviconController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
-        function ($scope, FileUploader, bladeNavigationService, dialogService) {
+    .controller('WhiteLabeling.whiteLabelingFaviconController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'WhiteLabeling.service',
+        function ($scope, FileUploader, bladeNavigationService, dialogService, whitelabelingService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-favicon.title';
             blade.updatePermission = 'WhiteLabeling:update';
@@ -31,7 +31,7 @@ angular.module('WhiteLabeling')
 
                 faviconUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    const entityId = getEntityId(blade.currentEntity);
+                    const entityId = whitelabelingService.getEntityId(blade.currentEntity);
                     item.file.name = `favicon_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
@@ -42,18 +42,6 @@ angular.module('WhiteLabeling')
                 faviconUploader.onErrorItem = function (element, response, status, _) {
                     bladeNavigationService.setError(`${element._file.name} failed: ${response.message ? response.message : status}`, blade);
                 };
-            }
-
-            function getEntityId(entity) {
-                var entityId = entity.id;
-
-                if (entity.organizationId) {
-                    entityId = entity.organizationId;
-                } else if (entity.storeId) {
-                    entityId = entity.storeId;
-                }
-
-                return entityId;
             }
 
             let formScope;
