@@ -32,26 +32,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
-            var whiteLabelingSetting = default(WhiteLabelingSetting);
-
-            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
-            searchCriteria.IsEnabled = true;
-            searchCriteria.Take = 1;
-
-            if (!string.IsNullOrEmpty(request.OrganizationId))
-            {
-                var organizationSearchCriteria = searchCriteria.CloneTyped();
-                organizationSearchCriteria.OrganizationId = request.OrganizationId;
-                whiteLabelingSetting = await LoadWhiteLabelingSetting(organizationSearchCriteria);
-            }
-
-            if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
-            {
-                var settingSearchCriteria = searchCriteria.CloneTyped();
-                settingSearchCriteria.StoreId = request.StoreId;
-                whiteLabelingSetting = await LoadWhiteLabelingSetting(settingSearchCriteria);
-            }
-
+            var whiteLabelingSetting = await GetWhileLabelingSettingAsync(request);
             if (whiteLabelingSetting == null)
             {
                 return null;
@@ -97,6 +78,31 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             result.FooterLinks = linkList?.MenuList?.Items;
 
             return result;
+        }
+
+        protected virtual async Task<WhiteLabelingSetting> GetWhileLabelingSettingAsync(GetWhiteLabelingSettingsQuery request)
+        {
+            var whiteLabelingSetting = default(WhiteLabelingSetting);
+
+            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
+            searchCriteria.IsEnabled = true;
+            searchCriteria.Take = 1;
+
+            if (!string.IsNullOrEmpty(request.OrganizationId))
+            {
+                var organizationSearchCriteria = searchCriteria.CloneTyped();
+                organizationSearchCriteria.OrganizationId = request.OrganizationId;
+                whiteLabelingSetting = await LoadWhiteLabelingSetting(organizationSearchCriteria);
+            }
+
+            if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
+            {
+                var settingSearchCriteria = searchCriteria.CloneTyped();
+                settingSearchCriteria.StoreId = request.StoreId;
+                whiteLabelingSetting = await LoadWhiteLabelingSetting(settingSearchCriteria);
+            }
+
+            return whiteLabelingSetting;
         }
 
         private async Task<WhiteLabelingSetting> LoadWhiteLabelingSetting(WhiteLabelingSettingSearchCriteria organizationSearchCriteria)
