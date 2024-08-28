@@ -46,6 +46,21 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
             return Ok(result);
         }
 
+        [HttpGet("store/{storeId}")]
+        [Authorize(ModuleConstants.Security.Permissions.Read)]
+        public async Task<ActionResult<WhiteLabelingSetting>> GetByStoreId([FromRoute] string storeId)
+        {
+            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
+
+            searchCriteria.StoreId = storeId;
+            searchCriteria.Take = 1;
+
+            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
+            var result = searchResult.Results?.FirstOrDefault();
+
+            return Ok(result);
+        }
+
         [HttpPost]
         [Authorize(ModuleConstants.Security.Permissions.Create)]
         public async Task<ActionResult<WhiteLabelingSetting>> Create([FromBody] WhiteLabelingSetting model)

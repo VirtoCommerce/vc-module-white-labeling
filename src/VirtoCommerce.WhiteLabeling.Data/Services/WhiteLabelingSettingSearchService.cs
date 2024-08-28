@@ -34,6 +34,11 @@ namespace VirtoCommerce.WhiteLabeling.Data.Services
                 query = query.Where(x => x.OrganizationId == criteria.OrganizationId);
             }
 
+            if (!string.IsNullOrEmpty(criteria.StoreId))
+            {
+                query = query.Where(x => x.StoreId == criteria.StoreId);
+            }
+
             return query;
         }
 

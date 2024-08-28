@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.whiteLabelingFaviconController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService',
-        function ($scope, FileUploader, bladeNavigationService, dialogService) {
+    .controller('WhiteLabeling.whiteLabelingFaviconController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'WhiteLabeling.service',
+        function ($scope, FileUploader, bladeNavigationService, dialogService, whiteLabelingService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-favicon.title';
             blade.updatePermission = 'WhiteLabeling:update';
@@ -19,7 +19,7 @@ angular.module('WhiteLabeling')
                                 const dialog = {
                                     title: 'white-labeling.dialogs.white-labeling-favicon-upload-filter.title',
                                     message: 'white-labeling.dialogs.white-labeling-favicon-upload-filter.message',
-                                }
+                                };
                                 dialogService.showErrorDialog(dialog);
                             }
                             return approval;
@@ -31,7 +31,8 @@ angular.module('WhiteLabeling')
 
                 faviconUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    item.file.name = `favicon_${blade.currentEntity.organizationId}_${Date.now().toString()}${fileExtension}`;
+                    const entityId = whiteLabelingService.getEntityId(blade.currentEntity);
+                    item.file.name = `favicon_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
                 faviconUploader.onSuccessItem = function (_, uploadedImages) {
@@ -46,11 +47,11 @@ angular.module('WhiteLabeling')
             let formScope;
             $scope.setForm = function (form) {
                 formScope = form;
-            }
+            };
 
             $scope.browseFiles = function (id) {
-                window.document.querySelector(`#${id}`).click()
-            }
+                window.document.querySelector(`#${id}`).click();
+            };
 
             function isDirty() {
                 return !angular.equals(blade.currentEntity, blade.origEntity) && blade.hasUpdatePermission();
@@ -73,7 +74,7 @@ angular.module('WhiteLabeling')
                 blade.currentEntity = angular.copy(blade.currentEntity);
 
                 blade.isLoading = false;
-            }
+            };
 
             blade.toolbarCommands = [
                 {

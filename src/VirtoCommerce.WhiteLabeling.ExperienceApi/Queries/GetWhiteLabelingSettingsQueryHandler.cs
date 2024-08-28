@@ -32,14 +32,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
-            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
-            searchCriteria.IsEnabled = true;
-            searchCriteria.OrganizationId = request.OrganizationId;
-            searchCriteria.Take = 1;
-
-            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
-            var whiteLabelingSetting = searchResult.Results?.FirstOrDefault();
-
+            var whiteLabelingSetting = await GetWhiteLabelingSettingAsync(request);
             if (whiteLabelingSetting == null)
             {
                 return null;
@@ -58,7 +51,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                     var newFavicon = new ExpFavicon()
                     {
                         Rel = "icon",
-                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)?[1..]}",
+                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)[1..]}",
                         Sizes = faviconSize,
                         Href = GenerateFaviconName(whiteLabelingSetting.FaviconUrl, faviconSize),
                     };
@@ -87,7 +80,38 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             return result;
         }
 
-        // copypasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
+        protected virtual async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(GetWhiteLabelingSettingsQuery request)
+        {
+            WhiteLabelingSetting whiteLabelingSetting = null;
+
+            if (!string.IsNullOrEmpty(request.OrganizationId))
+            {
+                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId);
+            }
+
+            if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
+            {
+                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(storeId: request.StoreId);
+            }
+
+            return whiteLabelingSetting;
+        }
+
+        private async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(string organizationId = null, string storeId = null)
+        {
+            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
+
+            searchCriteria.OrganizationId = organizationId;
+            searchCriteria.StoreId = storeId;
+            searchCriteria.IsEnabled = true;
+            searchCriteria.Take = 1;
+
+            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
+
+            return searchResult.Results?.FirstOrDefault();
+        }
+
+        // copy-pasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
         private static string GenerateFaviconName(string fileName, string aliasName)
         {
             var name = Path.GetFileNameWithoutExtension(fileName);

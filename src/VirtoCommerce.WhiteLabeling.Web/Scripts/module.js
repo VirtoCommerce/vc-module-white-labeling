@@ -14,6 +14,7 @@ angular.module(moduleName, [])
                 isVisible: function (blade) { return !blade.isNew; }
             };
             widgetService.registerWidget(whiteLabelingWidget, 'organizationDetail2');
+            widgetService.registerWidget(whiteLabelingWidget, 'storeDetail');
 
             var whiteLabelingLogoWidget = {
                 controller: 'WhiteLabeling.whiteLabelingLogoWidgetController',

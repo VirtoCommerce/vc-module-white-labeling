@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using GraphQL;
 using GraphQL.Types;
-using VirtoCommerce.Xapi.Core.BaseQueries;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.Xapi.Core.BaseQueries;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
