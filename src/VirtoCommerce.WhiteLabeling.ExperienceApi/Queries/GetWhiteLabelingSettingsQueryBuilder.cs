@@ -1,8 +1,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using VirtoCommerce.Xapi.Core.BaseQueries;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas;
+using VirtoCommerce.Xapi.Core.BaseQueries;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {

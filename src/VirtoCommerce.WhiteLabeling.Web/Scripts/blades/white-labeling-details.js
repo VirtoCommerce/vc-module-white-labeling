@@ -74,7 +74,7 @@ angular.module('WhiteLabeling')
 
             $scope.setForm = function (form) {
                 $scope.formScope = form;
-            }
+            };
 
             function canSave() {
                 return isDirty() && $scope.formScope && $scope.formScope.$valid;
@@ -94,7 +94,7 @@ angular.module('WhiteLabeling')
                     isClosingDisabled: false
                 };
                 bladeNavigationService.showBlade(newBlade, blade);
-            }
+            };
 
             blade.toolbarCommands = [
                 {
@@ -107,5 +107,3 @@ angular.module('WhiteLabeling')
 
             blade.refresh();
         }]);
-
-

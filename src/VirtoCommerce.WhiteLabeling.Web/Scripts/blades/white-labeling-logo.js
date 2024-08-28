@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
     .controller('WhiteLabeling.whiteLabelingLogoController', ['$scope', 'FileUploader', 'platformWebApp.bladeNavigationService', 'platformWebApp.dialogService', 'WhiteLabeling.service',
-        function ($scope, FileUploader, bladeNavigationService, dialogService, whitelabelingService) {
+        function ($scope, FileUploader, bladeNavigationService, dialogService, whiteLabelingService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-logo.title';
             blade.updatePermission = 'WhiteLabeling:update';
@@ -19,7 +19,7 @@ angular.module('WhiteLabeling')
                                 const dialog = {
                                     title: 'white-labeling.dialogs.white-labeling-icon-upload-filter.title',
                                     message: 'white-labeling.dialogs.white-labeling-icon-upload-filter.message',
-                                }
+                                };
                                 dialogService.showErrorDialog(dialog);
                             }
                             return approval;
@@ -29,9 +29,9 @@ angular.module('WhiteLabeling')
 
                 logoUploader.url = 'api/assets?folderUrl=customization';
 
-                logoUploader.onAfterAddingFile = function(item) {
+                logoUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    const entityId = whitelabelingService.getEntityId(blade.currentEntity);
+                    const entityId = whiteLabelingService.getEntityId(blade.currentEntity);
                     item.file.name = `logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
@@ -58,7 +58,7 @@ angular.module('WhiteLabeling')
                                 const dialog = {
                                     title: "Filetype error",
                                     message: "Only PNG, GIF or SVG files are allowed.",
-                                }
+                                };
                                 dialogService.showErrorDialog(dialog);
                             }
                             return approval;
@@ -72,9 +72,9 @@ angular.module('WhiteLabeling')
                     blade.currentEntity.secondaryLogoUrl = uploadedImages[0].url;
                 };
 
-                secondaryLogoUploader.onAfterAddingFile = function(item) {
+                secondaryLogoUploader.onAfterAddingFile = function (item) {
                     const fileExtension = '.' + item.file.name.split('.').pop();
-                    const entityId = whitelabelingService.getEntityId(blade.currentEntity);
+                    const entityId = whiteLabelingService.getEntityId(blade.currentEntity);
                     item.file.name = `secondary_logo_${entityId}_${Date.now().toString()}${fileExtension}`;
                 };
 
@@ -86,11 +86,11 @@ angular.module('WhiteLabeling')
             let formScope;
             $scope.setForm = function (form) {
                 formScope = form;
-            }
+            };
 
             $scope.browseFiles = function (id) {
-                window.document.querySelector(`#${id}`).click()
-            }
+                window.document.querySelector(`#${id}`).click();
+            };
 
             function isDirty() {
                 return !angular.equals(blade.currentEntity, blade.origEntity) && blade.hasUpdatePermission();
@@ -114,7 +114,7 @@ angular.module('WhiteLabeling')
                 blade.currentEntity = angular.copy(blade.currentEntity);
 
                 blade.isLoading = false;
-            }
+            };
 
             blade.toolbarCommands = [
                 {

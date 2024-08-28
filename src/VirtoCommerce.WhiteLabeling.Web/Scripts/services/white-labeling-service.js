@@ -14,5 +14,5 @@ angular.module('WhiteLabeling')
 
         return {
             getEntityId: getEntityId
-        }
+        };
     }]);

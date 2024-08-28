@@ -21,5 +21,5 @@ angular.module('WhiteLabeling')
             }
 
             bladeNavigationService.showBlade(newBlade, $scope.blade);
-    };
-}]);
+        };
+    }]);

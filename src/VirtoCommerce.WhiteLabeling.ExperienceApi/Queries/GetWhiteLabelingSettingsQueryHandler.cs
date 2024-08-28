@@ -32,7 +32,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
-            var whiteLabelingSetting = await GetWhileLabelingSettingAsync(request);
+            var whiteLabelingSetting = await GetWhiteLabelingSettingAsync(request);
             if (whiteLabelingSetting == null)
             {
                 return null;
@@ -51,7 +51,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                     var newFavicon = new ExpFavicon()
                     {
                         Rel = "icon",
-                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)?[1..]}",
+                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)[1..]}",
                         Sizes = faviconSize,
                         Href = GenerateFaviconName(whiteLabelingSetting.FaviconUrl, faviconSize),
                     };
@@ -80,38 +80,38 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             return result;
         }
 
-        protected virtual async Task<WhiteLabelingSetting> GetWhileLabelingSettingAsync(GetWhiteLabelingSettingsQuery request)
+        protected virtual async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(GetWhiteLabelingSettingsQuery request)
         {
-            var whiteLabelingSetting = default(WhiteLabelingSetting);
-
-            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
-            searchCriteria.IsEnabled = true;
-            searchCriteria.Take = 1;
+            WhiteLabelingSetting whiteLabelingSetting = null;
 
             if (!string.IsNullOrEmpty(request.OrganizationId))
             {
-                var organizationSearchCriteria = searchCriteria.CloneTyped();
-                organizationSearchCriteria.OrganizationId = request.OrganizationId;
-                whiteLabelingSetting = await LoadWhiteLabelingSetting(organizationSearchCriteria);
+                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId);
             }
 
             if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
             {
-                var settingSearchCriteria = searchCriteria.CloneTyped();
-                settingSearchCriteria.StoreId = request.StoreId;
-                whiteLabelingSetting = await LoadWhiteLabelingSetting(settingSearchCriteria);
+                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(storeId: request.StoreId);
             }
 
             return whiteLabelingSetting;
         }
 
-        private async Task<WhiteLabelingSetting> LoadWhiteLabelingSetting(WhiteLabelingSettingSearchCriteria organizationSearchCriteria)
+        private async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(string organizationId = null, string storeId = null)
         {
-            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(organizationSearchCriteria);
+            var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
+
+            searchCriteria.OrganizationId = organizationId;
+            searchCriteria.StoreId = storeId;
+            searchCriteria.IsEnabled = true;
+            searchCriteria.Take = 1;
+
+            var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
+
             return searchResult.Results?.FirstOrDefault();
         }
 
-        // copypasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
+        // copy-pasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
         private static string GenerateFaviconName(string fileName, string aliasName)
         {
             var name = Path.GetFileNameWithoutExtension(fileName);

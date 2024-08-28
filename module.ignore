@@ -23,6 +23,9 @@ System.Reactive.dll
 System.Reactive.Linq.dll
 System.Reactive.xml
 TimeZoneConverter.dll
+VirtoCommerce.Platform.Data.MySql.dll
+VirtoCommerce.Platform.Data.PostgreSql.dll
+VirtoCommerce.Platform.Data.SqlServer.dll
 VirtoCommerce.Tools.dll
 VirtoCommerce.Xapi.Core.dll
 VirtoCommerce.XCMS.Core.dll

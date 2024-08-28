@@ -6,5 +6,5 @@ angular.module('WhiteLabeling')
             getByStore: { method: 'GET', url: 'api/white-labeling/store/:storeId' },
             createSetting: { method: 'POST' },
             updateSetting: { method: 'PUT' }
-        })
+        });
     }]);
