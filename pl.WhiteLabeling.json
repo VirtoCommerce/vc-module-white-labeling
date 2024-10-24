@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Oznakowanie własne",
+        "labels": {
+          "enabled": "Włączone",
+          "name": "Nazwa",
+          "description": "Opis",
+          "logo": "Logo",
+          "secondary-logo": "Logo dodatkowe",
+          "favicon": "Favicon",
+          "preset-name": "Nazwa presetu motywu",
+          "link-list": "Lista linków",
+          "footer-personalization": "Personalizacja stopki"
+        },
+        "placeholders": {
+          "preset-name": "Wybierz nazwę presetu...",
+          "link-list": "Wybierz listę linków..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "Logo oznakowania własnego",
+          "logo": "Wybierz logo",
+          "secondary-logo": "Wybierz logo dodatkowe",
+          "preview": "Podgląd",
+          "hint": "Wybierz obraz PNG, GIF lub SVG"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Favicon oznakowania własnego",
+          "favicon": "Wybierz favicon",
+          "preview": "Podgląd",
+          "hint": "Wybierz obraz PNG, JPG lub WEBP"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Oznakowanie własne"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Błąd typu pliku",
+      "message": "Dozwolone są tylko pliki PNG, JPG lub WEBP"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Błąd typu pliku",
+      "message": "Dozwolone są tylko pliki PNG, GIF lub SVG"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Twórz dane związane z oznakowaniem własnym",
+    "WhiteLabeling:read": "Przeglądaj dane związane z oznakowaniem własnym",
+    "WhiteLabeling:update": "Aktualizuj dane związane z oznakowaniem własnym",
+    "WhiteLabeling:delete": "Usuń dane związane z oznakowaniem własnym"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Oznakowanie własne włączone",
+      "description": "Czy oznakowanie własne jest włączone dla tego sklepu"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Nazwa presetu motywu",
+      "description": "Nazwa presetu motywu oznakowania własnego"
+    }
+  }
+}

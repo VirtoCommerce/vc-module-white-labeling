@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "White labeling",
+        "labels": {
+          "enabled": "Enabled",
+          "name": "Name",
+          "description": "Description",
+          "logo": "Logo",
+          "secondary-logo": "Secondary logo",
+          "favicon": "Favicon",
+          "preset-name": "Theme preset name",
+          "link-list": "Link list",
+          "footer-personalization": "Footer personalization"
+        },
+        "placeholders": {
+          "preset-name": "Select preset name...",
+          "link-list": "Select link list..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "White labeling logo",
+          "logo": "Choose logo",
+          "secondary-logo": "Choose secondary Logo",
+          "preview": "Preview",
+          "hint": "Select a PNG, GIF, or SVG image"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "White labeling favicon",
+          "favicon": "Choose favicon",
+          "preview": "Preview",
+          "hint": "Select a PNG, JPG, or WEBP image"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "White labeling"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Filetype error",
+      "message": "Only PNG, JPG, or WEBP files are allowed"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Filetype error",
+      "message": "Only PNG, GIF or SVG files are allowed"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Create WhiteLabeling related data",
+    "WhiteLabeling:read": "View WhiteLabeling related data",
+    "WhiteLabeling:update": "Update WhiteLabeling related data",
+    "WhiteLabeling:delete": "Delete WhiteLabeling related data"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "White Labeling enabled",
+      "description": "Is white labeling enabled for this store"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Theme preset name",
+      "description": "White labeling theme preset name"
+    }
+  }
+}

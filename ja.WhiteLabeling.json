@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "ホワイトラベリング",
+        "labels": {
+          "enabled": "有効",
+          "name": "名前",
+          "description": "説明",
+          "logo": "ロゴ",
+          "secondary-logo": "セカンダリロゴ",
+          "favicon": "ファビコン",
+          "preset-name": "テーマプリセット名",
+          "link-list": "リンクリスト",
+          "footer-personalization": "フッターのパーソナライゼーション"
+        },
+        "placeholders": {
+          "preset-name": "プリセット名を選択...",
+          "link-list": "リンクリストを選択..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "ロゴ",
+        "labels": {
+          "legend": "ホワイトラベリングロゴ",
+          "logo": "ロゴを選択",
+          "secondary-logo": "セカンダリロゴを選択",
+          "preview": "プレビュー",
+          "hint": "PNG、GIF、またはSVG画像を選択してください"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "ファビコン",
+        "labels": {
+          "legend": "ホワイトラベリングファビコン",
+          "favicon": "ファビコンを選択",
+          "preview": "プレビュー",
+          "hint": "PNG、JPG、またはWEBP画像を選択してください"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "ホワイトラベリング"
+      },
+      "white-labeling-logo": {
+        "title": "ロゴ"
+      },
+      "white-labeling-favicon": {
+        "title": "ファビコン"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "ファイルタイプエラー",
+      "message": "PNG、JPG、またはWEBPファイルのみが許可されています"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "ファイルタイプエラー",
+      "message": "PNG、GIF、またはSVGファイルのみが許可されています"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "ホワイトラベリング関連データの作成",
+    "WhiteLabeling:read": "ホワイトラベリング関連データの表示",
+    "WhiteLabeling:update": "ホワイトラベリング関連データの更新",
+    "WhiteLabeling:delete": "ホワイトラベリング関連データの削除"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "ホワイトラベリングが有効",
+      "description": "このストアでホワイトラベリングが有効になっているか"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "テーマプリセット名",
+      "description": "ホワイトラベリングのテーマプリセット名"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "白标",
+        "labels": {
+          "enabled": "已启用",
+          "name": "名称",
+          "description": "描述",
+          "logo": "标志",
+          "secondary-logo": "次要标志",
+          "favicon": "网站图标",
+          "preset-name": "主题预设名称",
+          "link-list": "链接列表",
+          "footer-personalization": "页脚个性化"
+        },
+        "placeholders": {
+          "preset-name": "选择预设名称...",
+          "link-list": "选择链接列表..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "标志",
+        "labels": {
+          "legend": "白标标志",
+          "logo": "选择标志",
+          "secondary-logo": "选择次要标志",
+          "preview": "预览",
+          "hint": "选择PNG、GIF或SVG图像"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "网站图标",
+        "labels": {
+          "legend": "白标网站图标",
+          "favicon": "选择网站图标",
+          "preview": "预览",
+          "hint": "选择PNG、JPG或WEBP图像"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "白标"
+      },
+      "white-labeling-logo": {
+        "title": "标志"
+      },
+      "white-labeling-favicon": {
+        "title": "网站图标"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "文件类型错误",
+      "message": "只允许PNG、JPG或WEBP文件"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "文件类型错误",
+      "message": "只允许PNG、GIF或SVG文件"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "创建白标相关数据",
+    "WhiteLabeling:read": "查看白标相关数据",
+    "WhiteLabeling:update": "更新白标相关数据",
+    "WhiteLabeling:delete": "删除白标相关数据"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "已启用白标",
+      "description": "此商店是否启用了白标"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "主题预设名称",
+      "description": "白标主题预设名称"
+    }
+  }
+}

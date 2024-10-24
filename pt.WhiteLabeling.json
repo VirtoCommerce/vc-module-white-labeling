@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Marca branca",
+        "labels": {
+          "enabled": "Ativado",
+          "name": "Nome",
+          "description": "Descrição",
+          "logo": "Logotipo",
+          "secondary-logo": "Logotipo secundário",
+          "favicon": "Favicon",
+          "preset-name": "Nome da predefinição de tema",
+          "link-list": "Lista de links",
+          "footer-personalization": "Personalização do rodapé"
+        },
+        "placeholders": {
+          "preset-name": "Selecione o nome da predefinição...",
+          "link-list": "Selecione a lista de links..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logotipo",
+        "labels": {
+          "legend": "Logotipo de marca branca",
+          "logo": "Escolher logotipo",
+          "secondary-logo": "Escolher logotipo secundário",
+          "preview": "Pré-visualização",
+          "hint": "Selecione uma imagem PNG, GIF ou SVG"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Favicon de marca branca",
+          "favicon": "Escolher favicon",
+          "preview": "Pré-visualização",
+          "hint": "Selecione uma imagem PNG, JPG ou WEBP"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Marca branca"
+      },
+      "white-labeling-logo": {
+        "title": "Logotipo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Erro de tipo de arquivo",
+      "message": "Apenas arquivos PNG, JPG ou WEBP são permitidos"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Erro de tipo de arquivo",
+      "message": "Apenas arquivos PNG, GIF ou SVG são permitidos"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Criar dados relacionados à marca branca",
+    "WhiteLabeling:read": "Visualizar dados relacionados à marca branca",
+    "WhiteLabeling:update": "Atualizar dados relacionados à marca branca",
+    "WhiteLabeling:delete": "Excluir dados relacionados à marca branca"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Marca branca ativada",
+      "description": "A marca branca está ativada para esta loja"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Nome da predefinição de tema",
+      "description": "Nome da predefinição de tema de marca branca"
+    }
+  }
+}

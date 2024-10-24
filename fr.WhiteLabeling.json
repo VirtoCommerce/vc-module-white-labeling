@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Personnalisation de marque",
+        "labels": {
+          "enabled": "Activé",
+          "name": "Nom",
+          "description": "Description",
+          "logo": "Logo",
+          "secondary-logo": "Logo secondaire",
+          "favicon": "Favicon",
+          "preset-name": "Nom du préréglage de thème",
+          "link-list": "Liste de liens",
+          "footer-personalization": "Personnalisation du pied de page"
+        },
+        "placeholders": {
+          "preset-name": "Sélectionner le nom du préréglage...",
+          "link-list": "Sélectionner la liste de liens..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "Logo de personnalisation de marque",
+          "logo": "Choisir le logo",
+          "secondary-logo": "Choisir le logo secondaire",
+          "preview": "Aperçu",
+          "hint": "Sélectionnez une image PNG, GIF ou SVG"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Favicon de personnalisation de marque",
+          "favicon": "Choisir le favicon",
+          "preview": "Aperçu",
+          "hint": "Sélectionnez une image PNG, JPG ou WEBP"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Personnalisation de marque"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Erreur de type de fichier",
+      "message": "Seuls les fichiers PNG, JPG ou WEBP sont autorisés"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Erreur de type de fichier",
+      "message": "Seuls les fichiers PNG, GIF ou SVG sont autorisés"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Créer des données liées à la personnalisation de marque",
+    "WhiteLabeling:read": "Afficher les données liées à la personnalisation de marque",
+    "WhiteLabeling:update": "Mettre à jour les données liées à la personnalisation de marque",
+    "WhiteLabeling:delete": "Supprimer les données liées à la personnalisation de marque"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Personnalisation de marque activée",
+      "description": "La personnalisation de marque est-elle activée pour cette boutique"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Nom du préréglage de thème",
+      "description": "Nom du préréglage de thème de personnalisation de marque"
+    }
+  }
+}

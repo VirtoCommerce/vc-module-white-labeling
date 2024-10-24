@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "White labeling",
+        "labels": {
+          "enabled": "Включено",
+          "name": "Название",
+          "description": "Описание",
+          "logo": "Логотип",
+          "secondary-logo": "Вторичный логотип",
+          "favicon": "Фавикон",
+          "preset-name": "Название пресета темы",
+          "link-list": "Список ссылок",
+          "footer-personalization": "Персонализация нижнего колонтитула"
+        },
+        "placeholders": {
+          "preset-name": "Выберите название пресета...",
+          "link-list": "Выберите список ссылок..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Логотип",
+        "labels": {
+          "legend": "Логотип white labeling",
+          "logo": "Выбрать логотип",
+          "secondary-logo": "Выбрать вторичный логотип",
+          "preview": "Предпросмотр",
+          "hint": "Выберите изображение в формате PNG, GIF или SVG"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Фавикон",
+        "labels": {
+          "legend": "Фавикон white labeling",
+          "favicon": "Выбрать фавикон",
+          "preview": "Предпросмотр",
+          "hint": "Выберите изображение в формате PNG, JPG или WEBP"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "White labeling"
+      },
+      "white-labeling-logo": {
+        "title": "Логотип"
+      },
+      "white-labeling-favicon": {
+        "title": "Фавикон"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Ошибка типа файла",
+      "message": "Разрешены только файлы PNG, JPG или WEBP"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Ошибка типа файла",
+      "message": "Разрешены только файлы PNG, GIF или SVG"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Создавать данные, связанные с white labeling",
+    "WhiteLabeling:read": "Просматривать данные, связанные с white labeling",
+    "WhiteLabeling:update": "Обновлять данные, связанные с white labeling",
+    "WhiteLabeling:delete": "Удалять данные, связанные с white labeling"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "White labeling включен",
+      "description": "Включен ли white labeling для этого магазина"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Название пресета темы",
+      "description": "Название пресета темы white labeling"
+    }
+  }
+}

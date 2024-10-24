@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "White labeling",
+        "labels": {
+          "enabled": "Aktiviert",
+          "name": "Name",
+          "description": "Beschreibung",
+          "logo": "Logo",
+          "secondary-logo": "Sekundäres Logo",
+          "favicon": "Favicon",
+          "preset-name": "Name der Voreinstellung",
+          "link-list": "Linkliste",
+          "footer-personalization": "Fußzeilen-Personalisierung"
+        },
+        "placeholders": {
+          "preset-name": "Voreinstellungsnamen auswählen...",
+          "link-list": "Linkliste auswählen..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "White labeling Logo",
+          "logo": "Logo auswählen",
+          "secondary-logo": "Sekundäres Logo auswählen",
+          "preview": "Vorschau",
+          "hint": "Wählen Sie ein PNG-, GIF- oder SVG-Bild aus"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "White labeling Favicon",
+          "favicon": "Favicon auswählen",
+          "preview": "Vorschau",
+          "hint": "Wählen Sie ein PNG-, JPG- oder WEBP-Bild aus"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "White labeling"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    }
+  },
+  "dialogs": {
+    "white-labeling-favicon-upload-filter": {
+      "title": "Dateityp-Fehler",
+      "message": "Nur PNG-, JPG- oder WEBP-Dateien sind erlaubt"
+    },
+    "white-labeling-icon-upload-filter": {
+      "title": "Dateityp-Fehler",
+      "message": "Nur PNG-, GIF- oder SVG-Dateien sind erlaubt"
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "White labeling-bezogene Daten erstellen",
+    "WhiteLabeling:read": "White labeling-bezogene Daten anzeigen",
+    "WhiteLabeling:update": "White labeling-bezogene Daten aktualisieren",
+    "WhiteLabeling:delete": "White labeling-bezogene Daten löschen"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "White labeling aktiviert",
+      "description": "Ist white labeling für diesen Shop aktiviert"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Name der Themenvoreinstellung",
+      "description": "White labeling Themenvoreinstellungsname"
+    }
+  }
+}
