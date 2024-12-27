@@ -1,5 +1,6 @@
 using System;
-using GraphQL.Server;
+using GraphQL;
+using GraphQL.MicrosoftDI;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,6 @@ using VirtoCommerce.WhiteLabeling.Data.Services;
 using VirtoCommerce.WhiteLabeling.Data.SqlServer;
 using VirtoCommerce.WhiteLabeling.ExperienceApi;
 using VirtoCommerce.Xapi.Core.Extensions;
-using VirtoCommerce.Xapi.Core.Infrastructure;
 
 namespace VirtoCommerce.WhiteLabeling.Web;
 
@@ -29,12 +29,14 @@ public class Module : IModule, IHasConfiguration
 
     public void Initialize(IServiceCollection serviceCollection)
     {
-        var assemblyMarker = typeof(AssemblyMarker);
-        var graphQlBuilder = new CustomGraphQLBuilder(serviceCollection);
-        graphQlBuilder.AddGraphTypes(assemblyMarker);
-        serviceCollection.AddMediatR(assemblyMarker);
-        serviceCollection.AddAutoMapper(assemblyMarker);
-        serviceCollection.AddSchemaBuilders(assemblyMarker);
+        var graphQlBuilder = new GraphQLBuilder(serviceCollection, builder =>
+        {
+            var assemblyMarker = typeof(AssemblyMarker);
+            builder.AddGraphTypes(assemblyMarker.Assembly);
+            serviceCollection.AddMediatR(assemblyMarker);
+            serviceCollection.AddAutoMapper(assemblyMarker);
+            serviceCollection.AddSchemaBuilders(assemblyMarker);
+        });
 
         serviceCollection.AddDbContext<WhiteLabelingDbContext>(options =>
         {

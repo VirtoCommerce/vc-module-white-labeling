@@ -1,10 +1,11 @@
 using GraphQL.Types;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.Xapi.Core.Schemas;
 using VirtoCommerce.XCMS.Core.Schemas;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 {
-    public class WhiteLabelingSettingsType : ObjectGraphType<ExpWhiteLabelingSetting>
+    public class WhiteLabelingSettingsType : ExtendableGraphType<ExpWhiteLabelingSetting>
     {
         public WhiteLabelingSettingsType()
         {
