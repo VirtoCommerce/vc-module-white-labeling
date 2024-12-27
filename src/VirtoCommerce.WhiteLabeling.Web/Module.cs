@@ -29,7 +29,7 @@ public class Module : IModule, IHasConfiguration
 
     public void Initialize(IServiceCollection serviceCollection)
     {
-        var graphQlBuilder = new GraphQLBuilder(serviceCollection, builder =>
+        _ = new GraphQLBuilder(serviceCollection, builder =>
         {
             var assemblyMarker = typeof(AssemblyMarker);
             builder.AddGraphTypes(assemblyMarker.Assembly);
