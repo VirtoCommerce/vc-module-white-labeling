@@ -1,10 +1,11 @@
 using GraphQL.Types;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.Xapi.Core.Schemas;
 using VirtoCommerce.XCMS.Core.Schemas;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
 {
-    public class WhiteLabelingSettingsType : ObjectGraphType<ExpWhiteLabelingSetting>
+    public class WhiteLabelingSettingsType : ExtendableGraphType<ExpWhiteLabelingSetting>
     {
         public WhiteLabelingSettingsType()
         {
@@ -15,8 +16,8 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
             Field(x => x.LabelingSetting.SecondaryLogoUrl, nullable: true).Description("Logo URL for footer");
             Field(x => x.LabelingSetting.FaviconUrl, nullable: true).Description("Master favicon URL");
             Field(x => x.LabelingSetting.ThemePresetName, nullable: true).Description("Theme preset name");
-            Field<ListGraphType<MenuLinkType>>("footerLinks", resolve: context => context.Source.FooterLinks);
-            Field<ListGraphType<FaviconType>>("favicons", resolve: context => context.Source.Favicons);
+            Field<ListGraphType<MenuLinkType>>("footerLinks").Resolve(context => context.Source.FooterLinks);
+            Field<ListGraphType<FaviconType>>("favicons").Resolve(context => context.Source.Favicons);
         }
     }
 }
