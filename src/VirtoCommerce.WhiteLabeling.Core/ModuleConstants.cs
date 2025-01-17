@@ -5,6 +5,8 @@ namespace VirtoCommerce.WhiteLabeling.Core;
 
 public static class ModuleConstants
 {
+    public const string OrganizationLogoUploadScope = "organization-logos";
+
     public static class Security
     {
         public static class Permissions

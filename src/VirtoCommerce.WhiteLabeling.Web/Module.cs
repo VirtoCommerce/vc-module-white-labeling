@@ -1,13 +1,16 @@
 using System;
 using GraphQL.Server;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VirtoCommerce.FileExperienceApi.Core.Authorization;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
+using VirtoCommerce.QuoteModule.ExperienceApi.Authorization;
 using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.WhiteLabeling.Core;
 using VirtoCommerce.WhiteLabeling.Core.Services;
@@ -60,6 +63,9 @@ public class Module : IModule, IHasConfiguration
 
         serviceCollection.AddTransient<IWhiteLabelingSettingService, WhiteLabelingSettingService>();
         serviceCollection.AddTransient<IWhiteLabelingSettingSearchService, WhiteLabelingSettingSearchService>();
+
+        serviceCollection.AddSingleton<IAuthorizationHandler, OrganizationLogoAuthorizationHandler>();
+        serviceCollection.AddSingleton<IFileAuthorizationRequirementFactory, OrganizationLogoAuthorizationRequirementFactory>();
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)
