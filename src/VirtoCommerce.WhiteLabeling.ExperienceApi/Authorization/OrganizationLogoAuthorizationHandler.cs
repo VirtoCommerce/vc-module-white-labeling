@@ -1,8 +1,10 @@
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using VirtoCommerce.CustomerModule.Core.Extensions;
 using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.FileExperienceApi.Core.Models;
+using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Security.Authorization;
 using static VirtoCommerce.FileExperienceApi.Core.ModuleConstants.Security.Permissions;
 
@@ -21,30 +23,25 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
     {
         var authorized = false;
 
-        var ownerOrganizationId = "";
+        var organizationId = "";
 
         switch (context.Resource)
         {
             case File file when file.OwnerEntityType == nameof(Organization):
-                ownerOrganizationId = file.OwnerEntityId;
+                organizationId = file.OwnerEntityId;
                 break;
             case string:
-                ownerOrganizationId = context.Resource as string;
+                organizationId = context.Resource as string;
                 break;
         }
 
-        switch (requirement.Permission)
+        if (context.User.GetCurrentOrganizationId() == organizationId)
         {
-            case Update:
-                authorized = context.User.GetCurrentOrganizationId() == ownerOrganizationId;
-                break;
-            case Delete:
-                authorized = context.User.GetCurrentOrganizationId() == ownerOrganizationId;
-                break;
-            default:
-                // authorize all other permissions
-                authorized = true;
-                break;
+            authorized = requirement.Permission switch
+            {
+                Create or Update or Delete => IsOrganizationMaintainer(context.User),
+                _ => true,// authorize all read permissions
+            };
         }
 
         if (authorized)
@@ -57,5 +54,10 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
         }
 
         return Task.CompletedTask;
+    }
+
+    private static bool IsOrganizationMaintainer(ClaimsPrincipal principal)
+    {
+        return principal.HasGlobalPermission("xapi:my_organization:edit");
     }
 }
