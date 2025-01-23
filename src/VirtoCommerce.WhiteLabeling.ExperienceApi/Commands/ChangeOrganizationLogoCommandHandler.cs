@@ -8,10 +8,9 @@ using VirtoCommerce.FileExperienceApi.Core.Services;
 using VirtoCommerce.Platform.Core.Common;
 using VirtoCommerce.WhiteLabeling.Core.Models;
 using VirtoCommerce.WhiteLabeling.Core.Services;
-using VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
 using static VirtoCommerce.WhiteLabeling.Core.ModuleConstants;
 
-namespace VirtoCommerce.FileExperienceApi.Data.Commands;
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
 
 public class ChangeOrganizationLogoCommandHandler : IRequestHandler<ChangeOrganizationLogoCommand, bool>
 {
@@ -67,7 +66,7 @@ public class ChangeOrganizationLogoCommandHandler : IRequestHandler<ChangeOrgani
 
     protected virtual async Task<File> UpdateLogoUrlFile(ChangeOrganizationLogoCommand request)
     {
-        var file = await _fileUploadService.GetNoCloneAsync(GetFileId(request.LogoUrl));
+        var file = await _fileUploadService.GetByIdAsync(GetFileId(request.LogoUrl));
 
         if (file == null ||
             file.Scope != OrganizationLogoUploadScope ||

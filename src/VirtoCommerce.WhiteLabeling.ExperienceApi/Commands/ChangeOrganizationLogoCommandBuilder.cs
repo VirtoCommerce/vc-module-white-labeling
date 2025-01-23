@@ -3,12 +3,11 @@ using GraphQL;
 using GraphQL.Types;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using VirtoCommerce.QuoteModule.ExperienceApi.Authorization;
-using VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
 using VirtoCommerce.Xapi.Core.BaseQueries;
 using static VirtoCommerce.FileExperienceApi.Core.ModuleConstants.Security.Permissions;
 
-namespace VirtoCommerce.FileExperienceApi.Data.Commands;
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
 
 public class ChangeOrganizationLogoCommandBuilder : CommandBuilder<ChangeOrganizationLogoCommand, bool, InputChangeOrganizationLogoCommandType, BooleanGraphType>
 {

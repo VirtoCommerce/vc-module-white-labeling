@@ -10,7 +10,6 @@ using VirtoCommerce.FileExperienceApi.Core.Authorization;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
-using VirtoCommerce.QuoteModule.ExperienceApi.Authorization;
 using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.WhiteLabeling.Core;
 using VirtoCommerce.WhiteLabeling.Core.Services;
@@ -20,6 +19,7 @@ using VirtoCommerce.WhiteLabeling.Data.Repositories;
 using VirtoCommerce.WhiteLabeling.Data.Services;
 using VirtoCommerce.WhiteLabeling.Data.SqlServer;
 using VirtoCommerce.WhiteLabeling.ExperienceApi;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
 using VirtoCommerce.Xapi.Core.Extensions;
 using VirtoCommerce.Xapi.Core.Infrastructure;
 

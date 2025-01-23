@@ -8,7 +8,7 @@ using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Security.Authorization;
 using static VirtoCommerce.FileExperienceApi.Core.ModuleConstants.Security.Permissions;
 
-namespace VirtoCommerce.QuoteModule.ExperienceApi.Authorization;
+namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
 
 public class OrganizationLogoAuthorizationRequirement : PermissionAuthorizationRequirement
 {
@@ -40,7 +40,8 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
             authorized = requirement.Permission switch
             {
                 Create or Update or Delete => IsOrganizationMaintainer(context.User),
-                _ => true,// authorize all read permissions
+                Read => true, // authorize read within the same organization
+                _ => false,
             };
         }
 
