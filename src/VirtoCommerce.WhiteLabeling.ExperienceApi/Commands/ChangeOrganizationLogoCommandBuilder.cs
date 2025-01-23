@@ -22,6 +22,7 @@ public class ChangeOrganizationLogoCommandBuilder : CommandBuilder<ChangeOrganiz
 
     protected override async Task BeforeMediatorSend(IResolveFieldContext<object> context, ChangeOrganizationLogoCommand request)
     {
+        await base.BeforeMediatorSend(context, request);
         await Authorize(context, request.OrganizationId, new OrganizationLogoAuthorizationRequirement(Update));
     }
 }
