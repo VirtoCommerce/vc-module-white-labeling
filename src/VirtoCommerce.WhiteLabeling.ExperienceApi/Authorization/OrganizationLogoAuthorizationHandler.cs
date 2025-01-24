@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using VirtoCommerce.CustomerModule.Core.Extensions;
 using VirtoCommerce.CustomerModule.Core.Model;
 using VirtoCommerce.FileExperienceApi.Core.Models;
+using VirtoCommerce.Platform.Core;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Security.Authorization;
 using static VirtoCommerce.FileExperienceApi.Core.ModuleConstants.Security.Permissions;
@@ -21,28 +22,31 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OrganizationLogoAuthorizationRequirement requirement)
     {
-        var authorized = false;
+        var authorized = context.User.IsInRole(PlatformConstants.Security.SystemRoles.Administrator);
 
-        var organizationId = "";
-
-        switch (context.Resource)
+        if (!authorized)
         {
-            case File file when file.OwnerEntityType == nameof(Organization):
-                organizationId = file.OwnerEntityId;
-                break;
-            case string:
-                organizationId = context.Resource as string;
-                break;
-        }
+            var organizationId = "";
 
-        if (context.User.GetCurrentOrganizationId() == organizationId)
-        {
-            authorized = requirement.Permission switch
+            switch (context.Resource)
             {
-                Create or Update or Delete => IsOrganizationMaintainer(context.User),
-                Read => true, // authorize read within the same organization
-                _ => false,
-            };
+                case File file when file.OwnerEntityType == nameof(Organization):
+                    organizationId = file.OwnerEntityId;
+                    break;
+                case string:
+                    organizationId = context.Resource as string;
+                    break;
+            }
+
+            if (context.User.GetCurrentOrganizationId() == organizationId)
+            {
+                authorized = requirement.Permission switch
+                {
+                    Create or Update or Delete => IsOrganizationMaintainer(context.User),
+                    Read => true, // authorize read within the same organization
+                    _ => false,
+                };
+            }
         }
 
         if (authorized)
