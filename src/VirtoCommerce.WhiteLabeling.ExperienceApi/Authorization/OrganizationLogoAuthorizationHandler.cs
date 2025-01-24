@@ -33,8 +33,8 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
                 case File file when file.OwnerEntityType == nameof(Organization):
                     organizationId = file.OwnerEntityId;
                     break;
-                case string:
-                    organizationId = context.Resource as string;
+                case string id:
+                    organizationId = id;
                     break;
             }
 
