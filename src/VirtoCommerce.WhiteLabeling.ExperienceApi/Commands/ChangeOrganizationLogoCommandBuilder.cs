@@ -1,15 +1,16 @@
 using System.Threading.Tasks;
 using GraphQL;
-using GraphQL.Types;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas;
 using VirtoCommerce.Xapi.Core.BaseQueries;
 using static VirtoCommerce.FileExperienceApi.Core.ModuleConstants.Security.Permissions;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
 
-public class ChangeOrganizationLogoCommandBuilder : CommandBuilder<ChangeOrganizationLogoCommand, bool, InputChangeOrganizationLogoCommandType, BooleanGraphType>
+public class ChangeOrganizationLogoCommandBuilder : CommandBuilder<ChangeOrganizationLogoCommand, ChangeOrganizationLogoResult, InputChangeOrganizationLogoCommandType, ChangeOrganizationLogoResultType>
 {
     protected override string Name => "ChangeOrganizationLogo";
 

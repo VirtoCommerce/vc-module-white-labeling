@@ -1,9 +1,10 @@
 using GraphQL.Types;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
 using VirtoCommerce.Xapi.Core.Infrastructure;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Commands;
 
-public class ChangeOrganizationLogoCommand : ICommand<bool>
+public class ChangeOrganizationLogoCommand : ICommand<ChangeOrganizationLogoResult>
 {
     public string OrganizationId { get; set; }
 
