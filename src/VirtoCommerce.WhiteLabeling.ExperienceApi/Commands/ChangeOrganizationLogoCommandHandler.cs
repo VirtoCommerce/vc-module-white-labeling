@@ -39,9 +39,9 @@ public class ChangeOrganizationLogoCommandHandler : IRequestHandler<ChangeOrgani
         if (whiteLabelingSetting == null)
         {
             // create white labeling for this organization
-            var newWhiteLabelingSetting = AbstractTypeFactory<WhiteLabelingSetting>.TryCreateInstance();
-            newWhiteLabelingSetting.OrganizationId = request.OrganizationId;
-            newWhiteLabelingSetting.IsEnabled = true;
+            whiteLabelingSetting = AbstractTypeFactory<WhiteLabelingSetting>.TryCreateInstance();
+            whiteLabelingSetting.OrganizationId = request.OrganizationId;
+            whiteLabelingSetting.IsEnabled = true;
         }
 
         var logoUrlFile = await UpdateLogoUrlFile(request);
