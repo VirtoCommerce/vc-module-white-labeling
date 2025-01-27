@@ -22,7 +22,7 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
 {
     protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OrganizationLogoAuthorizationRequirement requirement)
     {
-        var authorized = context.User.IsInRole(PlatformConstants.Security.SystemRoles.Administrator);
+        var authorized = context.User.IsInRole(PlatformConstants.Security.SystemRoles.Administrator) || requirement.Permission == Read;
 
         if (!authorized)
         {
@@ -43,7 +43,6 @@ public class OrganizationLogoAuthorizationHandler : PermissionAuthorizationHandl
                 authorized = requirement.Permission switch
                 {
                     Create or Update or Delete => IsOrganizationMaintainer(context.User),
-                    Read => true, // authorize read within the same organization
                     _ => false,
                 };
             }
