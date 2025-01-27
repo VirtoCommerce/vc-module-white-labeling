@@ -1,7 +1,6 @@
 using System;
 using GraphQL;
 using GraphQL.MicrosoftDI;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
