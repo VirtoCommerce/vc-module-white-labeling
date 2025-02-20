@@ -1,12 +1,14 @@
-# White Labeling
+# Virto Commerce White Labeling Module
+
 The White Labeling module enables organizations to enhance the enterprise user experience by customizing branding elements such as logos, favicons, colors, and footer links based on the logged-in organization context. This module ensures that users from different organizations see personalized branding elements after signing in, improving overall UX and brand consistency.
 
-## Key Features
-1. **Branding Configuration**: Display organization-specific logos, favicons, colors, and footer links post-login.
-2. **White labeling**: Resolve branding based on the organization context after user authentication.
-3. **Integration with Virto Frontend:** Seamlessly integrate customized branding elements into Virto Commerce Storefront.
-4. **Custom Domain:** Assign a custom domain with the organization to allow branding activation on the first visit.
-5. **Automated FavIcon Generation**: The module uses [Virto Commerce Image Tools module](https://github.com/VirtoCommerce/vc-module-image-tools/) for fav icon generation.
+## Key features
+
+* **Branding Configuration**: Display organization-specific logos, favicons, colors, and footer links post-login.
+* **White labeling**: Resolve branding based on the organization context after user authentication.
+* **Integration with Virto Frontend:** Seamlessly integrate customized branding elements into Virto Commerce Storefront.
+* **Custom Domain:** Assign a custom domain with the organization to allow branding activation on the first visit.
+* **Automated FavIcon Generation**: The module uses [Virto Commerce Image Tools module](https://github.com/VirtoCommerce/vc-module-image-tools/) for fav icon generation.
 
 ## Screenshots
 
@@ -16,15 +18,25 @@ The White Labeling module enables organizations to enhance the enterprise user e
 
 ![Organization White labeling](https://github.com/VirtoCommerce/vc-module-white-labeling/assets/7639413/2af4e983-30f3-4e3c-8597-914b9d48a537)
 
-## Integration with Virto Storefront
-Virto Storefront has native integration with White Labeling module. 
-Once you install the module, and click Activate in Store Settings, the White Labeling feature will be activated.
+## Integration with Virto Frontend
+
+Virto Frontend has native integration with the White Labeling module. 
+Once you install the module and click Activate in Store Settings, the White Labeling feature will be activated.
+
+## Documentation
+
+* [White Labeling module user documentation](https://docs.virtocommerce.org/platform/user-guide/white-labeling/overview/)
+* [REST API](https://docs.virtocommerce.org/platform/developer-guide/Fundamentals/Taxes/new-tax-provider-registration/)
+* [View on GitHub](https://github.com/VirtoCommerce/vc-module-white-labeling)
+
 
 ## References
-* Documentation: https://docs.virtocommerce.org
-* Home: https://virtocommerce.com
-* Community: https://www.virtocommerce.org
-* [Download Latest Release](https://github.com/VirtoCommerce/vc-module-white-labeling/releases/latest)
+
+* [Deployment](https://docs.virtocommerce.org/platform/developer-guide/Tutorials-and-How-tos/Tutorials/deploy-module-from-source-code/)
+* [Installation](https://docs.virtocommerce.org/platform/user-guide/modules-installation/)
+* [Home](https://virtocommerce.com)
+* [Community](https://www.virtocommerce.org)
+* [Download latest release](https://github.com/VirtoCommerce/vc-module-white-labeling/releases/latest)
 
 ## License
 Copyright (c) Virto Solutions LTD.  All rights reserved.
