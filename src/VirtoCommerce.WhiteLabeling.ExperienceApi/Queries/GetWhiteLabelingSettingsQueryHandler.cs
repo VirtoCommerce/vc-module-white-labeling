@@ -126,16 +126,26 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         private static WhiteLabelingSetting GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
         {
+            if (result.StoreSetting == null)
+            {
+                return result.OrganizationSetting;
+            }
+
+            if (result.OrganizationSetting == null)
+            {
+                return result.StoreSetting;
+            }
+
             return new WhiteLabelingSetting()
             {
                 IsEnabled = true,
-                OrganizationId = result.OrganizationSetting?.OrganizationId,
-                StoreId = result.StoreSetting?.StoreId,
-                LogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.LogoUrl) ? result.OrganizationSetting.LogoUrl : result.StoreSetting?.LogoUrl,
-                SecondaryLogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.SecondaryLogoUrl) ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting?.SecondaryLogoUrl,
-                FaviconUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.FaviconUrl) ? result.OrganizationSetting.FaviconUrl : result.StoreSetting?.FaviconUrl,
-                FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting?.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting?.FooterLinkListName,
-                ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting?.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting?.ThemePresetName,
+                OrganizationId = result.OrganizationSetting.OrganizationId,
+                StoreId = result.StoreSetting.StoreId,
+                LogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting.LogoUrl) ? result.OrganizationSetting.LogoUrl : result.StoreSetting.LogoUrl,
+                SecondaryLogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting.SecondaryLogoUrl) ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
+                FaviconUrl = !string.IsNullOrEmpty(result.OrganizationSetting.FaviconUrl) ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
+                FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting.FooterLinkListName,
+                ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting.ThemePresetName,
             };
         }
 
