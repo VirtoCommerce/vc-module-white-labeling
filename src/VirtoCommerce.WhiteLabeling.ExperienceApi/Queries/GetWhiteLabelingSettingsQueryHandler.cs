@@ -124,7 +124,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             return searchResult.Results.ToArray();
         }
 
-        private WhiteLabelingSetting GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
+        private static WhiteLabelingSetting GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
         {
             return new WhiteLabelingSetting()
             {
