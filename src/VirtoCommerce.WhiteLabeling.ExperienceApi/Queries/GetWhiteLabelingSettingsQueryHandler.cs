@@ -32,13 +32,14 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
-            var whiteLabelingSetting = await GetWhiteLabelingSettingAsync(request);
-            if (whiteLabelingSetting == null)
+            var whiteLabelingSettings = await GetWhiteLabelingSettingsAsync(request);
+            if (whiteLabelingSettings.OrganizationSetting == null && whiteLabelingSettings.StoreSetting == null)
             {
                 return null;
             }
 
-            var result = new ExpWhiteLabelingSetting()
+            var whiteLabelingSetting = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
+            var result = new ExpWhiteLabelingSetting
             {
                 LabelingSetting = whiteLabelingSetting,
             };
@@ -80,35 +81,62 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             return result;
         }
 
+        [Obsolete("Use GetWhiteLabelingSettingsAsync", DiagnosticId = "VC0010", UrlFormat = "https://docs.virtocommerce.org/platform/user-guide/versions/virto3-products-versions/")]
         protected virtual async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(GetWhiteLabelingSettingsQuery request)
         {
             WhiteLabelingSetting whiteLabelingSetting = null;
 
             if (!string.IsNullOrEmpty(request.OrganizationId))
             {
-                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId);
+                whiteLabelingSetting = (await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId)).FirstOrDefault();
             }
 
             if (whiteLabelingSetting == null && !string.IsNullOrEmpty(request.StoreId))
             {
-                whiteLabelingSetting = await GetWhiteLabelingSettingAsync(storeId: request.StoreId);
+                whiteLabelingSetting = (await GetWhiteLabelingSettingAsync(storeId: request.StoreId)).FirstOrDefault();
             }
 
             return whiteLabelingSetting;
         }
 
-        private async Task<WhiteLabelingSetting> GetWhiteLabelingSettingAsync(string organizationId = null, string storeId = null)
+        protected virtual async Task<WhiteLabelingSettingResult> GetWhiteLabelingSettingsAsync(GetWhiteLabelingSettingsQuery request)
+        {
+            var result = new WhiteLabelingSettingResult();
+
+            var settings = await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId, storeId: request.StoreId);
+
+            result.OrganizationSetting = settings.FirstOrDefault(x => x.OrganizationId == request.OrganizationId && x.StoreId == null);
+            result.StoreSetting = settings.FirstOrDefault(x => x.StoreId == request.StoreId && x.OrganizationId == null);
+
+            return result;
+        }
+
+        private async Task<WhiteLabelingSetting[]> GetWhiteLabelingSettingAsync(string organizationId = null, string storeId = null)
         {
             var searchCriteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
 
+            searchCriteria.IsEnabled = true;
             searchCriteria.OrganizationId = organizationId;
             searchCriteria.StoreId = storeId;
-            searchCriteria.IsEnabled = true;
-            searchCriteria.Take = 1;
 
             var searchResult = await _whiteLabelingSettingSearchService.SearchAsync(searchCriteria);
 
-            return searchResult.Results?.FirstOrDefault();
+            return searchResult.Results.ToArray();
+        }
+
+        private WhiteLabelingSetting GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
+        {
+            return new WhiteLabelingSetting()
+            {
+                IsEnabled = true,
+                OrganizationId = result.OrganizationSetting?.OrganizationId,
+                StoreId = result.StoreSetting?.StoreId,
+                LogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.LogoUrl) ? result.OrganizationSetting.LogoUrl : result.StoreSetting?.LogoUrl,
+                SecondaryLogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.SecondaryLogoUrl) ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting?.SecondaryLogoUrl,
+                FaviconUrl = !string.IsNullOrEmpty(result.OrganizationSetting?.FaviconUrl) ? result.OrganizationSetting.FaviconUrl : result.StoreSetting?.FaviconUrl,
+                FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting?.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting?.FooterLinkListName,
+                ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting?.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting?.ThemePresetName,
+            };
         }
 
         // copy-pasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method
@@ -124,6 +152,13 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             var result = new Uri(new Uri(uriWithoutLastSegment), newName);
 
             return result.AbsoluteUri;
+        }
+
+        public class WhiteLabelingSettingResult
+        {
+            public WhiteLabelingSetting OrganizationSetting { get; set; }
+
+            public WhiteLabelingSetting StoreSetting { get; set; }
         }
     }
 }
