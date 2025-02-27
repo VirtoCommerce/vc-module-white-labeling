@@ -29,15 +29,19 @@ namespace VirtoCommerce.WhiteLabeling.Data.Services
                 query = query.Where(x => x.IsEnabled == criteria.IsEnabled.Value);
             }
 
+            var predicate = PredicateBuilder.False<WhiteLabelingSettingEntity>();
+
             if (!string.IsNullOrEmpty(criteria.OrganizationId))
             {
-                query = query.Where(x => x.OrganizationId == criteria.OrganizationId);
+                predicate = predicate.Or(x => x.OrganizationId == criteria.OrganizationId);
             }
 
             if (!string.IsNullOrEmpty(criteria.StoreId))
             {
-                query = query.Where(x => x.StoreId == criteria.StoreId);
+                predicate = predicate.Or(x => x.StoreId == criteria.StoreId);
             }
+
+            query = query.Where(predicate);
 
             return query;
         }
