@@ -44,16 +44,23 @@ public class ChangeOrganizationLogoCommandHandler : IRequestHandler<ChangeOrgani
             whiteLabelingSetting.IsEnabled = true;
         }
 
-        var logoUrlFile = await UpdateLogoUrlFile(request);
-        if (logoUrlFile.Item1 == null)
+        if (!string.IsNullOrEmpty(request.LogoUrl))
         {
-            return new ChangeOrganizationLogoResult
+            var logoUrlFile = await UpdateLogoUrlFile(request);
+            if (logoUrlFile.Item1 == null)
             {
-                ErrorMessage = logoUrlFile.Item2?.FirstOrDefault()?.ErrorMessage
-            };
+                return new ChangeOrganizationLogoResult
+                {
+                    ErrorMessage = logoUrlFile.Item2?.FirstOrDefault()?.ErrorMessage
+                };
+            }
+            whiteLabelingSetting.LogoUrl = request.LogoUrl;
         }
-
-        whiteLabelingSetting.LogoUrl = request.LogoUrl;
+        else
+        {
+            await DeleteLogoUrlFile(whiteLabelingSetting);
+            whiteLabelingSetting.LogoUrl = null;
+        }
 
         await _whiteLabelingSettingService.SaveChangesAsync([whiteLabelingSetting]);
 
@@ -99,6 +106,13 @@ public class ChangeOrganizationLogoCommandHandler : IRequestHandler<ChangeOrgani
 
         return (file, null);
     }
+
+
+    protected virtual Task DeleteLogoUrlFile(WhiteLabelingSetting currentSettings)
+    {
+        return Task.FromResult<object>(null);
+    }
+
 
     protected static string GetFileId(string url)
     {
