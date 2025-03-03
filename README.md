@@ -8,6 +8,7 @@ The White Labeling module enables organizations to enhance the enterprise user e
 * **White labeling**: Resolve branding based on the organization context after user authentication.
 * **Integration with Virto Frontend:** Seamlessly integrate customized branding elements into Virto Commerce Storefront.
 * **Custom Domain:** Assign a custom domain with the organization to allow branding activation on the first visit.
+* **Change My Organization Logo:** Organization maintainers can update their organization's logo through a self-service option.. 
 * **Automated FavIcon Generation**: The module uses [Virto Commerce Image Tools module](https://github.com/VirtoCommerce/vc-module-image-tools/) for fav icon generation.
 
 ## Screenshots
@@ -17,6 +18,28 @@ The White Labeling module enables organizations to enhance the enterprise user e
 ![Store Settings](https://github.com/VirtoCommerce/vc-module-white-labeling/assets/7639413/179f9cf7-d993-46a1-90e9-89c034c4e9ed)
 
 ![Organization White labeling](https://github.com/VirtoCommerce/vc-module-white-labeling/assets/7639413/2af4e983-30f3-4e3c-8597-914b9d48a537)
+
+## Configuration
+A file upload scope named organization-logo should be defined in the platform settings to have an option to change my organization logo from the frontend. 
+For more details, [refer to the documentation](https://github.com/VirtoCommerce/vc-module-file-experience-api?tab=readme-ov-file#getting-started).
+
+To register the upload scope, update appsettings.json with the following file upload scope settings:
+
+```json
+{
+  "FileUpload": {
+    "Scopes": [
+      {
+        "Scope": "organization-logos",
+        "MaxFileSize": 10485760,
+        "AllowedExtensions": [
+          ".png"
+        ]
+      }
+    ]
+  }
+}
+```
 
 ## Integration with Virto Frontend
 
