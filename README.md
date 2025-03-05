@@ -49,7 +49,9 @@ Once you install the module and click Activate in Store Settings, the White Labe
 ## Documentation
 
 * [White Labeling module user documentation](https://docs.virtocommerce.org/platform/user-guide/white-labeling/overview/)
-* [REST API](https://docs.virtocommerce.org/platform/developer-guide/Fundamentals/Taxes/new-tax-provider-registration/)
+* [GraphQL API](https://docs.virtocommerce.org/platform/developer-guide/GraphQL-Storefront-API-Reference-xAPI/White-labeling/overview/)
+* [REST API](https://virtostart-demo-admin.govirto.com/docs/index.html?urls.primaryName=VirtoCommerce.WhiteLabeling)
+* [Configuration](https://docs.virtocommerce.org/platform/developer-guide/Configuration-Reference/appsettingsjson/#__tabbed_5_2)
 * [View on GitHub](https://github.com/VirtoCommerce/vc-module-white-labeling)
 
 
