@@ -16,6 +16,6 @@ public class InputChangeOrganizationLogoCommandType : InputObjectGraphType<Chang
     public InputChangeOrganizationLogoCommandType()
     {
         Field(x => x.OrganizationId, nullable: false);
-        Field(x => x.LogoUrl, nullable: false);
+        Field(x => x.LogoUrl, nullable: true);
     }
 }

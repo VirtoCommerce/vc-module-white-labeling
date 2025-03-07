@@ -8,6 +8,7 @@ The White Labeling module enables organizations to enhance the enterprise user e
 * **White labeling**: Resolve branding based on the organization context after user authentication.
 * **Integration with Virto Frontend:** Seamlessly integrate customized branding elements into Virto Commerce Storefront.
 * **Custom Domain:** Assign a custom domain with the organization to allow branding activation on the first visit.
+* **Change My Organization Logo:** Organization maintainers can update their organization's logo through a self-service option.. 
 * **Automated FavIcon Generation**: The module uses [Virto Commerce Image Tools module](https://github.com/VirtoCommerce/vc-module-image-tools/) for fav icon generation.
 
 ## Screenshots
@@ -18,6 +19,28 @@ The White Labeling module enables organizations to enhance the enterprise user e
 
 ![Organization White labeling](https://github.com/VirtoCommerce/vc-module-white-labeling/assets/7639413/2af4e983-30f3-4e3c-8597-914b9d48a537)
 
+## Configuration
+A file upload scope named organization-logo should be defined in the platform settings to have an option to change my organization logo from the frontend. 
+For more details, [refer to the documentation](https://github.com/VirtoCommerce/vc-module-file-experience-api?tab=readme-ov-file#getting-started).
+
+To register the upload scope, update appsettings.json with the following file upload scope settings:
+
+```json
+{
+  "FileUpload": {
+    "Scopes": [
+      {
+        "Scope": "organization-logos",
+        "MaxFileSize": 10485760,
+        "AllowedExtensions": [
+          ".png"
+        ]
+      }
+    ]
+  }
+}
+```
+
 ## Integration with Virto Frontend
 
 Virto Frontend has native integration with the White Labeling module. 
@@ -26,7 +49,9 @@ Once you install the module and click Activate in Store Settings, the White Labe
 ## Documentation
 
 * [White Labeling module user documentation](https://docs.virtocommerce.org/platform/user-guide/white-labeling/overview/)
-* [REST API](https://docs.virtocommerce.org/platform/developer-guide/Fundamentals/Taxes/new-tax-provider-registration/)
+* [GraphQL API](https://docs.virtocommerce.org/platform/developer-guide/GraphQL-Storefront-API-Reference-xAPI/White-labeling/overview/)
+* [REST API](https://virtostart-demo-admin.govirto.com/docs/index.html?urls.primaryName=VirtoCommerce.WhiteLabeling)
+* [Configuration](https://docs.virtocommerce.org/platform/developer-guide/Configuration-Reference/appsettingsjson/#__tabbed_5_2)
 * [View on GitHub](https://github.com/VirtoCommerce/vc-module-white-labeling)
 
 
