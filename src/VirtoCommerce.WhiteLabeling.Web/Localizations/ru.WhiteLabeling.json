@@ -49,16 +49,16 @@
       "white-labeling-favicon": {
         "title": "Фавикон"
       }
-    }
-  },
-  "dialogs": {
-    "white-labeling-favicon-upload-filter": {
-      "title": "Ошибка типа файла",
-      "message": "Разрешены только файлы PNG, JPG или WEBP"
     },
-    "white-labeling-icon-upload-filter": {
-      "title": "Ошибка типа файла",
-      "message": "Разрешены только файлы PNG, GIF или SVG"
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "Ошибка типа файла",
+        "message": "Разрешены только файлы PNG, JPG или WEBP"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "Ошибка типа файла",
+        "message": "Разрешены только файлы PNG, GIF или SVG"
+      }
     }
   },
   "permissions": {

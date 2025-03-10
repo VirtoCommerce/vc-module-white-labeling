@@ -49,16 +49,16 @@
       "white-labeling-favicon": {
         "title": "网站图标"
       }
-    }
-  },
-  "dialogs": {
-    "white-labeling-favicon-upload-filter": {
-      "title": "文件类型错误",
-      "message": "只允许PNG、JPG或WEBP文件"
     },
-    "white-labeling-icon-upload-filter": {
-      "title": "文件类型错误",
-      "message": "只允许PNG、GIF或SVG文件"
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "文件类型错误",
+        "message": "只允许PNG、JPG或WEBP文件"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "文件类型错误",
+        "message": "只允许PNG、GIF或SVG文件"
+      }
     }
   },
   "permissions": {

@@ -49,16 +49,16 @@
       "white-labeling-favicon": {
         "title": "ファビコン"
       }
-    }
-  },
-  "dialogs": {
-    "white-labeling-favicon-upload-filter": {
-      "title": "ファイルタイプエラー",
-      "message": "PNG、JPG、またはWEBPファイルのみが許可されています"
     },
-    "white-labeling-icon-upload-filter": {
-      "title": "ファイルタイプエラー",
-      "message": "PNG、GIF、またはSVGファイルのみが許可されています"
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "ファイルタイプエラー",
+        "message": "PNG、JPG、またはWEBPファイルのみが許可されています"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "ファイルタイプエラー",
+        "message": "PNG、GIF、またはSVGファイルのみが許可されています"
+      }
     }
   },
   "permissions": {

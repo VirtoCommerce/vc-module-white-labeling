@@ -49,16 +49,16 @@
       "white-labeling-favicon": {
         "title": "Favicon"
       }
-    }
-  },
-  "dialogs": {
-    "white-labeling-favicon-upload-filter": {
-      "title": "Błąd typu pliku",
-      "message": "Dozwolone są tylko pliki PNG, JPG lub WEBP"
     },
-    "white-labeling-icon-upload-filter": {
-      "title": "Błąd typu pliku",
-      "message": "Dozwolone są tylko pliki PNG, GIF lub SVG"
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "Błąd typu pliku",
+        "message": "Dozwolone są tylko pliki PNG, JPG lub WEBP"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "Błąd typu pliku",
+        "message": "Dozwolone są tylko pliki PNG, GIF lub SVG"
+      }
     }
   },
   "permissions": {
