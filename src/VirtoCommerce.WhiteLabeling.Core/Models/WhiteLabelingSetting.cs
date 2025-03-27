@@ -15,6 +15,10 @@ namespace VirtoCommerce.WhiteLabeling.Core.Models
         public string ThemePresetName { get; set; }
         public string StoreId { get; set; }
 
+        public bool IsOrganizationLogoUploaded { get; set; }
+        public bool IsOrganizationSecondaryLogoUploaded { get; set; }
+        public bool IsOrganizationFaviconUploaded { get; set; }
+
         public object Clone()
         {
             return MemberwiseClone();

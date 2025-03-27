@@ -136,14 +136,21 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return result.StoreSetting;
             }
 
+            var isOrganizationLogoUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.LogoUrl);
+            var isOrganizationSecondaryLogoUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.SecondaryLogoUrl);
+            var isOrganizationFaviconUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.FaviconUrl);
+
             return new WhiteLabelingSetting()
             {
                 IsEnabled = true,
                 OrganizationId = result.OrganizationSetting.OrganizationId,
                 StoreId = result.StoreSetting.StoreId,
-                LogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting.LogoUrl) ? result.OrganizationSetting.LogoUrl : result.StoreSetting.LogoUrl,
-                SecondaryLogoUrl = !string.IsNullOrEmpty(result.OrganizationSetting.SecondaryLogoUrl) ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
-                FaviconUrl = !string.IsNullOrEmpty(result.OrganizationSetting.FaviconUrl) ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
+                IsOrganizationLogoUploaded = isOrganizationLogoUploaded,
+                LogoUrl = isOrganizationLogoUploaded ? result.OrganizationSetting.LogoUrl : result.StoreSetting.LogoUrl,
+                IsOrganizationSecondaryLogoUploaded = isOrganizationSecondaryLogoUploaded,
+                SecondaryLogoUrl = isOrganizationSecondaryLogoUploaded ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
+                IsOrganizationFaviconUploaded = isOrganizationFaviconUploaded,
+                FaviconUrl = isOrganizationFaviconUploaded ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
                 FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting.FooterLinkListName,
                 ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting.ThemePresetName,
             };
