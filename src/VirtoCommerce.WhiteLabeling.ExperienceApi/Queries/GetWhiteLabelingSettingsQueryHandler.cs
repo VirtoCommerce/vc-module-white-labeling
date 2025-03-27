@@ -38,10 +38,14 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return null;
             }
 
-            var whiteLabelingSetting = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
+            var combinedWhiteLabelingSetting = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
+            var whiteLabelingSetting = combinedWhiteLabelingSetting.Item1;
+            var whiteLabelingFlags = combinedWhiteLabelingSetting.Item2;
+
             var result = new ExpWhiteLabelingSetting
             {
                 LabelingSetting = whiteLabelingSetting,
+                LabelingFlags = whiteLabelingFlags,
             };
 
             // add favicons
@@ -124,36 +128,45 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             return searchResult.Results.ToArray();
         }
 
-        private static WhiteLabelingSetting GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
+        private static (WhiteLabelingSetting, WhiteLabelingFlags) GetCombinedWhiteLabelingSetting(WhiteLabelingSettingResult result)
         {
+            var organizationFlags = LabelingFlags(result.OrganizationSetting);
+
             if (result.StoreSetting == null)
             {
-                return result.OrganizationSetting;
+                return (result.OrganizationSetting, organizationFlags);
             }
 
             if (result.OrganizationSetting == null)
             {
-                return result.StoreSetting;
+                return (result.StoreSetting, organizationFlags);
             }
 
-            var isOrganizationLogoUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.LogoUrl);
-            var isOrganizationSecondaryLogoUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.SecondaryLogoUrl);
-            var isOrganizationFaviconUploaded = !string.IsNullOrEmpty(result.OrganizationSetting.FaviconUrl);
-
-            return new WhiteLabelingSetting()
+            var combinedSettings = new WhiteLabelingSetting()
             {
                 IsEnabled = true,
                 OrganizationId = result.OrganizationSetting.OrganizationId,
                 StoreId = result.StoreSetting.StoreId,
-                IsOrganizationLogoUploaded = isOrganizationLogoUploaded,
-                LogoUrl = isOrganizationLogoUploaded ? result.OrganizationSetting.LogoUrl : result.StoreSetting.LogoUrl,
-                IsOrganizationSecondaryLogoUploaded = isOrganizationSecondaryLogoUploaded,
-                SecondaryLogoUrl = isOrganizationSecondaryLogoUploaded ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
-                IsOrganizationFaviconUploaded = isOrganizationFaviconUploaded,
-                FaviconUrl = isOrganizationFaviconUploaded ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
+                LogoUrl = organizationFlags.HasLogo ? result.OrganizationSetting.LogoUrl : result.StoreSetting.LogoUrl,
+                SecondaryLogoUrl = organizationFlags.HasSecondaryLogo ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
+                FaviconUrl = organizationFlags.HasFavicon ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
                 FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting.FooterLinkListName,
                 ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting.ThemePresetName,
             };
+
+            return (combinedSettings, organizationFlags);
+        }
+
+        private static WhiteLabelingFlags LabelingFlags(WhiteLabelingSetting labelingSetting)
+        {
+            return labelingSetting == null
+                ? null
+                : new WhiteLabelingFlags
+                {
+                    HasLogo = !string.IsNullOrEmpty(labelingSetting.LogoUrl),
+                    HasSecondaryLogo = !string.IsNullOrEmpty(labelingSetting.SecondaryLogoUrl),
+                    HasFavicon = !string.IsNullOrEmpty(labelingSetting.FaviconUrl),
+                };
         }
 
         // copy-pasted from VirtoCommerce.ImageToolsModule.Data.ThumbnailGeneration.FileNameHelper, didn't want to add a dependency just for one method

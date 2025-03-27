@@ -8,6 +8,8 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Models
     {
         public WhiteLabelingSetting LabelingSetting { get; set; }
 
+        public WhiteLabelingFlags LabelingFlags { get; set; }
+
         public IList<MenuItem> FooterLinks { get; set; } = [];
 
         public IList<ExpFavicon> Favicons { get; set; } = [];
