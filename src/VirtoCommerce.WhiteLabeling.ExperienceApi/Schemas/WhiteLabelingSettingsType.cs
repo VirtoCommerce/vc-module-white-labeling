@@ -18,6 +18,15 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
             Field(x => x.LabelingSetting.ThemePresetName, nullable: true).Description("Theme preset name");
             Field<ListGraphType<MenuLinkType>>("footerLinks").Resolve(context => context.Source.FooterLinks);
             Field<ListGraphType<FaviconType>>("favicons").Resolve(context => context.Source.Favicons);
+
+            Field<BooleanGraphType>("IsOrganizationLogoUploaded").Resolve(context => context.Source.LabelingFlags?.HasLogo ?? false)
+                .Description("If true then LogoUrl contains Organization logo");
+
+            Field<BooleanGraphType>("IsOrganizationSecondaryLogoUploaded").Resolve(context => context.Source.LabelingFlags?.HasSecondaryLogo ?? false)
+                .Description("If true then SecondaryLogoUrl contains Organization logo");
+
+            Field<BooleanGraphType>("IsOrganizationFaviconUploaded").Resolve(context => context.Source.LabelingFlags?.HasFavicon ?? false)
+                .Description("If true then FaviconUrl contains Organization favicon");
         }
     }
 }
