@@ -11,6 +11,8 @@ using VirtoCommerce.WhiteLabeling.Core.Models;
 using VirtoCommerce.WhiteLabeling.Core.Services;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
 using VirtoCommerce.Xapi.Core.Infrastructure;
+using VirtoCommerce.Xapi.Core.Models;
+using VirtoCommerce.Xapi.Core.Services;
 using VirtoCommerce.XCMS.Core.Queries;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
@@ -20,14 +22,20 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
         private readonly IWhiteLabelingSettingSearchService _whiteLabelingSettingSearchService;
         private readonly IMemberService _memberService;
         private readonly IMediator _mediator;
+        private readonly IStoreDomainResolverService _storeDomainResolverService;
 
         private static readonly string[] _faviconsSizes = ["16x16", "32x32", "96x96", "128x128", "196x196"];
 
-        public GetWhiteLabelingSettingsQueryHandler(IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService, IMemberService memberService, IMediator mediator)
+        public GetWhiteLabelingSettingsQueryHandler(
+            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService,
+            IMemberService memberService,
+            IMediator mediator,
+            IStoreDomainResolverService storeDomainResolverService)
         {
             _whiteLabelingSettingSearchService = whiteLabelingSettingSearchService;
             _memberService = memberService;
             _mediator = mediator;
+            _storeDomainResolverService = storeDomainResolverService;
         }
 
         public async Task<ExpWhiteLabelingSetting> Handle(GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
@@ -106,6 +114,16 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
         protected virtual async Task<WhiteLabelingSettingResult> GetWhiteLabelingSettingsAsync(GetWhiteLabelingSettingsQuery request)
         {
             var result = new WhiteLabelingSettingResult();
+
+            if (string.IsNullOrEmpty(request.StoreId))
+            {
+                var storeDomainRequest = new StoreDomainRequest
+                {
+                    Domain = request.Domain,
+                };
+                var store = await _storeDomainResolverService.GetStoreAsync(storeDomainRequest);
+                request.StoreId = store?.Id;
+            }
 
             var settings = await GetWhiteLabelingSettingAsync(organizationId: request.OrganizationId, storeId: request.StoreId);
 
