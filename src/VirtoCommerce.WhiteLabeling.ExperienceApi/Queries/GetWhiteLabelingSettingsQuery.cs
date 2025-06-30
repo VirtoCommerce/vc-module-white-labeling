@@ -3,6 +3,7 @@ using GraphQL;
 using GraphQL.Types;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Models;
 using VirtoCommerce.Xapi.Core.BaseQueries;
+using VirtoCommerce.Xapi.Core.Extensions;
 
 namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 {
@@ -14,6 +15,8 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         public string StoreId { get; set; }
 
+        public string Domain { get; set; }
+
         public string CultureName { get; set; }
 
         public override IEnumerable<QueryArgument> GetArguments()
@@ -21,14 +24,16 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             yield return Argument<StringGraphType>(nameof(OrganizationId));
             yield return Argument<StringGraphType>(nameof(UserId));
             yield return Argument<StringGraphType>(nameof(StoreId));
+            yield return Argument<StringGraphType>(nameof(Domain));
             yield return Argument<StringGraphType>(nameof(CultureName));
         }
 
         public override void Map(IResolveFieldContext context)
         {
-            OrganizationId = context.GetArgument<string>(nameof(OrganizationId));
+            OrganizationId = context.GetArgument<string>(nameof(OrganizationId)) ?? context.GetCurrentOrganizationId();
             UserId = context.GetArgument<string>(nameof(UserId));
             StoreId = context.GetArgument<string>(nameof(StoreId));
+            Domain = context.GetArgument<string>(nameof(Domain));
             CultureName = context.GetArgument<string>(nameof(CultureName));
         }
     }
