@@ -17,6 +17,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Schemas
             Field(x => x.LabelingSetting.FaviconUrl, nullable: true).Description("Master favicon URL");
             Field(x => x.LabelingSetting.ThemePresetName, nullable: true).Description("Theme preset name");
             Field<ListGraphType<MenuLinkType>>("footerLinks").Resolve(context => context.Source.FooterLinks);
+            Field<ListGraphType<MenuLinkType>>("mainMenuLinks").Resolve(context => context.Source.MainMenuLinks);
             Field<ListGraphType<FaviconType>>("favicons").Resolve(context => context.Source.Favicons);
 
             Field<BooleanGraphType>("IsOrganizationLogoUploaded").Resolve(context => context.Source.LabelingFlags?.HasLogo ?? false)

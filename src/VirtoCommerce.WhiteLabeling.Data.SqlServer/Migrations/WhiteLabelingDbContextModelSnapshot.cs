@@ -51,6 +51,10 @@ namespace VirtoCommerce.WhiteLabeling.Data.SqlServer.Migrations
                         .HasMaxLength(1024)
                         .HasColumnType("nvarchar(1024)");
 
+                    b.Property<string>("MainMenuLinkListName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");

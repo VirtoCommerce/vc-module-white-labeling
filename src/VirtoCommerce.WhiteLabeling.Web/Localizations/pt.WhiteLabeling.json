@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Nome da predefinição de tema",
           "link-list": "Lista de links",
-          "footer-personalization": "Personalização do rodapé"
+          "main-menu-link-list": "Lista de links do menu principal",
+          "footer-link-list": "Lista de links do rodapé"
         },
         "placeholders": {
           "preset-name": "Selecione o nome da predefinição...",
-          "link-list": "Selecione a lista de links..."
+          "link-list": "Selecione a lista de links...",
+          "main-menu-link-list": "Digite o nome da lista de links...",
+          "footer-link-list": "Digite o nome da lista de links do rodapé..."
         }
       },
       "white-labeling-logo": {

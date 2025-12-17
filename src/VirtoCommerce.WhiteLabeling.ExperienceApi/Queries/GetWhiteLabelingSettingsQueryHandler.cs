@@ -79,16 +79,34 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return result;
             }
 
-            // attach link list
+            // attach footer link list
+            var footerLinkListName = !string.IsNullOrEmpty(whiteLabelingSetting.FooterLinkListName)
+                ? whiteLabelingSetting.FooterLinkListName
+                : $"footer-{organization.Name}";
+
             var linkListQuery = new GetMenuQuery()
             {
                 StoreId = request.StoreId,
                 CultureName = request.CultureName,
-                Name = $"footer-{organization.Name}",
+                Name = footerLinkListName,
             };
 
             var linkList = await _mediator.Send(linkListQuery, cancellationToken);
             result.FooterLinks = linkList?.MenuList?.Items;
+
+            // attach main menu link list
+            if (!string.IsNullOrEmpty(whiteLabelingSetting.MainMenuLinkListName))
+            {
+                var mainMenuQuery = new GetMenuQuery()
+                {
+                    StoreId = request.StoreId,
+                    CultureName = request.CultureName,
+                    Name = whiteLabelingSetting.MainMenuLinkListName,
+                };
+
+                var mainMenuList = await _mediator.Send(mainMenuQuery, cancellationToken);
+                result.MainMenuLinks = mainMenuList?.MenuList?.Items;
+            }
 
             return result;
         }
@@ -169,6 +187,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 SecondaryLogoUrl = organizationFlags.HasSecondaryLogo ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
                 FaviconUrl = organizationFlags.HasFavicon ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
                 FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting.FooterLinkListName,
+                MainMenuLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.MainMenuLinkListName) ? result.OrganizationSetting.MainMenuLinkListName : result.StoreSetting.MainMenuLinkListName,
                 ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting.ThemePresetName,
             };
 

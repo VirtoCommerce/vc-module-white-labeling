@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Nom du préréglage de thème",
           "link-list": "Liste de liens",
-          "footer-personalization": "Personnalisation du pied de page"
+          "main-menu-link-list": "Liste de liens du menu principal",
+          "footer-link-list": "Liste de liens du pied de page"
         },
         "placeholders": {
           "preset-name": "Sélectionner le nom du préréglage...",
-          "link-list": "Sélectionner la liste de liens..."
+          "link-list": "Sélectionner la liste de liens...",
+          "main-menu-link-list": "Entrer le nom de la liste de liens...",
+          "footer-link-list": "Entrer le nom de la liste de liens du pied de page..."
         }
       },
       "white-labeling-logo": {

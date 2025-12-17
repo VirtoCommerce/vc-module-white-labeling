@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Nazwa presetu motywu",
           "link-list": "Lista linków",
-          "footer-personalization": "Personalizacja stopki"
+          "main-menu-link-list": "Lista linków menu głównego",
+          "footer-link-list": "Lista linków stopki"
         },
         "placeholders": {
           "preset-name": "Wybierz nazwę presetu...",
-          "link-list": "Wybierz listę linków..."
+          "link-list": "Wybierz listę linków...",
+          "main-menu-link-list": "Wprowadź nazwę listy linków...",
+          "footer-link-list": "Wprowadź nazwę listy linków stopki..."
         }
       },
       "white-labeling-logo": {

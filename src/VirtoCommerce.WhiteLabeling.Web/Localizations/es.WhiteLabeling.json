@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Nombre del preajuste de tema",
           "link-list": "Lista de enlaces",
-          "footer-personalization": "Personalización del pie de página"
+          "main-menu-link-list": "Lista de enlaces del menú principal",
+          "footer-link-list": "Lista de enlaces del pie de página"
         },
         "placeholders": {
           "preset-name": "Seleccionar nombre del preajuste...",
-          "link-list": "Seleccionar lista de enlaces..."
+          "link-list": "Seleccionar lista de enlaces...",
+          "main-menu-link-list": "Ingrese nombre de la lista de enlaces...",
+          "footer-link-list": "Ingrese nombre de la lista de enlaces del pie de página..."
         }
       },
       "white-labeling-logo": {
