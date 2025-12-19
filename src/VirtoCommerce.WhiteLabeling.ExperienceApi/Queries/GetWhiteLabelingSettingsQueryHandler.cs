@@ -46,9 +46,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return null;
             }
 
-            var combinedWhiteLabelingSetting = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
-            var whiteLabelingSetting = combinedWhiteLabelingSetting.Item1;
-            var whiteLabelingFlags = combinedWhiteLabelingSetting.Item2;
+            var (whiteLabelingSetting, whiteLabelingFlags) = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
 
             var result = new ExpWhiteLabelingSetting
             {
@@ -56,6 +54,15 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 LabelingFlags = whiteLabelingFlags,
             };
 
+            await AddFaviconsAsync(result, whiteLabelingSetting);
+            await AddMainMenuLinksAsync(result, whiteLabelingSetting, request, cancellationToken);
+            await AddFooterLinksAsync(result, whiteLabelingSetting, request, cancellationToken);
+
+            return result;
+        }
+
+        protected virtual Task AddFaviconsAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting)
+        {
             // add favicons
             if (!string.IsNullOrEmpty(whiteLabelingSetting.FaviconUrl))
             {
@@ -72,28 +79,11 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 }
             }
 
-            // search organization
-            var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
-            if (organization == null)
-            {
-                return result;
-            }
+            return Task.CompletedTask;
+        }
 
-            // attach footer link list
-            var footerLinkListName = !string.IsNullOrEmpty(whiteLabelingSetting.FooterLinkListName)
-                ? whiteLabelingSetting.FooterLinkListName
-                : $"footer-{organization.Name}";
-
-            var linkListQuery = new GetMenuQuery()
-            {
-                StoreId = request.StoreId,
-                CultureName = request.CultureName,
-                Name = footerLinkListName,
-            };
-
-            var linkList = await _mediator.Send(linkListQuery, cancellationToken);
-            result.FooterLinks = linkList?.MenuList?.Items;
-
+        protected virtual async Task AddMainMenuLinksAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting, GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
+        {
             // attach main menu link list
             if (!string.IsNullOrEmpty(whiteLabelingSetting.MainMenuLinkListName))
             {
@@ -107,8 +97,31 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 var mainMenuList = await _mediator.Send(mainMenuQuery, cancellationToken);
                 result.MainMenuLinks = mainMenuList?.MenuList?.Items;
             }
+        }
 
-            return result;
+        protected virtual async Task AddFooterLinksAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting, GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
+        {
+            // search organization
+            var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
+            if (organization == null)
+            {
+                return;
+            }
+
+            // attach footer link list
+            var footerLinkListName = !string.IsNullOrEmpty(whiteLabelingSetting.FooterLinkListName)
+                ? whiteLabelingSetting.FooterLinkListName
+                : $"footer-{organization.Name}";
+
+            var footerLinkListQuery = new GetMenuQuery()
+            {
+                StoreId = request.StoreId,
+                CultureName = request.CultureName,
+                Name = footerLinkListName,
+            };
+
+            var linkList = await _mediator.Send(footerLinkListQuery, cancellationToken);
+            result.FooterLinks = linkList?.MenuList?.Items;
         }
 
         [Obsolete("Use GetWhiteLabelingSettingsAsync", DiagnosticId = "VC0010", UrlFormat = "https://docs.virtocommerce.org/platform/user-guide/versions/virto3-products-versions/")]
