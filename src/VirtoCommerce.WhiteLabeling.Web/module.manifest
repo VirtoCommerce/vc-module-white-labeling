@@ -4,7 +4,7 @@
   <version>3.909.0</version>
   <version-tag></version-tag>
 
-  <platformVersion>3.861.0</platformVersion>
+  <platformVersion>3.917.0</platformVersion>
   <dependencies>
     <dependency id="VirtoCommerce.FileExperienceApi" version="3.903.0" />
     <dependency id="VirtoCommerce.Xapi" version="3.930.0-alpha.139-vcst-4467" />
