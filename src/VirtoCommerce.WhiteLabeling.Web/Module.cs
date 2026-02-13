@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VirtoCommerce.FileExperienceApi.Core.Authorization;
+using VirtoCommerce.Platform.Core.Extensions;
 using VirtoCommerce.Platform.Core.Modularity;
 using VirtoCommerce.Platform.Core.Security;
 using VirtoCommerce.Platform.Core.Settings;
@@ -20,20 +21,30 @@ using VirtoCommerce.WhiteLabeling.Data.Services;
 using VirtoCommerce.WhiteLabeling.Data.SqlServer;
 using VirtoCommerce.WhiteLabeling.ExperienceApi;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
+using VirtoCommerce.WhiteLabeling.ExperienceApi.TypeHooks;
 using VirtoCommerce.Xapi.Core.Extensions;
 
 namespace VirtoCommerce.WhiteLabeling.Web;
 
-public class Module : IModule, IHasConfiguration
+public class Module : IModule, IHasConfiguration, IHasModuleCatalog
 {
     public ManifestModuleInfo ModuleInfo { get; set; }
     public IConfiguration Configuration { get; set; }
+    public IModuleCatalog ModuleCatalog { get; set; }
+
+    // optional modules
+    private const string XFrontendModuleId = "VirtoCommerce.XFrontend";
 
     public void Initialize(IServiceCollection serviceCollection)
     {
         _ = new GraphQLBuilder(serviceCollection, builder =>
         {
             builder.AddSchema(serviceCollection, typeof(AssemblyMarker));
+
+            if (ModuleCatalog.IsModuleInstalled(XFrontendModuleId))
+            {
+                builder.AddGraphTypeHook<PageContextHook>();
+            }
         });
 
         serviceCollection.AddDbContext<WhiteLabelingDbContext>(options =>
