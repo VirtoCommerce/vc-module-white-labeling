@@ -69,12 +69,12 @@
   },
   "settings": {
     "WhiteLabeling.WhiteLabelingEnabled": {
-      "title": "White labeling",
-      "description": "Enable/ disable white labeling for the store"
+      "title": "White labeling enabled",
+      "description": "Enable/disable white labeling for this store"
     },
     "WhiteLabeling.ThemePresetNames": {
       "title": "Theme preset name",
-      "description": "White labeling theme preset name"
+      "description": "Specify White labeling theme preset name"
     }
   }
 }

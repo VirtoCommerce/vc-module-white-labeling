@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Vit märkning",
+        "labels": {
+          "enabled": "Aktiverad",
+          "name": "Namn",
+          "description": "Beskrivning",
+          "logo": "Logotyp",
+          "secondary-logo": "Sekundär logotyp",
+          "favicon": "Favicon",
+          "preset-name": "Temapreset-namn",
+          "link-list": "Länklisa",
+          "footer-personalization": "Anpassning av sidfot"
+        },
+        "placeholders": {
+          "preset-name": "Välj preset-namn...",
+          "link-list": "Välj länklisa..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logotyp",
+        "labels": {
+          "legend": "Vit märkning-logotyp",
+          "logo": "Välj logotyp",
+          "secondary-logo": "Välj sekundär logotyp",
+          "preview": "Förhandsvisning",
+          "hint": "Välj en PNG-, GIF- eller SVG-bild"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Vit märkning-favicon",
+          "favicon": "Välj favicon",
+          "preview": "Förhandsvisning",
+          "hint": "Välj en PNG-, JPG- eller WEBP-bild"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Vit märkning"
+      },
+      "white-labeling-logo": {
+        "title": "Logotyp"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    },
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "Filtypesfel",
+        "message": "Endast PNG-, JPG- eller WEBP-filer är tillåtna"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "Filtypesfel",
+        "message": "Endast PNG-, GIF- eller SVG-filer är tillåtna"
+      }
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Skapa vit märkningsrelaterad data",
+    "WhiteLabeling:read": "Visa vit märkningsrelaterad data",
+    "WhiteLabeling:update": "Uppdatera vit märkningsrelaterad data",
+    "WhiteLabeling:delete": "Ta bort vit märkningsrelaterad data"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Vit märkning aktiverad",
+      "description": "Aktivera/inaktivera vit märkning för denna butik"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Temapreset-namn",
+      "description": "Ange namn för vit märknings-temapreset"
+    }
+  }
+}
