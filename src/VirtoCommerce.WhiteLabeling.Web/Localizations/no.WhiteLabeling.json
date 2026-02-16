@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Hvitmerking",
+        "labels": {
+          "enabled": "Aktivert",
+          "name": "Navn",
+          "description": "Beskrivelse",
+          "logo": "Logo",
+          "secondary-logo": "Sekundær logo",
+          "favicon": "Favicon",
+          "preset-name": "Navn på temapreset",
+          "link-list": "Lenkeliste",
+          "footer-personalization": "Personalisering av bunntekst"
+        },
+        "placeholders": {
+          "preset-name": "Velg preset-navn...",
+          "link-list": "Velg lenkeliste..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "Hvitmerking-logo",
+          "logo": "Velg logo",
+          "secondary-logo": "Velg sekundær logo",
+          "preview": "Forhåndsvisning",
+          "hint": "Velg et PNG-, GIF- eller SVG-bilde"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Hvitmerking-favicon",
+          "favicon": "Velg favicon",
+          "preview": "Forhåndsvisning",
+          "hint": "Velg et PNG-, JPG- eller WEBP-bilde"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Hvitmerking"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    },
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "Filtypefeil",
+        "message": "Kun PNG-, JPG- eller WEBP-filer er tillatt"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "Filtypefeil",
+        "message": "Kun PNG-, GIF- eller SVG-filer er tillatt"
+      }
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Opprett hvitmerkingsrelaterte data",
+    "WhiteLabeling:read": "Vis hvitmerkingsrelaterte data",
+    "WhiteLabeling:update": "Oppdater hvitmerkingsrelaterte data",
+    "WhiteLabeling:delete": "Slett hvitmerkingsrelaterte data"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Hvitmerking aktivert",
+      "description": "Aktiver/deaktiver hvitmerking for denne butikken"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Navn på temapreset",
+      "description": "Angi navn på hvitmerking-temapreset"
+    }
+  }
+}

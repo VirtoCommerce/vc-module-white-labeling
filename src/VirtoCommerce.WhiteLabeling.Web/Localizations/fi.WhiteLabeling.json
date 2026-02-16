@@ -1,0 +1,80 @@
+{
+  "white-labeling": {
+    "blades": {
+      "white-labeling-detail": {
+        "title": "Oma brändäys",
+        "labels": {
+          "enabled": "Käytössä",
+          "name": "Nimi",
+          "description": "Kuvaus",
+          "logo": "Logo",
+          "secondary-logo": "Toissijainen logo",
+          "favicon": "Favicon",
+          "preset-name": "Teeman esiasetuksen nimi",
+          "link-list": "Linkkilista",
+          "footer-personalization": "Alatunnisteen personointi"
+        },
+        "placeholders": {
+          "preset-name": "Valitse esiasetuksen nimi...",
+          "link-list": "Valitse linkkilista..."
+        }
+      },
+      "white-labeling-logo": {
+        "title": "Logo",
+        "labels": {
+          "legend": "Oma brändäys-logo",
+          "logo": "Valitse logo",
+          "secondary-logo": "Valitse toissijainen logo",
+          "preview": "Esikatselu",
+          "hint": "Valitse PNG-, GIF- tai SVG-kuva"
+        }
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon",
+        "labels": {
+          "legend": "Oma brändäys-favicon",
+          "favicon": "Valitse favicon",
+          "preview": "Esikatselu",
+          "hint": "Valitse PNG-, JPG- tai WEBP-kuva"
+        }
+      }
+    },
+    "widgets": {
+      "white-labeling": {
+        "title": "Oma brändäys"
+      },
+      "white-labeling-logo": {
+        "title": "Logo"
+      },
+      "white-labeling-favicon": {
+        "title": "Favicon"
+      }
+    },
+    "dialogs": {
+      "white-labeling-favicon-upload-filter": {
+        "title": "Tiedostotyypin virhe",
+        "message": "Vain PNG-, JPG- tai WEBP-tiedostot ovat sallittuja"
+      },
+      "white-labeling-icon-upload-filter": {
+        "title": "Tiedostotyypin virhe",
+        "message": "Vain PNG-, GIF- tai SVG-tiedostot ovat sallittuja"
+      }
+    }
+  },
+  "permissions": {
+    "WhiteLabeling:create": "Luo omaan brändäykseen liittyviä tietoja",
+    "WhiteLabeling:read": "Näytä omaan brändäykseen liittyviä tietoja",
+    "WhiteLabeling:update": "Päivitä omaan brändäykseen liittyviä tietoja",
+    "WhiteLabeling:delete": "Poista omaan brändäykseen liittyviä tietoja"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "Oma brändäys käytössä",
+      "description": "Ota käyttöön tai poista käytöstä oma brändäys tässä kaupassa"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "Teeman esiasetuksen nimi",
+      "description": "Määritä oman brändäyksen teeman esiasetuksen nimi"
+    }
+  }
+}
