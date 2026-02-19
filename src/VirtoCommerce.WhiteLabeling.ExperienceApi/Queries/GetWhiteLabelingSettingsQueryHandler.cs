@@ -95,7 +95,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 };
 
                 var mainMenuList = await _mediator.Send(mainMenuQuery, cancellationToken);
-                result.MainMenuLinks = mainMenuList?.MenuList?.Items;
+                result.MainMenuLinks = mainMenuList?.MenuList?.Items ?? [];
             }
         }
 
