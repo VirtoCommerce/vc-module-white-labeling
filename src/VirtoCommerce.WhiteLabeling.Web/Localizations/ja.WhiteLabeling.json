@@ -12,11 +12,14 @@
           "favicon": "ファビコン",
           "preset-name": "テーマプリセット名",
           "link-list": "リンクリスト",
-          "footer-personalization": "フッターのパーソナライゼーション"
+          "main-menu-link-list": "メインメニューリンクリスト",
+          "footer-link-list": "フッターリンクリスト"
         },
         "placeholders": {
           "preset-name": "プリセット名を選択...",
-          "link-list": "リンクリストを選択..."
+          "link-list": "リンクリストを選択...",
+          "main-menu-link-list": "リンクリスト名を入力...",
+          "footer-link-list": "フッターリンクリスト名を入力..."
         }
       },
       "white-labeling-logo": {

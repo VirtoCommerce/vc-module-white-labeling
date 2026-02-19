@@ -12,6 +12,8 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Models
 
         public IList<MenuItem> FooterLinks { get; set; } = [];
 
+        public IList<MenuItem> MainMenuLinks { get; set; } = [];
+
         public IList<ExpFavicon> Favicons { get; set; } = [];
     }
 }

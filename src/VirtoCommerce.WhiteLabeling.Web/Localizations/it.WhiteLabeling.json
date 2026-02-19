@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Nome preset tema",
           "link-list": "Lista dei link",
-          "footer-personalization": "Personalizzazione del piè di pagina"
+          "main-menu-link-list": "Lista dei link del menu principale",
+          "footer-link-list": "Lista dei link del piè di pagina"
         },
         "placeholders": {
           "preset-name": "Seleziona il nome del preset...",
-          "link-list": "Seleziona la lista dei link..."
+          "link-list": "Seleziona la lista dei link...",
+          "main-menu-link-list": "Inserisci il nome della lista dei link...",
+          "footer-link-list": "Inserisci il nome della lista dei link del piè di pagina..."
         }
       },
       "white-labeling-logo": {

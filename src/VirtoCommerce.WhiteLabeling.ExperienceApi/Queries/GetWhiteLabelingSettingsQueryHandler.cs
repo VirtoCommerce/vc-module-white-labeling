@@ -46,9 +46,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 return null;
             }
 
-            var combinedWhiteLabelingSetting = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
-            var whiteLabelingSetting = combinedWhiteLabelingSetting.Item1;
-            var whiteLabelingFlags = combinedWhiteLabelingSetting.Item2;
+            var (whiteLabelingSetting, whiteLabelingFlags) = GetCombinedWhiteLabelingSetting(whiteLabelingSettings);
 
             var result = new ExpWhiteLabelingSetting
             {
@@ -56,6 +54,15 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 LabelingFlags = whiteLabelingFlags,
             };
 
+            await AddFaviconsAsync(result, whiteLabelingSetting);
+            await AddMainMenuLinksAsync(result, whiteLabelingSetting, request, cancellationToken);
+            await AddFooterLinksAsync(result, whiteLabelingSetting, request, cancellationToken);
+
+            return result;
+        }
+
+        protected virtual Task AddFaviconsAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting)
+        {
             // add favicons
             if (!string.IsNullOrEmpty(whiteLabelingSetting.FaviconUrl))
             {
@@ -72,25 +79,59 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 }
             }
 
-            // search organization
-            var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
-            if (organization == null)
+            return Task.CompletedTask;
+        }
+
+        protected virtual async Task AddMainMenuLinksAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting, GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
+        {
+            // attach main menu link list
+            if (!string.IsNullOrEmpty(whiteLabelingSetting.MainMenuLinkListName))
             {
-                return result;
+                var mainMenuQuery = new GetMenuQuery()
+                {
+                    StoreId = request.StoreId,
+                    CultureName = request.CultureName,
+                    Name = whiteLabelingSetting.MainMenuLinkListName,
+                };
+
+                var mainMenuList = await _mediator.Send(mainMenuQuery, cancellationToken);
+                result.MainMenuLinks = mainMenuList?.MenuList?.Items ?? [];
+            }
+        }
+
+        protected virtual async Task AddFooterLinksAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting, GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
+        {
+            // attach footer link list
+            string footerLinkListName;
+            if (!whiteLabelingSetting.FooterLinkListName.IsNullOrEmpty())
+            {
+                footerLinkListName = whiteLabelingSetting.FooterLinkListName;
+            }
+            else if (!whiteLabelingSetting.OrganizationId.IsNullOrEmpty())
+            {
+                // try to resolve footer the old way via organization name (backwards compatibility) 
+                var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
+                if (organization == null)
+                {
+                    return;
+                }
+
+                footerLinkListName = $"footer-{organization.Name}";
+            }
+            else
+            {
+                return;
             }
 
-            // attach link list
-            var linkListQuery = new GetMenuQuery()
+            var footerLinkListQuery = new GetMenuQuery()
             {
                 StoreId = request.StoreId,
                 CultureName = request.CultureName,
-                Name = $"footer-{organization.Name}",
+                Name = footerLinkListName,
             };
 
-            var linkList = await _mediator.Send(linkListQuery, cancellationToken);
-            result.FooterLinks = linkList?.MenuList?.Items;
-
-            return result;
+            var linkList = await _mediator.Send(footerLinkListQuery, cancellationToken);
+            result.FooterLinks = linkList?.MenuList?.Items ?? [];
         }
 
         [Obsolete("Use GetWhiteLabelingSettingsAsync", DiagnosticId = "VC0010", UrlFormat = "https://docs.virtocommerce.org/platform/user-guide/versions/virto3-products-versions/")]
@@ -169,6 +210,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
                 SecondaryLogoUrl = organizationFlags.HasSecondaryLogo ? result.OrganizationSetting.SecondaryLogoUrl : result.StoreSetting.SecondaryLogoUrl,
                 FaviconUrl = organizationFlags.HasFavicon ? result.OrganizationSetting.FaviconUrl : result.StoreSetting.FaviconUrl,
                 FooterLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.FooterLinkListName) ? result.OrganizationSetting.FooterLinkListName : result.StoreSetting.FooterLinkListName,
+                MainMenuLinkListName = !string.IsNullOrEmpty(result.OrganizationSetting.MainMenuLinkListName) ? result.OrganizationSetting.MainMenuLinkListName : result.StoreSetting.MainMenuLinkListName,
                 ThemePresetName = !string.IsNullOrEmpty(result.OrganizationSetting.ThemePresetName) ? result.OrganizationSetting.ThemePresetName : result.StoreSetting.ThemePresetName,
             };
 

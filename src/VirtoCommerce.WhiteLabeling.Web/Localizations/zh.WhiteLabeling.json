@@ -12,11 +12,14 @@
           "favicon": "网站图标",
           "preset-name": "主题预设名称",
           "link-list": "链接列表",
-          "footer-personalization": "页脚个性化"
+          "main-menu-link-list": "主菜单链接列表",
+          "footer-link-list": "页脚链接列表"
         },
         "placeholders": {
           "preset-name": "选择预设名称...",
-          "link-list": "选择链接列表..."
+          "link-list": "选择链接列表...",
+          "main-menu-link-list": "输入链接列表名称...",
+          "footer-link-list": "输入页脚链接列表名称..."
         }
       },
       "white-labeling-logo": {

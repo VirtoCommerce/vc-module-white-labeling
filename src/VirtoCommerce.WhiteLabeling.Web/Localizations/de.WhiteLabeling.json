@@ -12,11 +12,14 @@
           "favicon": "Favicon",
           "preset-name": "Name der Voreinstellung",
           "link-list": "Linkliste",
-          "footer-personalization": "Fußzeilen-Personalisierung"
+          "main-menu-link-list": "Hauptmenü-Linkliste",
+          "footer-link-list": "Fußzeilen-Linkliste"
         },
         "placeholders": {
           "preset-name": "Voreinstellungsnamen auswählen...",
-          "link-list": "Linkliste auswählen..."
+          "link-list": "Linkliste auswählen...",
+          "main-menu-link-list": "Linklistennamen eingeben...",
+          "footer-link-list": "Fußzeilen-Linklistennamen eingeben..."
         }
       },
       "white-labeling-logo": {

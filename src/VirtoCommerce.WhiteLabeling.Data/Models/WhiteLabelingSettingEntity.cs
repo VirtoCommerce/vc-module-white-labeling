@@ -28,6 +28,9 @@ namespace VirtoCommerce.WhiteLabeling.Data.Models
         public string FooterLinkListName { get; set; }
 
         [StringLength(256)]
+        public string MainMenuLinkListName { get; set; }
+
+        [StringLength(256)]
         public string ThemePresetName { get; set; }
 
         [StringLength(128)]
@@ -48,6 +51,7 @@ namespace VirtoCommerce.WhiteLabeling.Data.Models
             model.SecondaryLogoUrl = SecondaryLogoUrl;
             model.FaviconUrl = FaviconUrl;
             model.FooterLinkListName = FooterLinkListName;
+            model.MainMenuLinkListName = MainMenuLinkListName;
             model.ThemePresetName = ThemePresetName;
             model.StoreId = StoreId;
 
@@ -71,6 +75,7 @@ namespace VirtoCommerce.WhiteLabeling.Data.Models
             SecondaryLogoUrl = model.SecondaryLogoUrl;
             FaviconUrl = model.FaviconUrl;
             FooterLinkListName = model.FooterLinkListName;
+            MainMenuLinkListName = model.MainMenuLinkListName;
             ThemePresetName = model.ThemePresetName;
             StoreId = model.StoreId;
 
@@ -86,6 +91,7 @@ namespace VirtoCommerce.WhiteLabeling.Data.Models
             target.SecondaryLogoUrl = SecondaryLogoUrl;
             target.FaviconUrl = FaviconUrl;
             target.FooterLinkListName = FooterLinkListName;
+            target.MainMenuLinkListName = MainMenuLinkListName;
             target.ThemePresetName = ThemePresetName;
             target.StoreId = StoreId;
         }
