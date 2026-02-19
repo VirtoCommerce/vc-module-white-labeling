@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,15 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
     {
         private readonly IWhiteLabelingSettingService _whiteLabelingSettingService;
         private readonly IWhiteLabelingSettingSearchService _whiteLabelingSettingSearchService;
+        private readonly AbstractValidator<WhiteLabelingSetting> _whiteLabelingSettingValidator;
 
         public WhiteLabelingController(IWhiteLabelingSettingService whiteLabelingSettingService,
-            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService)
+            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService,
+            AbstractValidator<WhiteLabelingSetting> whiteLabelingSettingValidator)
         {
             _whiteLabelingSettingService = whiteLabelingSettingService;
             _whiteLabelingSettingSearchService = whiteLabelingSettingSearchService;
+            _whiteLabelingSettingValidator = whiteLabelingSettingValidator;
         }
 
         [HttpGet("{id}")]

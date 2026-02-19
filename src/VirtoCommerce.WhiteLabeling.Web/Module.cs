@@ -1,4 +1,5 @@
 using System;
+using FluentValidation;
 using GraphQL;
 using GraphQL.MicrosoftDI;
 using Microsoft.AspNetCore.Authorization;
@@ -15,12 +16,14 @@ using VirtoCommerce.Platform.Data.PostgreSql.Extensions;
 using VirtoCommerce.Platform.Data.SqlServer.Extensions;
 using VirtoCommerce.StoreModule.Core.Model;
 using VirtoCommerce.WhiteLabeling.Core;
+using VirtoCommerce.WhiteLabeling.Core.Models;
 using VirtoCommerce.WhiteLabeling.Core.Services;
 using VirtoCommerce.WhiteLabeling.Data.MySql;
 using VirtoCommerce.WhiteLabeling.Data.PostgreSql;
 using VirtoCommerce.WhiteLabeling.Data.Repositories;
 using VirtoCommerce.WhiteLabeling.Data.Services;
 using VirtoCommerce.WhiteLabeling.Data.SqlServer;
+using VirtoCommerce.WhiteLabeling.Data.Validation;
 using VirtoCommerce.WhiteLabeling.ExperienceApi;
 using VirtoCommerce.WhiteLabeling.ExperienceApi.Authorization;
 using VirtoCommerce.Xapi.Core.Extensions;
@@ -66,6 +69,8 @@ public class Module : IModule, IHasConfiguration
 
         serviceCollection.AddSingleton<IAuthorizationHandler, OrganizationLogoAuthorizationHandler>();
         serviceCollection.AddSingleton<IFileAuthorizationRequirementFactory, OrganizationLogoAuthorizationRequirementFactory>();
+
+        serviceCollection.AddTransient<AbstractValidator<WhiteLabelingSetting>, WhiteLabelingSettingValidator>();
     }
 
     public void PostInitialize(IApplicationBuilder appBuilder)
