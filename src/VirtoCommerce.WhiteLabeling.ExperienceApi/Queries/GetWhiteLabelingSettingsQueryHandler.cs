@@ -101,17 +101,27 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
 
         protected virtual async Task AddFooterLinksAsync(ExpWhiteLabelingSetting result, WhiteLabelingSetting whiteLabelingSetting, GetWhiteLabelingSettingsQuery request, CancellationToken cancellationToken)
         {
-            // search organization
-            var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
-            if (organization == null)
+            // attach footer link list
+            string footerLinkListName;
+            if (!whiteLabelingSetting.FooterLinkListName.IsNullOrEmpty())
+            {
+                footerLinkListName = whiteLabelingSetting.FooterLinkListName;
+            }
+            else if (!whiteLabelingSetting.OrganizationId.IsNullOrEmpty())
+            {
+                // try to resolve footer the old way via organization name (backwards compatibility) 
+                var organization = await _memberService.GetByIdAsync(whiteLabelingSetting.OrganizationId, responseGroup: MemberResponseGroup.Default.ToString());
+                if (organization == null)
+                {
+                    return;
+                }
+
+                footerLinkListName = $"footer-{organization.Name}";
+            }
+            else
             {
                 return;
             }
-
-            // attach footer link list
-            var footerLinkListName = !string.IsNullOrEmpty(whiteLabelingSetting.FooterLinkListName)
-                ? whiteLabelingSetting.FooterLinkListName
-                : $"footer-{organization.Name}";
 
             var footerLinkListQuery = new GetMenuQuery()
             {
@@ -121,7 +131,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             };
 
             var linkList = await _mediator.Send(footerLinkListQuery, cancellationToken);
-            result.FooterLinks = linkList?.MenuList?.Items;
+            result.FooterLinks = linkList?.MenuList?.Items ?? [];
         }
 
         [Obsolete("Use GetWhiteLabelingSettingsAsync", DiagnosticId = "VC0010", UrlFormat = "https://docs.virtocommerce.org/platform/user-guide/versions/virto3-products-versions/")]
