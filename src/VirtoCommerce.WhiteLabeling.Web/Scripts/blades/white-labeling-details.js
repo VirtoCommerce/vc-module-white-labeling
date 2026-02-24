@@ -1,6 +1,6 @@
 angular.module('WhiteLabeling')
-    .controller('WhiteLabeling.whiteLabelingDetailsController', ['$scope', 'WhiteLabeling.webApi', 'platformWebApp.bladeNavigationService',
-        function ($scope, api, bladeNavigationService) {
+    .controller('WhiteLabeling.whiteLabelingDetailsController', ['$scope', '$translate', 'WhiteLabeling.webApi', 'platformWebApp.bladeNavigationService',
+        function ($scope, $translate, api, bladeNavigationService) {
             const blade = $scope.blade;
             blade.title = 'white-labeling.blades.white-labeling-detail.title';
             blade.updatePermission = 'WhiteLabeling:update';
@@ -63,14 +63,35 @@ angular.module('WhiteLabeling')
                     api.createSetting(blade.currentEntity,
                         function () {
                             $scope.bladeClose();
-                        });
+                        }, handleErrors);
                 } else {
                     api.updateSetting(blade.currentEntity,
                         function () {
                             blade.refresh();
-                        });
+                        }, handleErrors);
                 }
             };
+
+            function handleErrors(error) {
+                blade.isLoading = false;
+
+                if (error.data && error.data.length) {
+                    const errorData = {
+                        status: $translate.instant('white-labeling.blades.white-labeling-detail.title'),
+                        statusText: $translate.instant('white-labeling.blades.white-labeling-detail.labels.error'),
+                        data: {
+                            errors: []
+                        }
+                    };
+
+                    if (Array.isArray(error.data)) {
+                        errorData.data.errors = error.data
+                            .map(error => $translate.instant('white-labeling.blades.white-labeling-detail.errors.' + error.errorMessage));
+                    }
+
+                    bladeNavigationService.setError(errorData, blade);
+                }
+            }
 
             $scope.setForm = function (form) {
                 $scope.formScope = form;

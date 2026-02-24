@@ -17,12 +17,12 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
            {
                if (!request.StoreId.IsNullOrEmpty() && !request.OrganizationId.IsNullOrEmpty())
                {
-                   context.AddFailure(new ValidationFailure("storeId", "both-storeId-and-organizationId-set"));
+                   context.AddFailure(new ValidationFailure(nameof(WhiteLabelingSetting.StoreId), "store-and-organization-set"));
                }
 
                if (request.StoreId.IsNullOrEmpty() && request.OrganizationId.IsNullOrEmpty())
                {
-                   context.AddFailure(new ValidationFailure("storeId", "storeId-or-organizationId-must-be-set"));
+                   context.AddFailure(new ValidationFailure(nameof(WhiteLabelingSetting.StoreId), "store-or-organization-must-be-set"));
                }
            });
 
@@ -42,7 +42,7 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
                if (searchResult.TotalCount > 0)
                {
                    var propertyName = GetPropertyName(request);
-                   context.AddFailure(new ValidationFailure(propertyName, "duplicate-storeId-or-organizationId"));
+                   context.AddFailure(new ValidationFailure(propertyName, "duplicate-store-or-organization"));
                }
            })
            .When(x => x.Id.IsNullOrEmpty());
@@ -58,7 +58,7 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
                  result.OrganizationId != request.OrganizationId))
                {
                    var propertyName = GetPropertyName(request);
-                   context.AddFailure(new ValidationFailure(propertyName, "storeId-or-organizationId-changed"));
+                   context.AddFailure(new ValidationFailure(propertyName, "store-or-organization-changed"));
                }
            })
            .When(x => !x.Id.IsNullOrEmpty());

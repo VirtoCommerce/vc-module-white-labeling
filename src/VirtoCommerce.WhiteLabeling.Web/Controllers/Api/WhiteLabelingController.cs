@@ -69,6 +69,12 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Create)]
         public async Task<ActionResult<WhiteLabelingSetting>> Create([FromBody] WhiteLabelingSetting model)
         {
+            var validationResult = await _whiteLabelingSettingValidator.ValidateAsync(model);
+            if (!validationResult.Errors.IsNullOrEmpty())
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             model.Id = null;
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return Ok(model);
@@ -80,6 +86,12 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Update([FromBody] WhiteLabelingSetting model)
         {
+            var validationResult = await _whiteLabelingSettingValidator.ValidateAsync(model);
+            if (!validationResult.Errors.IsNullOrEmpty())
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return NoContent();
         }

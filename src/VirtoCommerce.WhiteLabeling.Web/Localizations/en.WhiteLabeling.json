@@ -13,13 +13,20 @@
           "preset-name": "Theme preset name",
           "link-list": "Link list",
           "main-menu-link-list": "Main menu link list",
-          "footer-link-list": "Footer link list"
+          "footer-link-list": "Footer link list",
+          "error": "White labeling saving error" 
         },
         "placeholders": {
           "preset-name": "Select preset name...",
           "link-list": "Select link list...",
           "main-menu-link-list": "Enter link list name...",
           "footer-link-list": "Enter footer link list name..."
+        },
+        "errors": {
+          "store-and-organization-set": "Both Store and Organization set",
+          "store-or-organization-must-be-set": "Store and Organization must be set",
+          "duplicate-store-or-organization": "Duplicate Store or Organization",
+          "store-or-organization-changed": "Store or Organization were changed"
         }
       },
       "white-labeling-logo": {
