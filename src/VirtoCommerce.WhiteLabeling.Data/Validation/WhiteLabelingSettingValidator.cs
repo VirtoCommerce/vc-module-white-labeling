@@ -11,6 +11,8 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
 {
     public WhiteLabelingSettingValidator(IWhiteLabelingSettingService service, IWhiteLabelingSettingSearchService searchService)
     {
+        ClassLevelCascadeMode = CascadeMode.Stop;
+
         // Either StoreId or OrganizationId must be set
         RuleFor(r => r)
            .Custom((request, context) =>
@@ -25,6 +27,22 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
                    context.AddFailure(new ValidationFailure(nameof(WhiteLabelingSetting.StoreId), "store-or-organization-must-be-set"));
                }
            });
+
+        // Can't change StoreId or OrganizationId
+        RuleFor(r => r)
+           .CustomAsync(async (request, context, _) =>
+           {
+               var result = await service.GetNoCloneAsync(request.Id);
+
+               if (result != null &&
+                 (result.StoreId != request.StoreId ||
+                 result.OrganizationId != request.OrganizationId))
+               {
+                   var propertyName = GetPropertyName(request);
+                   context.AddFailure(new ValidationFailure(propertyName, "store-or-organization-changed"));
+               }
+           })
+           .When(x => !x.Id.IsNullOrEmpty());
 
         // Can't have duplicate StoreId or OrganizationId
         RuleFor(r => r)
@@ -46,22 +64,6 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
                }
            })
            .When(x => x.Id.IsNullOrEmpty());
-
-        // Can't change StoreId or OrganizationId
-        RuleFor(r => r)
-           .CustomAsync(async (request, context, _) =>
-           {
-               var result = await service.GetNoCloneAsync(request.Id);
-
-               if (result != null &&
-                 (result.StoreId != request.StoreId ||
-                 result.OrganizationId != request.OrganizationId))
-               {
-                   var propertyName = GetPropertyName(request);
-                   context.AddFailure(new ValidationFailure(propertyName, "store-or-organization-changed"));
-               }
-           })
-           .When(x => !x.Id.IsNullOrEmpty());
     }
 
     private static string GetPropertyName(WhiteLabelingSetting request)
