@@ -24,7 +24,7 @@
         },
         "errors": {
           "store-and-organization-set": "Both Store and Organization set",
-          "store-or-organization-must-be-set": "Store and Organization must be set",
+          "store-or-organization-must-be-set": "Store or Organization must be set",
           "duplicate-store-or-organization": "Duplicate Store or Organization",
           "store-or-organization-changed": "Store or Organization were changed"
         }
