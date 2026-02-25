@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
 using VirtoCommerce.Platform.Core.Common;
@@ -28,42 +29,47 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
                }
            });
 
-        // Can't change StoreId or OrganizationId
         RuleFor(r => r)
            .CustomAsync(async (request, context, _) =>
            {
-               var result = await service.GetNoCloneAsync(request.Id);
-
-               if (result != null &&
-                 (result.StoreId != request.StoreId ||
-                 result.OrganizationId != request.OrganizationId))
+               WhiteLabelingSetting result = null;
+               if (!request.Id.IsNullOrEmpty())
                {
-                   var propertyName = GetPropertyName(request);
-                   context.AddFailure(new ValidationFailure(propertyName, "store-or-organization-changed"));
+                   result = await service.GetNoCloneAsync(request.Id);
                }
-           })
-           .When(x => !x.Id.IsNullOrEmpty());
 
-        // Can't have duplicate StoreId or OrganizationId
-        RuleFor(r => r)
-           .CustomAsync(async (request, context, _) =>
-           {
-               var criteria = new WhiteLabelingSettingSearchCriteria()
+               if (result != null)
                {
-                   OrganizationId = request.OrganizationId,
-                   StoreId = request.StoreId,
-                   Take = 0,
-               };
-
-               var searchResult = await searchService.SearchNoCloneAsync(criteria);
-
-               if (searchResult.TotalCount > 0)
-               {
-                   var propertyName = GetPropertyName(request);
-                   context.AddFailure(new ValidationFailure(propertyName, "duplicate-store-or-organization"));
+                   // Can't change StoreId or OrganizationId for the existing white labeling
+                   if (result.StoreId != request.StoreId || result.OrganizationId != request.OrganizationId)
+                   {
+                       var propertyName = GetPropertyName(request);
+                       context.AddFailure(new ValidationFailure(propertyName, "store-or-organization-changed"));
+                   }
                }
-           })
-           .When(x => x.Id.IsNullOrEmpty());
+               else
+               {
+                   // Can't have duplicate StoreId or OrganizationId for a new white labeling
+                   if (await HasDuplicate(searchService, request))
+                   {
+                       var propertyName = GetPropertyName(request);
+                       context.AddFailure(new ValidationFailure(propertyName, "duplicate-store-or-organization"));
+                   }
+               }
+           });
+    }
+
+    private static async Task<bool> HasDuplicate(IWhiteLabelingSettingSearchService searchService, WhiteLabelingSetting request)
+    {
+        var criteria = new WhiteLabelingSettingSearchCriteria()
+        {
+            OrganizationId = request.OrganizationId,
+            StoreId = request.StoreId,
+            Take = 0,
+        };
+
+        var searchResult = await searchService.SearchNoCloneAsync(criteria);
+        return searchResult.TotalCount > 0;
     }
 
     private static string GetPropertyName(WhiteLabelingSetting request)
