@@ -69,13 +69,14 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         [Authorize(ModuleConstants.Security.Permissions.Create)]
         public async Task<ActionResult<WhiteLabelingSetting>> Create([FromBody] WhiteLabelingSetting model)
         {
+            model.Id = null;
+
             var validationResult = await _whiteLabelingSettingValidator.ValidateAsync(model);
             if (!validationResult.Errors.IsNullOrEmpty())
             {
                 return BadRequest(validationResult.Errors);
             }
 
-            model.Id = null;
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return Ok(model);
         }

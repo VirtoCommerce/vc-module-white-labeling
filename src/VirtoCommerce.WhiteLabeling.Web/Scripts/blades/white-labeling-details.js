@@ -77,7 +77,7 @@ angular.module('WhiteLabeling')
 
                 if (error.data && error.data.length) {
                     const errorData = {
-                        status: $translate.instant('white-labeling.blades.white-labeling-detail.title'),
+                        status: error.status,
                         statusText: $translate.instant('white-labeling.blades.white-labeling-detail.labels.error'),
                         data: {
                             errors: []
@@ -86,7 +86,7 @@ angular.module('WhiteLabeling')
 
                     if (Array.isArray(error.data)) {
                         errorData.data.errors = error.data
-                            .map(error => $translate.instant('white-labeling.blades.white-labeling-detail.errors.' + error.errorMessage));
+                            .map(e => $translate.instant('white-labeling.blades.white-labeling-detail.errors.' + e.errorMessage));
                     }
 
                     bladeNavigationService.setError(errorData, blade);
