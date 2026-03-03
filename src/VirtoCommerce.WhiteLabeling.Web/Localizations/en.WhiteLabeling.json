@@ -14,7 +14,7 @@
           "link-list": "Link list",
           "main-menu-link-list": "Main menu link list",
           "footer-link-list": "Footer link list",
-          "error": "White labeling saving error" 
+          "error": "Save error"
         },
         "placeholders": {
           "preset-name": "Select preset name...",

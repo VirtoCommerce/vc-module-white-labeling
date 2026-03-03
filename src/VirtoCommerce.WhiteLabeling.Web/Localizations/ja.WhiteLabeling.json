@@ -13,13 +13,20 @@
           "preset-name": "テーマプリセット名",
           "link-list": "リンクリスト",
           "main-menu-link-list": "メインメニューリンクリスト",
-          "footer-link-list": "フッターリンクリスト"
+          "footer-link-list": "フッターリンクリスト",
+          "error": "保存エラー"
         },
         "placeholders": {
           "preset-name": "プリセット名を選択...",
           "link-list": "リンクリストを選択...",
           "main-menu-link-list": "リンクリスト名を入力...",
           "footer-link-list": "フッターリンクリスト名を入力..."
+        },
+        "errors": {
+          "store-and-organization-set": "ストアと組織の両方が設定されています",
+          "store-or-organization-must-be-set": "ストアまたは組織を設定する必要があります",
+          "duplicate-store-or-organization": "ストアまたは組織が重複しています",
+          "store-or-organization-changed": "ストアまたは組織が変更されました"
         }
       },
       "white-labeling-logo": {

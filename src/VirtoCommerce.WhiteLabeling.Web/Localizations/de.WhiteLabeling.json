@@ -13,13 +13,20 @@
           "preset-name": "Name der Voreinstellung",
           "link-list": "Linkliste",
           "main-menu-link-list": "Hauptmenü-Linkliste",
-          "footer-link-list": "Fußzeilen-Linkliste"
+          "footer-link-list": "Fußzeilen-Linkliste",
+          "error": "Fehler beim Speichern"
         },
         "placeholders": {
           "preset-name": "Voreinstellungsnamen auswählen...",
           "link-list": "Linkliste auswählen...",
           "main-menu-link-list": "Linklistennamen eingeben...",
           "footer-link-list": "Fußzeilen-Linklistennamen eingeben..."
+        },
+        "errors": {
+          "store-and-organization-set": "Sowohl Shop als auch Organisation sind festgelegt",
+          "store-or-organization-must-be-set": "Shop oder Organisation muss festgelegt sein",
+          "duplicate-store-or-organization": "Doppelter Shop oder doppelte Organisation",
+          "store-or-organization-changed": "Shop oder Organisation wurden geändert"
         }
       },
       "white-labeling-logo": {

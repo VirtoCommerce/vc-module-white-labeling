@@ -13,13 +13,20 @@
           "preset-name": "主题预设名称",
           "link-list": "链接列表",
           "main-menu-link-list": "主菜单链接列表",
-          "footer-link-list": "页脚链接列表"
+          "footer-link-list": "页脚链接列表",
+          "error": "保存错误"
         },
         "placeholders": {
           "preset-name": "选择预设名称...",
           "link-list": "选择链接列表...",
           "main-menu-link-list": "输入链接列表名称...",
           "footer-link-list": "输入页脚链接列表名称..."
+        },
+        "errors": {
+          "store-and-organization-set": "商店和组织均已设置",
+          "store-or-organization-must-be-set": "必须设置商店或组织",
+          "duplicate-store-or-organization": "重复的商店或组织",
+          "store-or-organization-changed": "商店或组织已更改"
         }
       },
       "white-labeling-logo": {

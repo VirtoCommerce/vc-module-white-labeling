@@ -13,13 +13,20 @@
           "preset-name": "Nazwa presetu motywu",
           "link-list": "Lista linków",
           "main-menu-link-list": "Lista linków menu głównego",
-          "footer-link-list": "Lista linków stopki"
+          "footer-link-list": "Lista linków stopki",
+          "error": "Błąd zapisu"
         },
         "placeholders": {
           "preset-name": "Wybierz nazwę presetu...",
           "link-list": "Wybierz listę linków...",
           "main-menu-link-list": "Wprowadź nazwę listy linków...",
           "footer-link-list": "Wprowadź nazwę listy linków stopki..."
+        },
+        "errors": {
+          "store-and-organization-set": "Ustawiono zarówno sklep, jak i organizację",
+          "store-or-organization-must-be-set": "Należy ustawić sklep lub organizację",
+          "duplicate-store-or-organization": "Zduplikowany sklep lub organizacja",
+          "store-or-organization-changed": "Sklep lub organizacja zostały zmienione"
         }
       },
       "white-labeling-logo": {

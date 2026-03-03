@@ -13,13 +13,20 @@
           "preset-name": "Название пресета темы",
           "link-list": "Список ссылок",
           "main-menu-link-list": "Список ссылок главного меню",
-          "footer-link-list": "Список ссылок нижнего колонтитула"
+          "footer-link-list": "Список ссылок нижнего колонтитула",
+          "error": "Ошибка сохранения"
         },
         "placeholders": {
           "preset-name": "Выберите название пресета...",
           "link-list": "Выберите список ссылок...",
           "main-menu-link-list": "Введите название списка ссылок...",
           "footer-link-list": "Введите название списка ссылок нижнего колонтитула..."
+        },
+        "errors": {
+          "store-and-organization-set": "Указаны и магазин, и организация",
+          "store-or-organization-must-be-set": "Необходимо указать магазин или организацию",
+          "duplicate-store-or-organization": "Дублирующийся магазин или организация",
+          "store-or-organization-changed": "Магазин или организация были изменены"
         }
       },
       "white-labeling-logo": {
