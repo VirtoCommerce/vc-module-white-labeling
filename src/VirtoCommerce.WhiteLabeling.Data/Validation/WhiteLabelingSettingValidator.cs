@@ -61,12 +61,10 @@ public class WhiteLabelingSettingValidator : AbstractValidator<WhiteLabelingSett
 
     private static async Task<bool> HasDuplicate(IWhiteLabelingSettingSearchService searchService, WhiteLabelingSetting request)
     {
-        var criteria = new WhiteLabelingSettingSearchCriteria()
-        {
-            OrganizationId = request.OrganizationId,
-            StoreId = request.StoreId,
-            Take = 0,
-        };
+        var criteria = AbstractTypeFactory<WhiteLabelingSettingSearchCriteria>.TryCreateInstance();
+        criteria.OrganizationId = request.OrganizationId;
+        criteria.StoreId = request.StoreId;
+        criteria.Take = 0;
 
         var searchResult = await searchService.SearchNoCloneAsync(criteria);
         return searchResult.TotalCount > 0;
