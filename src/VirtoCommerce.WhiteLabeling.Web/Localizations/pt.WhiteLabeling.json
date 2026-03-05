@@ -13,13 +13,20 @@
           "preset-name": "Nome da predefinição de tema",
           "link-list": "Lista de links",
           "main-menu-link-list": "Lista de links do menu principal",
-          "footer-link-list": "Lista de links do rodapé"
+          "footer-link-list": "Lista de links do rodapé",
+          "error": "Erro ao salvar"
         },
         "placeholders": {
           "preset-name": "Selecione o nome da predefinição...",
           "link-list": "Selecione a lista de links...",
           "main-menu-link-list": "Digite o nome da lista de links...",
           "footer-link-list": "Digite o nome da lista de links do rodapé..."
+        },
+        "errors": {
+          "store-and-organization-set": "Tanto a loja quanto a organização estão definidas",
+          "store-or-organization-must-be-set": "A loja ou a organização deve ser definida",
+          "duplicate-store-or-organization": "Loja ou organização duplicada",
+          "store-or-organization-changed": "A loja ou a organização foram alteradas"
         }
       },
       "white-labeling-logo": {

@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
+using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +16,15 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
     {
         private readonly IWhiteLabelingSettingService _whiteLabelingSettingService;
         private readonly IWhiteLabelingSettingSearchService _whiteLabelingSettingSearchService;
+        private readonly AbstractValidator<WhiteLabelingSetting> _whiteLabelingSettingValidator;
 
         public WhiteLabelingController(IWhiteLabelingSettingService whiteLabelingSettingService,
-            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService)
+            IWhiteLabelingSettingSearchService whiteLabelingSettingSearchService,
+            AbstractValidator<WhiteLabelingSetting> whiteLabelingSettingValidator)
         {
             _whiteLabelingSettingService = whiteLabelingSettingService;
             _whiteLabelingSettingSearchService = whiteLabelingSettingSearchService;
+            _whiteLabelingSettingValidator = whiteLabelingSettingValidator;
         }
 
         [HttpGet("{id}")]
@@ -66,6 +70,13 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         public async Task<ActionResult<WhiteLabelingSetting>> Create([FromBody] WhiteLabelingSetting model)
         {
             model.Id = null;
+
+            var validationResult = await _whiteLabelingSettingValidator.ValidateAsync(model);
+            if (!validationResult.Errors.IsNullOrEmpty())
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return Ok(model);
         }
@@ -76,6 +87,12 @@ namespace VirtoCommerce.WhiteLabeling.Web.Controllers.Api
         [ProducesResponseType(typeof(void), StatusCodes.Status204NoContent)]
         public async Task<ActionResult> Update([FromBody] WhiteLabelingSetting model)
         {
+            var validationResult = await _whiteLabelingSettingValidator.ValidateAsync(model);
+            if (!validationResult.Errors.IsNullOrEmpty())
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             await _whiteLabelingSettingService.SaveChangesAsync([model]);
             return NoContent();
         }

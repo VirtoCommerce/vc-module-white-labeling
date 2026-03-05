@@ -13,13 +13,20 @@
           "preset-name": "Nom du préréglage de thème",
           "link-list": "Liste de liens",
           "main-menu-link-list": "Liste de liens du menu principal",
-          "footer-link-list": "Liste de liens du pied de page"
+          "footer-link-list": "Liste de liens du pied de page",
+          "error": "Erreur lors de l'enregistrement"
         },
         "placeholders": {
           "preset-name": "Sélectionner le nom du préréglage...",
           "link-list": "Sélectionner la liste de liens...",
           "main-menu-link-list": "Entrer le nom de la liste de liens...",
           "footer-link-list": "Entrer le nom de la liste de liens du pied de page..."
+        },
+        "errors": {
+          "store-and-organization-set": "Le magasin et l'organisation sont tous les deux définis",
+          "store-or-organization-must-be-set": "Le magasin ou l'organisation doit être défini",
+          "duplicate-store-or-organization": "Magasin ou organisation en double",
+          "store-or-organization-changed": "Le magasin ou l'organisation ont été modifiés"
         }
       },
       "white-labeling-logo": {

@@ -12,11 +12,18 @@
           "favicon": "Favicon",
           "preset-name": "Temapreset-namn",
           "link-list": "Länklisa",
-          "footer-personalization": "Anpassning av sidfot"
+          "footer-personalization": "Anpassning av sidfot",
+          "error": "Sparfel"
         },
         "placeholders": {
           "preset-name": "Välj preset-namn...",
           "link-list": "Välj länklisa..."
+        },
+        "errors": {
+          "store-and-organization-set": "Både butik och organisation är angivna",
+          "store-or-organization-must-be-set": "Butik eller organisation måste anges",
+          "duplicate-store-or-organization": "Duplicerad butik eller organisation",
+          "store-or-organization-changed": "Butik eller organisation har ändrats"
         }
       },
       "white-labeling-logo": {

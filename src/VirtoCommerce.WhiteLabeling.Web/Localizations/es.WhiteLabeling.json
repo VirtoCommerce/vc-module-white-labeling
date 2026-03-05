@@ -13,13 +13,20 @@
           "preset-name": "Nombre del preajuste de tema",
           "link-list": "Lista de enlaces",
           "main-menu-link-list": "Lista de enlaces del menú principal",
-          "footer-link-list": "Lista de enlaces del pie de página"
+          "footer-link-list": "Lista de enlaces del pie de página",
+          "error": "Error al guardar"
         },
         "placeholders": {
           "preset-name": "Seleccionar nombre del preajuste...",
           "link-list": "Seleccionar lista de enlaces...",
           "main-menu-link-list": "Ingrese nombre de la lista de enlaces...",
           "footer-link-list": "Ingrese nombre de la lista de enlaces del pie de página..."
+        },
+        "errors": {
+          "store-and-organization-set": "Tanto la tienda como la organización están establecidas",
+          "store-or-organization-must-be-set": "Se debe establecer la tienda o la organización",
+          "duplicate-store-or-organization": "Tienda u organización duplicada",
+          "store-or-organization-changed": "La tienda o la organización han sido modificadas"
         }
       },
       "white-labeling-logo": {

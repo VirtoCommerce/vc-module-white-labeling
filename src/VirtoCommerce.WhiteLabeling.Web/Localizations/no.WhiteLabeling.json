@@ -12,11 +12,18 @@
           "favicon": "Favicon",
           "preset-name": "Navn på temapreset",
           "link-list": "Lenkeliste",
-          "footer-personalization": "Personalisering av bunntekst"
+          "footer-personalization": "Personalisering av bunntekst",
+          "error": "Lagringsfeil"
         },
         "placeholders": {
           "preset-name": "Velg preset-navn...",
           "link-list": "Velg lenkeliste..."
+        },
+        "errors": {
+          "store-and-organization-set": "Både butikk og organisasjon er satt",
+          "store-or-organization-must-be-set": "Butikk eller organisasjon må være satt",
+          "duplicate-store-or-organization": "Duplisert butikk eller organisasjon",
+          "store-or-organization-changed": "Butikk eller organisasjon er endret"
         }
       },
       "white-labeling-logo": {

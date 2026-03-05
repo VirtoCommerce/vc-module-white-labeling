@@ -13,13 +13,20 @@
           "preset-name": "Nome preset tema",
           "link-list": "Lista dei link",
           "main-menu-link-list": "Lista dei link del menu principale",
-          "footer-link-list": "Lista dei link del piè di pagina"
+          "footer-link-list": "Lista dei link del piè di pagina",
+          "error": "Errore durante il salvataggio"
         },
         "placeholders": {
           "preset-name": "Seleziona il nome del preset...",
           "link-list": "Seleziona la lista dei link...",
           "main-menu-link-list": "Inserisci il nome della lista dei link...",
           "footer-link-list": "Inserisci il nome della lista dei link del piè di pagina..."
+        },
+        "errors": {
+          "store-and-organization-set": "Sia il negozio che l'organizzazione sono impostati",
+          "store-or-organization-must-be-set": "È necessario impostare il negozio o l'organizzazione",
+          "duplicate-store-or-organization": "Negozio o organizzazione duplicati",
+          "store-or-organization-changed": "Il negozio o l'organizzazione sono stati modificati"
         }
       },
       "white-labeling-logo": {

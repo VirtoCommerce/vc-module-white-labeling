@@ -12,11 +12,18 @@
           "favicon": "Favicon",
           "preset-name": "Teeman esiasetuksen nimi",
           "link-list": "Linkkilista",
-          "footer-personalization": "Alatunnisteen personointi"
+          "footer-personalization": "Alatunnisteen personointi",
+          "error": "Tallennusvirhe"
         },
         "placeholders": {
           "preset-name": "Valitse esiasetuksen nimi...",
           "link-list": "Valitse linkkilista..."
+        },
+        "errors": {
+          "store-and-organization-set": "Sekä kauppa että organisaatio on asetettu",
+          "store-or-organization-must-be-set": "Kauppa tai organisaatio on asetettava",
+          "duplicate-store-or-organization": "Päällekkäinen kauppa tai organisaatio",
+          "store-or-organization-changed": "Kauppaa tai organisaatiota on muutettu"
         }
       },
       "white-labeling-logo": {
