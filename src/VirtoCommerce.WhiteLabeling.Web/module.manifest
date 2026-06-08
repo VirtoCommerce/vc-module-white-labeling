@@ -24,7 +24,7 @@
   </owners>
 
   <projectUrl>https://github.com/VirtoCommerce/vc-module-white-labeling</projectUrl>
-  <iconUrl>Modules/$(VirtoCommerce.WhiteLabeling)/Content/logo.png</iconUrl>
+  <iconUrl>Modules/$(VirtoCommerce.WhiteLabeling)/Content/logo.svg</iconUrl>
   <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
   <assemblyFile>VirtoCommerce.WhiteLabeling.Web.dll</assemblyFile>
