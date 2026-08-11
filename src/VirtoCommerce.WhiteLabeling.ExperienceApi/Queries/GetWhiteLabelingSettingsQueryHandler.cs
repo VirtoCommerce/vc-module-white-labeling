@@ -66,12 +66,15 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             // add favicons
             if (!string.IsNullOrEmpty(whiteLabelingSetting.FaviconUrl))
             {
+                var extension = Path.GetExtension(whiteLabelingSetting.FaviconUrl);
+                var mimeType = extension.Length > 1 ? $"image/{extension[1..]}" : null;
+
                 foreach (var faviconSize in _faviconsSizes)
                 {
                     var newFavicon = new ExpFavicon()
                     {
                         Rel = "icon",
-                        Type = $"image/{Path.GetExtension(whiteLabelingSetting.FaviconUrl)[1..]}",
+                        Type = mimeType,
                         Sizes = faviconSize,
                         Href = GenerateFaviconName(whiteLabelingSetting.FaviconUrl, faviconSize),
                     };
@@ -236,7 +239,14 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             var extension = Path.GetExtension(fileName);
             var newName = string.Concat(name, "_" + aliasName, extension);
 
-            var uri = new Uri(fileName);
+            if (!Uri.TryCreate(fileName, UriKind.Absolute, out var uri))
+            {
+                var lastSlashIndex = fileName.LastIndexOf('/');
+                return lastSlashIndex >= 0
+                    ? string.Concat(fileName.AsSpan(0, lastSlashIndex + 1), newName)
+                    : newName;
+            }
+
             var uriWithoutLastSegment = uri.AbsoluteUri.Remove(uri.AbsoluteUri.Length - uri.Segments.Last().Length);
 
             var result = new Uri(new Uri(uriWithoutLastSegment), newName);

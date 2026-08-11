@@ -9,16 +9,18 @@
     <SonarQubeTestProject>true</SonarQubeTestProject>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="8.0.0">
+    <PackageReference Include="coverlet.collector" Version="10.0.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="xunit.v3" Version="3.2.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.Core\VirtoCommerce.WhiteLabeling.Core.csproj" />
+    <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.ExperienceApi\VirtoCommerce.WhiteLabeling.ExperienceApi.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.WhiteLabeling.Web\VirtoCommerce.WhiteLabeling.Web.csproj" />
   </ItemGroup>
 </Project>
