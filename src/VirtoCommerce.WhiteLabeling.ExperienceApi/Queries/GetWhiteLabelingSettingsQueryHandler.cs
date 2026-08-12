@@ -239,7 +239,7 @@ namespace VirtoCommerce.WhiteLabeling.ExperienceApi.Queries
             var extension = Path.GetExtension(fileName);
             var newName = string.Concat(name, "_" + aliasName, extension);
 
-            if (!Uri.TryCreate(fileName, UriKind.Absolute, out var uri))
+            if (!Uri.TryCreate(fileName, UriKind.Absolute, out var uri) || uri.Scheme is not ("http" or "https"))
             {
                 var lastSlashIndex = fileName.LastIndexOf('/');
                 return lastSlashIndex >= 0
