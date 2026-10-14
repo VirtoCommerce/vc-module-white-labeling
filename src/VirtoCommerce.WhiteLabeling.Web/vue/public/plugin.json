@@ -1,0 +1,4 @@
+{
+  // White labeling of stores and organizations (Admin Shell Module Federation remote): widgets on other modules' blades, no menu item
+  "remote": { "name": "whitelabeling_admin", "exposed": "./Module" }
+}
