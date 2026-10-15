@@ -1,0 +1,3 @@
+{
+  "remote": { "name": "whitelabeling_admin", "exposed": "./Module" }
+}
