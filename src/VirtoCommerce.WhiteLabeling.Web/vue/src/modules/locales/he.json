@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "יש שינויים שלא נשמרו. לסגור בכל זאת?"
+    },
+    "ENABLED": "מופעל",
+    "FAVICON": "סמל אתר (Favicon)",
+    "FOOTER": "רשימת קישורים בכותרת התחתונה",
+    "GENERAL": "כללי",
+    "IMAGES": "לוגואים",
+    "LOGO": "לוגו",
+    "MAIN_MENU": "רשימת קישורים בתפריט הראשי",
+    "SECONDARY_LOGO": "לוגו משני",
+    "THEME": "ערכת נושא מוגדרת מראש",
+    "TITLE": "מיתוג לבן",
+    "TOOLBAR": {
+      "RESET": "איפוס",
+      "SAVE": "שמירה"
+    }
+  }
+}
