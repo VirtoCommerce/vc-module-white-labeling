@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Es gibt nicht gespeicherte Änderungen. Trotzdem schließen?"
+    },
+    "ENABLED": "Aktiviert",
+    "FAVICON": "Favicon",
+    "FOOTER": "Fußzeilen-Linkliste",
+    "GENERAL": "Allgemein",
+    "IMAGES": "Logos",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Hauptmenü-Linkliste",
+    "SECONDARY_LOGO": "Sekundäres Logo",
+    "THEME": "Theme-Voreinstellung",
+    "TITLE": "White labeling",
+    "TOOLBAR": {
+      "RESET": "Zurücksetzen",
+      "SAVE": "Speichern"
+    }
+  }
+}

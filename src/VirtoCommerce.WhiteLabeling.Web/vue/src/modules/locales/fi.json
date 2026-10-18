@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Muutoksia ei ole tallennettu. Suljetaanko silti?"
+    },
+    "ENABLED": "Käytössä",
+    "FAVICON": "Favicon",
+    "FOOTER": "Alatunnisteen linkkilista",
+    "GENERAL": "Yleiset",
+    "IMAGES": "Logot",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Päävalikon linkkilista",
+    "SECONDARY_LOGO": "Toissijainen logo",
+    "THEME": "Teeman esiasetus",
+    "TITLE": "Oma brändäys",
+    "TOOLBAR": {
+      "RESET": "Palauta",
+      "SAVE": "Tallenna"
+    }
+  }
+}

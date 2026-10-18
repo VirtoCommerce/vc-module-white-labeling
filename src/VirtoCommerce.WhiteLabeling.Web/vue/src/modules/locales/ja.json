@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "保存されていない変更があります。閉じてもよろしいですか？"
+    },
+    "ENABLED": "有効",
+    "FAVICON": "ファビコン",
+    "FOOTER": "フッターリンクリスト",
+    "GENERAL": "全般",
+    "IMAGES": "ロゴ",
+    "LOGO": "ロゴ",
+    "MAIN_MENU": "メインメニューリンクリスト",
+    "SECONDARY_LOGO": "セカンダリロゴ",
+    "THEME": "テーマプリセット",
+    "TITLE": "ホワイトラベリング",
+    "TOOLBAR": {
+      "RESET": "リセット",
+      "SAVE": "保存"
+    }
+  }
+}

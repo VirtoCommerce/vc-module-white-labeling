@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Des modifications ne sont pas enregistrées. Fermer quand même ?"
+    },
+    "ENABLED": "Activé",
+    "FAVICON": "Favicon",
+    "FOOTER": "Liste de liens du pied de page",
+    "GENERAL": "Général",
+    "IMAGES": "Logos",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Liste de liens du menu principal",
+    "SECONDARY_LOGO": "Logo secondaire",
+    "THEME": "Préréglage de thème",
+    "TITLE": "Personnalisation de marque",
+    "TOOLBAR": {
+      "RESET": "Réinitialiser",
+      "SAVE": "Enregistrer"
+    }
+  }
+}

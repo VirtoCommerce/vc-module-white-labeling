@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "You have unsaved changes. Close anyway?"
+    },
+    "ENABLED": "Enabled",
+    "FAVICON": "Favicon",
+    "FOOTER": "Footer link list",
+    "GENERAL": "General",
+    "IMAGES": "Logos",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Main menu link list",
+    "SECONDARY_LOGO": "Secondary logo",
+    "THEME": "Theme preset",
+    "TITLE": "White labeling",
+    "TOOLBAR": {
+      "RESET": "Reset",
+      "SAVE": "Save"
+    }
+  }
+}
