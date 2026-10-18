@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Det finns osparade ändringar. Stäng ändå?"
+    },
+    "ENABLED": "Aktiverad",
+    "FAVICON": "Favicon",
+    "FOOTER": "Länklista för sidfot",
+    "GENERAL": "Allmänt",
+    "IMAGES": "Logotyper",
+    "LOGO": "Logotyp",
+    "MAIN_MENU": "Länklista för huvudmeny",
+    "SECONDARY_LOGO": "Sekundär logotyp",
+    "THEME": "Temapreset",
+    "TITLE": "Vit märkning",
+    "TOOLBAR": {
+      "RESET": "Återställ",
+      "SAVE": "Spara"
+    }
+  }
+}

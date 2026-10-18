@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Ci sono modifiche non salvate. Chiudere comunque?"
+    },
+    "ENABLED": "Abilitato",
+    "FAVICON": "Favicon",
+    "FOOTER": "Lista dei link del piè di pagina",
+    "GENERAL": "Generale",
+    "IMAGES": "Loghi",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Lista dei link del menu principale",
+    "SECONDARY_LOGO": "Logo secondario",
+    "THEME": "Preset tema",
+    "TITLE": "White labeling",
+    "TOOLBAR": {
+      "RESET": "Ripristina",
+      "SAVE": "Salva"
+    }
+  }
+}

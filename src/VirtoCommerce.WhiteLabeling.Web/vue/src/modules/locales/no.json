@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Du har endringer som ikke er lagret. Lukke likevel?"
+    },
+    "ENABLED": "Aktivert",
+    "FAVICON": "Favicon",
+    "FOOTER": "Lenkeliste for bunntekst",
+    "GENERAL": "Generelt",
+    "IMAGES": "Logoer",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Lenkeliste for hovedmeny",
+    "SECONDARY_LOGO": "Sekundær logo",
+    "THEME": "Temapreset",
+    "TITLE": "Hvitmerking",
+    "TOOLBAR": {
+      "RESET": "Tilbakestill",
+      "SAVE": "Lagre"
+    }
+  }
+}

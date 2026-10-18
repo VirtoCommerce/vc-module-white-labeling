@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "有未保存的更改。仍要关闭吗？"
+    },
+    "ENABLED": "已启用",
+    "FAVICON": "网站图标",
+    "FOOTER": "页脚链接列表",
+    "GENERAL": "常规",
+    "IMAGES": "标志",
+    "LOGO": "标志",
+    "MAIN_MENU": "主菜单链接列表",
+    "SECONDARY_LOGO": "次要标志",
+    "THEME": "主题预设",
+    "TITLE": "白标",
+    "TOOLBAR": {
+      "RESET": "重置",
+      "SAVE": "保存"
+    }
+  }
+}

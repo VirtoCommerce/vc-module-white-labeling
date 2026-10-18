@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Есть несохранённые изменения. Всё равно закрыть?"
+    },
+    "ENABLED": "Включено",
+    "FAVICON": "Фавикон",
+    "FOOTER": "Список ссылок нижнего колонтитула",
+    "GENERAL": "Общие",
+    "IMAGES": "Логотипы",
+    "LOGO": "Логотип",
+    "MAIN_MENU": "Список ссылок главного меню",
+    "SECONDARY_LOGO": "Вторичный логотип",
+    "THEME": "Пресет темы",
+    "TITLE": "White labeling",
+    "TOOLBAR": {
+      "RESET": "Сбросить",
+      "SAVE": "Сохранить"
+    }
+  }
+}
