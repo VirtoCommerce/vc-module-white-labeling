@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Masz niezapisane zmiany. Zamknąć mimo to?"
+    },
+    "ENABLED": "Włączone",
+    "FAVICON": "Favicon",
+    "FOOTER": "Lista linków stopki",
+    "GENERAL": "Ogólne",
+    "IMAGES": "Loga",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Lista linków menu głównego",
+    "SECONDARY_LOGO": "Logo dodatkowe",
+    "THEME": "Preset motywu",
+    "TITLE": "Oznakowanie własne",
+    "TOOLBAR": {
+      "RESET": "Resetuj",
+      "SAVE": "Zapisz"
+    }
+  }
+}

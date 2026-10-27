@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Hay cambios sin guardar. ¿Cerrar de todos modos?"
+    },
+    "ENABLED": "Habilitado",
+    "FAVICON": "Favicon",
+    "FOOTER": "Lista de enlaces del pie de página",
+    "GENERAL": "General",
+    "IMAGES": "Logos",
+    "LOGO": "Logo",
+    "MAIN_MENU": "Lista de enlaces del menú principal",
+    "SECONDARY_LOGO": "Logo secundario",
+    "THEME": "Preajuste de tema",
+    "TITLE": "Marca blanca",
+    "TOOLBAR": {
+      "RESET": "Restablecer",
+      "SAVE": "Guardar"
+    }
+  }
+}

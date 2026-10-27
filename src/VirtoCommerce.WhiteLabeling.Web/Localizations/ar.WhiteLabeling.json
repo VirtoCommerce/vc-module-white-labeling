@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "WhiteLabeling:create": "إنشاء البيانات المتعلقة بالعلامة البيضاء",
+    "WhiteLabeling:read": "عرض البيانات المتعلقة بالعلامة البيضاء",
+    "WhiteLabeling:update": "تحديث البيانات المتعلقة بالعلامة البيضاء",
+    "WhiteLabeling:delete": "حذف البيانات المتعلقة بالعلامة البيضاء"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "تفعيل العلامة البيضاء",
+      "description": "تفعيل العلامة البيضاء لهذا المتجر أو تعطيلها."
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "اسم السمة المعدّة مسبقًا",
+      "description": "حدد اسم السمة المعدّة مسبقًا للعلامة البيضاء."
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "WHITE_LABELING": {
+    "ALERTS": {
+      "CLOSE_CONFIRMATION": "Há alterações não salvas. Fechar mesmo assim?"
+    },
+    "ENABLED": "Ativado",
+    "FAVICON": "Favicon",
+    "FOOTER": "Lista de links do rodapé",
+    "GENERAL": "Geral",
+    "IMAGES": "Logotipos",
+    "LOGO": "Logotipo",
+    "MAIN_MENU": "Lista de links do menu principal",
+    "SECONDARY_LOGO": "Logotipo secundário",
+    "THEME": "Predefinição de tema",
+    "TITLE": "Marca branca",
+    "TOOLBAR": {
+      "RESET": "Redefinir",
+      "SAVE": "Salvar"
+    }
+  }
+}

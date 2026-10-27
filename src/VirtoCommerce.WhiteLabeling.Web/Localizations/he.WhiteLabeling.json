@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "WhiteLabeling:create": "יצירת נתונים הקשורים למיתוג לבן",
+    "WhiteLabeling:read": "הצגת נתונים הקשורים למיתוג לבן",
+    "WhiteLabeling:update": "עדכון נתונים הקשורים למיתוג לבן",
+    "WhiteLabeling:delete": "מחיקת נתונים הקשורים למיתוג לבן"
+  },
+  "settings": {
+    "WhiteLabeling.WhiteLabelingEnabled": {
+      "title": "מיתוג לבן מופעל",
+      "description": "הפעלה/השבתה של מיתוג לבן לחנות זו"
+    },
+    "WhiteLabeling.ThemePresetNames": {
+      "title": "שם ערכת נושא מוגדרת מראש",
+      "description": "יש לציין את שם ערכת הנושא המוגדרת מראש של המיתוג הלבן"
+    }
+  }
+}
